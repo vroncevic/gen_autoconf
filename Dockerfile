@@ -21,7 +21,16 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
  python \
  python-pip \
  python-wheel \
- libyaml-dev
+ libyaml-dev \
+ binutils \
+ make \
+ csh \ 
+ g++ \
+ sed \
+ gawk \
+ autoconf \
+ automake \
+ autotools-dev
 
 RUN pip install --upgrade setuptools
 RUN mkdir /gen_autoconf/
