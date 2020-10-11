@@ -113,8 +113,6 @@ Or You can use docker to create image/container.
 
 **gen_autoconf** is based on OOP:
 
-[comment]: <> ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/arch_flow_usage.png)
-
 Library structure:
 ```
 .
