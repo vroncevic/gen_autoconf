@@ -161,7 +161,7 @@
 <p>The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.</p>
-<p><a class="reference external" href="https://github.com/vroncevic/gen_autoconf/workflows/Python%20package/badge.svg?branch=master"><img alt="Python package" src="https://github.com/vroncevic/gen_autoconf/workflows/Python%20package/badge.svg" /></a> <a class="reference external" href="https://github.com/vroncevic/gen_autoconf/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg" /></a> <a class="reference external" href="https://gen_autoconf.readthedocs.io/projects/gen_autoconf/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/gen_autoconf/badge/?version=latest" /></a> <a class="reference external" href="https://github.com/vroncevic/gen_autoconf/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg" /></a></p>
+<p><a class="reference external" href="https://github.com/vroncevic/gen_autoconf/workflows/Python%20package%20gen_autoconf/badge.svg?branch=master"><img alt="Python package" src="https://github.com/vroncevic/gen_autoconf/workflows/Python%20package%20gen_autoconf/badge.svg" /></a> <a class="reference external" href="https://github.com/vroncevic/gen_autoconf/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg" /></a> <a class="reference external" href="https://gen_autoconf.readthedocs.io/projects/gen_autoconf/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/gen_autoconf/badge/?version=latest" /></a> <a class="reference external" href="https://github.com/vroncevic/gen_autoconf/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg" /></a></p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
@@ -206,74 +206,28 @@ python setup.py install_data
 <div class="section" id="library-structure">
 <h1>Library structure<a class="headerlink" href="#library-structure" title="Permalink to this headline">¶</a></h1>
 <p><strong>gen_autoconf</strong> is based on OOP:</p>
-<img alt="https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/arch_flow_usage.png" src="https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/arch_flow_usage.png" />
 <p>Code structure:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
-├── gen_autoconf/
-│   ├── abstract/
-│   │   └── __init__.py
-│   ├── ats_info.py
-│   ├── cfg_base.py
-│   ├── config/
-│   │   ├── base_read_config.py
-│   │   ├── base_write_config.py
-│   │   ├── cfg/
-│   │   │   ├── cfg2object.py
-│   │   │   ├── __init__.py
-│   │   │   └── object2cfg.py
-│   │   ├── check_base_config.py
-│   │   ├── config_context_manager.py
-│   │   ├── file_checking.py
-│   │   ├── ini/
-│   │   │   ├── ini2object.py
-│   │   │   ├── __init__.py
-│   │   │   └── object2ini.py
-│   │   ├── __init__.py
-│   │   ├── json/
-│   │   │   ├── __init__.py
-│   │   │   ├── json2object.py
-│   │   │   └── object2json.py
-│   │   ├── xml/
-│   │   │   ├── __init__.py
-│   │   │   ├── object2xml.py
-│   │   │   └── xml2object.py
-│   │   └── yaml/
-│   │       ├── __init__.py
-│   │       ├── object2yaml.py
-│   │       └── yaml2object.py
-│   ├── console_io/
-│   │   ├── error.py
-│   │   ├── __init__.py
-│   │   ├── success.py
-│   │   ├── verbose.py
-│   │   └── warning.py
-│   ├── exceptions/
-│   │   ├── ats_attribute_error.py
-│   │   ├── ats_bad_call_error.py
-│   │   ├── ats_file_error.py
-│   │   ├── ats_key_error.py
-│   │   ├── ats_lookup_error.py
-│   │   ├── ats_type_error.py
-│   │   ├── ats_value_error.py
-│   │   └── __init__.py
-│   ├── ini_base.py
-│   ├── __init__.py
-│   ├── json_base.py
-│   ├── logging/
-│   │   ├── ats_logger_base.py
-│   │   ├── ats_logger_file.py
-│   │   ├── ats_logger_name.py
-│   │   ├── ats_logger.py
-│   │   ├── ats_logger_status.py
-│   │   └── __init__.py
-│   ├── option/
-│   │   ├── ats_option_parser.py
-│   │   └── __init__.py
-│   ├── register/
-│   │   └── __init__.py
-│   ├── xml_base.py
-│   └── yaml_base.py
-└── setup.py
+├── conf/
+│   ├── gen_autoconf.cfg
+│   ├── gen_autoconf_util.cfg
+│   └── template/
+│       ├── configure.ac
+│       ├── Makefile.am
+│       ├── README.md
+│       └── src/
+│           ├── main.c
+│           └── Makefile.am
+├── __init__.py
+├── log/
+│   └── gen_autoconf.log
+├── pro/
+│   ├── gen_pro.py
+│   ├── __init__.py
+│   ├── read_template.py
+│   └── write_template.py
+└── run/
+    └── gen_autoconf_run.py
 </pre></div>
 </div>
 </div>
