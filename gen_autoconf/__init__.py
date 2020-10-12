@@ -108,19 +108,19 @@ class GenAutoconf(CfgBase):
             opts, script = self.parse_args(sys.argv)
             if all([bool(script), bool(opts.gen), not exists(opts.gen)]):
                 success_message(
-                    self.name.upper(), 'Generating project', opts.gen
+                    GenAutoconf.VERBOSE, 'Generating project', opts.gen
                 )
                 generator, gen_status = GenPro(opts.gen), False
                 gen_status = generator.gen_project()
                 if gen_status:
-                    success_message(self.name.upper(), 'Done\n')
+                    success_message(GenAutoconf.VERBOSE, 'Done\n')
                     status = True
                 else:
                     error_message(
-                        self.name.upper(), 'Failed to generate project'
+                        GenAutoconf.VERBOSE, 'Failed to generate project'
                     )
             else:
-                error_message(self.name.upper(), 'Project already exist !')
+                error_message(GenAutoconf.VERBOSE, 'Project already exist !')
         else:
-            error_message('gen_autoconf'.upper(), 'Tool is not operational')
+            error_message(GenAutoconf.VERBOSE, 'Tool is not operational')
         return True if status else False
