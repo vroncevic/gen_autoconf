@@ -45,7 +45,6 @@ setup(
     url='https://vroncevic.github.io/gen_autoconf/',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
-    long_description='Generating C project in Unix/Linux OS.',
     keywords='Unix, Linux, Development, ANSI C, autoconf',
     platforms='POSIX',
     classifiers=[
