@@ -36,6 +36,7 @@ RUN pip install --upgrade setuptools
 RUN mkdir /gen_autoconf/
 COPY gen_autoconf /gen_autoconf/
 COPY setup.py /
+COPY README.md /
 COPY requirements.txt /
 RUN pip install -r requirements.txt
 RUN rm -f requirements.txt
@@ -43,5 +44,6 @@ RUN find /gen_autoconf/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
 RUN python setup.py install_lib && python setup.py install_egg_info && python setup.py install_data
 RUN rm -rf /gen_autoconf/
 RUN rm -f setup.py
+RUN rm -f README.md
 RUN chmod -R 755 /usr/local/lib/python2.7/dist-packages/gen_autoconf/
 RUN tree /usr/local/lib/python2.7/dist-packages/gen_autoconf/
