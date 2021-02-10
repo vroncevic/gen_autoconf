@@ -21,10 +21,10 @@
 """
 
 import sys
-from inspect import stack
 
 try:
     from pathlib import Path
+    from ats_utilities.checker import ATSChecker
     from gen_autoconf.pro.read_template import ReadTemplate
     from gen_autoconf.pro.write_template import WriteTemplate
     from ats_utilities.config.cfg.cfg2object import Cfg2Object
@@ -32,15 +32,15 @@ try:
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+except ImportError as error_message:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.0.0'
+__version__ = '1.2.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -56,6 +56,7 @@ class GenPro(object):
                 | __slots__ - Setting class slots
                 | VERBOSE - Console text indicator for current process-phase
                 | __PRO_STRUCTURE - Project structure
+                | __checker - ATS checker for parameters
                 | __config - Configuration dictionary
                 | __current_dir - Current directory
                 | __reader - Reader API
@@ -70,6 +71,7 @@ class GenPro(object):
     __slots__ = (
         'VERBOSE',
         '__PRO_SUB_STRUCTURE',
+        '__checker',
         '__config',
         '__current_dir',
         '__reader',
@@ -86,15 +88,14 @@ class GenPro(object):
             :type project_name: <str>
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
-            :exceptions: None
+            :exceptions: ATSTypeError | ATSBadCallError
         """
-        func = stack()[0][3]
-        pro_name_txt = 'Argument: expected project_name <str> object'
-        pro_name_msg = "{0} {1} {2}".format('def', func, pro_name_txt)
-        if project_name is None or not project_name:
-            raise ATSBadCallError(pro_name_msg)
-        if not isinstance(project_name, str):
-            raise ATSTypeError(pro_name_msg)
+        self.__checker = ATSChecker()
+        error, status = self.__checker.check_params(
+            [('str:project_name', project_name)]
+        )
+        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
         verbose_message(GenPro.VERBOSE, verbose, 'Initial generator')
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(project_name, verbose=verbose)
@@ -135,7 +136,7 @@ class GenPro(object):
             :type verbose: <bool>
             :return: Boolean status True (success) | False
             :rtype: <bool>
-            :exceptions: ATSBadCallError | ATSTypeError
+            :exceptions: None
         """
         status = False
         statuses, expected_num_files = [], len(self.__config.keys())

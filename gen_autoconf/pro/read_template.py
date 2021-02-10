@@ -21,24 +21,24 @@
 """
 
 import sys
-from inspect import stack
 from os.path import isdir
 
 try:
     from pathlib import Path
+    from ats_utilities.checker import ATSChecker
     from ats_utilities.config.file_checking import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+except ImportError as error_message:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.0.0'
+__version__ = '1.2.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -53,6 +53,7 @@ class ReadTemplate(FileChecking):
             :attributes:
                 | __slots__ - Setting class slots
                 | VERBOSE - Console text indicator for current process-phase
+                | __checker - ATS checker for parameters
                 | __TEMPLATE_DIR - Prefix path to templates
                 | __template_dir - Absolute template dir
             :methods:
@@ -61,7 +62,7 @@ class ReadTemplate(FileChecking):
                 | read - Read a template and return a content or None
     """
 
-    __slots__ = ('VERBOSE', '__TEMPLATE_DIR', '__template_dir')
+    __slots__ = ('VERBOSE', '__TEMPLATE_DIR', '__template_dir', '__checker')
     VERBOSE = 'GEN_AUTOCONF::PRO::READ_TEMPLATE'
     __TEMPLATE_DIR = '/../conf/template'
 
@@ -73,6 +74,7 @@ class ReadTemplate(FileChecking):
             :type verbose: <bool>
             :exceptions: None
         """
+        self.__checker = ATSChecker()
         verbose_message(ReadTemplate.VERBOSE, verbose, 'Initial reader')
         FileChecking.__init__(self, verbose=verbose)
         current_dir = Path(__file__).parent
@@ -105,16 +107,15 @@ class ReadTemplate(FileChecking):
             :type verbose: <bool>
             :return: Template content | None
             :rtype: <str> | <NoneType>
-            :exceptions: ATSBadCallError | ATSTypeError
+            :exceptions: ATSTypeError | ATSBadCallError
         """
-        func, template_file_exists = stack()[0][3], None
-        module_content, template_file = False, None
-        template_txt = 'Argument: expected module_type <int> object'
-        template_msg = "{0} {1} {2}".format('def', func, template_txt)
-        if template is None:
-            raise ATSBadCallError(template_msg)
-        if not isinstance(template, str):
-            raise ATSTypeError(template_msg)
+        error, status = self.__checker.check_params(
+            [('str:template', template)]
+        )
+        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        template_file_exists = False
+        module_content, template_file = None, None
         template_file = "{0}/{1}".format(self.__template_dir, template)
         template_file_exists = self.check_file(
             file_path=template_file, verbose=verbose
