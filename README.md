@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/gen_autoconf_logo.png" width="25%">
+
 # Create C project skeleton
 
 **gen_autoconf** is tool for creating C project skeleton.
