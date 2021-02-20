@@ -76,23 +76,23 @@ setup(
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
-            ['gen_autoconf/conf/template/README.md']
+            ['gen_autoconf/conf/template/README.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
-            ['gen_autoconf/conf/template/Makefile.am']
+            ['gen_autoconf/conf/template/Makefile.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
-            ['gen_autoconf/conf/template/configure.ac']
+            ['gen_autoconf/conf/template/configure.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src/',
-            ['gen_autoconf/conf/template/src/Makefile.am']
+            ['gen_autoconf/conf/template/src/Makefile.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src/',
-            ['gen_autoconf/conf/template/src/main.c']
+            ['gen_autoconf/conf/template/src/main.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/log/',
