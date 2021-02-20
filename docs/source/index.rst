@@ -56,7 +56,11 @@ To install this set of modules type the following:
     python setup.py install_egg_info
     python setup.py install_data
 
-You can use Docker to create image/container.
+You can use Docker to create image/container, or You can use pip to install:
+
+.. code-block:: bash
+
+    pip install gen_autoconf
 
 |GitHub docker checker|
 
@@ -70,7 +74,7 @@ Dependencies
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
-Library structure
+Tool structure
 ------------------
 
 **gen_autoconf** is based on OOP:
@@ -79,7 +83,7 @@ Code structure:
 
 .. code-block:: bash
 
-    .
+    gen_autoconf/
     ├── conf/
     │   ├── gen_autoconf.cfg
     │   ├── gen_autoconf_util.cfg
@@ -94,7 +98,6 @@ Code structure:
     ├── log/
     │   └── gen_autoconf.log
     ├── pro/
-    │   ├── gen_pro.py
     │   ├── __init__.py
     │   ├── read_template.py
     │   └── write_template.py

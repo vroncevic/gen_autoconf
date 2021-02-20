@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.0.0
+                1.4.0
               </div>
             
           
@@ -175,6 +175,7 @@ other information that should be provided before the modules are installed.</p>
 <li class="toctree-l3"><a class="reference internal" href="gen_autoconf.html#module-gen_autoconf">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="gen_autoconf_run.html">gen_autoconf_run module</a></li>
 </ul>
 </li>
 </ul>
@@ -193,7 +194,10 @@ python setup.py install_egg_info
 python setup.py install_data
 </pre></div>
 </div>
-<p>You can use Docker to create image/container.</p>
+<p>You can use Docker to create image/container, or You can use pip to install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install gen_autoconf
+</pre></div>
+</div>
 <p><a class="reference external" href="https://github.com/vroncevic/gen_autoconf/actions?query=workflow%3A%22gen_autoconf+docker+checker%22"><img alt="GitHub docker checker" src="https://github.com/vroncevic/gen_autoconf/workflows/gen_autoconf%20docker%20checker/badge.svg" /></a></p>
 </div>
 <div class="section" id="dependencies">
@@ -203,11 +207,11 @@ python setup.py install_data
 <li><a class="reference external" href="https://pypi.org/project/ats-utilities/">ats-utilities - Python App/Tool/Script Utilities</a></li>
 </ul>
 </div>
-<div class="section" id="library-structure">
-<h1>Library structure<a class="headerlink" href="#library-structure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tool-structure">
+<h1>Tool structure<a class="headerlink" href="#tool-structure" title="Permalink to this headline">¶</a></h1>
 <p><strong>gen_autoconf</strong> is based on OOP:</p>
 <p>Code structure:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_autoconf/
 ├── conf/
 │   ├── gen_autoconf.cfg
 │   ├── gen_autoconf_util.cfg
@@ -222,7 +226,6 @@ python setup.py install_data
 ├── log/
 │   └── gen_autoconf.log
 ├── pro/
-│   ├── gen_pro.py
 │   ├── __init__.py
 │   ├── read_template.py
 │   └── write_template.py

@@ -24,15 +24,15 @@ import sys
 
 try:
     from gen_autoconf import GenAutoconf
-except ImportError as error:
-    MSG = "\n{0}\n{1}\n".format(__file__, error)
+except ImportError as error_message:
+    MSG = "\n{0}\n{1}\n".format(__file__, error_message)
     sys.exit(MSG)  # Force close python ATS ##################################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.0.0'
+__version__ = '1.4.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'

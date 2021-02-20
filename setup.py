@@ -27,7 +27,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.1.0'
+__version__ = '1.4.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -38,7 +38,7 @@ with open(join(THIS_DIR, 'README.md')) as readme:
 
 setup(
     name='gen_autoconf',
-    version='1.1.0',
+    version='1.4.0',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -76,23 +76,23 @@ setup(
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
-            ['gen_autoconf/conf/template/README.md']
+            ['gen_autoconf/conf/template/README.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
-            ['gen_autoconf/conf/template/Makefile.am']
+            ['gen_autoconf/conf/template/Makefile.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
-            ['gen_autoconf/conf/template/configure.ac']
+            ['gen_autoconf/conf/template/configure.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src/',
-            ['gen_autoconf/conf/template/src/Makefile.am']
+            ['gen_autoconf/conf/template/src/Makefile.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src/',
-            ['gen_autoconf/conf/template/src/main.c']
+            ['gen_autoconf/conf/template/src/main.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_autoconf/log/',

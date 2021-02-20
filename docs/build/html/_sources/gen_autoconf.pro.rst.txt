@@ -6,7 +6,6 @@ Submodules
 
 .. toctree::
 
-   gen_autoconf.pro.gen_pro
    gen_autoconf.pro.read_template
    gen_autoconf.pro.write_template
 

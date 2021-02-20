@@ -1,0 +1,13 @@
+templates:
+    configure.template
+    Makefile.template
+    README.template
+    src/main.template
+    src/Makefile.template
+
+modules:
+    configure.ac
+    Makefile.am
+    README.md
+    src/main.c
+    src/Makefile.am

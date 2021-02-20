@@ -36,6 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="gen_autoconf_run module" href="gen_autoconf_run.html" />
     <link rel="prev" title="gen_autoconf.pro.read_template module" href="gen_autoconf.pro.read_template.html" /> 
 </head>
 
@@ -60,7 +61,7 @@
             
             
               <div class="version">
-                1.0.0
+                1.4.0
               </div>
             
           
@@ -97,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="gen_autoconf.html#module-gen_autoconf">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="gen_autoconf_run.html">gen_autoconf_run module</a></li>
 </ul>
 </li>
 </ul>
@@ -204,17 +206,20 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase</div>
-<div class="line">__pro_dir - Project directory</div>
-<div class="line">__src_dir - Source directory</div>
-<div class="line">__pro_name - Project name</div>
+<div class="line">__slots__ - Setting class slots.</div>
+<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
+<div class="line">__pro_dir - Project directory.</div>
+<div class="line">__src_dir - Source directory.</div>
+<div class="line">__pro_name - Project name.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">write - Write a template content with parameters to a file</div>
+<div class="line">__init__ - Initial constructor.</div>
+<div class="line">write - Write a template content with parameters to a file.</div>
+<div class="line">get_pro_dir - Getting project directory.</div>
+<div class="line">get_src_dir - getting source directory.</div>
+<div class="line">get_pro_name - Getting project name.</div>
 </div>
 </td>
 </tr>
@@ -270,26 +275,26 @@ It defines:</p>
 
 <dl class="method">
 <dt id="gen_autoconf.pro.write_template.WriteTemplate.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>content</em>, <em>template_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate.write" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>content</em>, <em>module_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a template content with parameters to a file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>content</strong> (<em>&lt;str&gt;</em>) – Template content</li>
-<li><strong>template_name</strong> (<em>&lt;str&gt;</em>) – File name</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</li>
+<li><strong>content</strong> (<em>&lt;str&gt;</em>) – Template content.</li>
+<li><strong>module_name</strong> (<em>&lt;str&gt;</em>) – File module name.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Boolean status, True (success) | False</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Boolean status, True (success) | False.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;bool&gt;</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first last">ATSBadCallError | ATSTypeError</p>
+<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first last">ATSTypeError | ATSBadCallError</p>
 </td>
 </tr>
 </tbody>
@@ -307,6 +312,8 @@ It defines:</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gen_autoconf_run.html" class="btn btn-neutral float-right" title="gen_autoconf_run module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gen_autoconf.pro.read_template.html" class="btn btn-neutral float-left" title="gen_autoconf.pro.read_template module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
