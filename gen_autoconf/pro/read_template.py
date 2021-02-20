@@ -17,7 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define class ReadTemplate with attribute(s) and method(s).
-     Read a template (setup.template) and return a string representation.
+     Read a templates and return a string representations.
 """
 
 import sys
@@ -26,7 +26,7 @@ from os.path import isdir
 try:
     from pathlib import Path
     from ats_utilities.checker import ATSChecker
-    from ats_utilities.config.file_checking import FileChecking
+    from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.2.0'
+__version__ = '1.4.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -51,31 +51,29 @@ class ReadTemplate(FileChecking):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots
-                | VERBOSE - Console text indicator for current process-phase
-                | __checker - ATS checker for parameters
-                | __TEMPLATE_DIR - Prefix path to templates
-                | __template_dir - Absolute template dir
+                | __slots__ - Setting class slots.
+                | VERBOSE - Console text indicator for current process-phase.
+                | __TEMPLATE_DIR - Prefix path to templates.
+                | __template_dir - Absolute template dir.
             :methods:
-                | __init__ - Initial constructor
-                | get_template_dir - Getter for template dir path
-                | read - Read a template and return a content or None
+                | __init__ - Initial constructor.
+                | get_template_dir - Getter for template dir path.
+                | read - Read a template and return a content or None.
     """
 
-    __slots__ = ('VERBOSE', '__TEMPLATE_DIR', '__template_dir', '__checker')
+    __slots__ = ('VERBOSE', '__TEMPLATE_DIR', '__template_dir')
     VERBOSE = 'GEN_AUTOCONF::PRO::READ_TEMPLATE'
-    __TEMPLATE_DIR = '/../conf/template'
+    __TEMPLATE_DIR = '/../conf/template/'
 
     def __init__(self, verbose=False):
         """
-            Setting template configuration directory.
+            Initial constructor.
 
-            :param verbose: Enable/disable verbose option
+            :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         """
-        self.__checker = ATSChecker()
-        verbose_message(ReadTemplate.VERBOSE, verbose, 'Initial reader')
+        verbose_message(ReadTemplate.VERBOSE, verbose, 'init reader')
         FileChecking.__init__(self, verbose=verbose)
         current_dir = Path(__file__).parent
         template_dir = "{0}{1}".format(
@@ -91,7 +89,7 @@ class ReadTemplate(FileChecking):
         """
             Getter for template dir path.
 
-            :return: Template dir path
+            :return: Template dir path.
             :rtype: <str>
             :exceptions: None
         """
@@ -101,26 +99,26 @@ class ReadTemplate(FileChecking):
         """
             Read a template and return a content.
 
-            :param template: File name
+            :param template: File name.
             :type template: <str>
-            :param verbose: Enable/disable verbose option
+            :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
-            :return: Template content | None
+            :return: Template content | None.
             :rtype: <str> | <NoneType>
             :exceptions: ATSTypeError | ATSBadCallError
         """
-        error, status = self.__checker.check_params(
-            [('str:template', template)]
-        )
+        checker, error, status = ATSChecker(), None, False
+        error, status = checker.check_params([('str:template', template)])
         if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
-        template_file_exists = False
         module_content, template_file = None, None
-        template_file = "{0}/{1}".format(self.__template_dir, template)
-        template_file_exists = self.check_file(
-            file_path=template_file, verbose=verbose
+        template_file = "{0}{1}".format(self.__template_dir, template)
+        self.check_path(file_path=template_file, verbose=verbose)
+        self.check_mode(file_mode='r', verbose=verbose)
+        self.check_format(
+            file_path=template_file, file_format='template', verbose=verbose
         )
-        if template_file_exists:
+        if self.is_file_ok():
             with open(template_file, 'r') as template:
                 module_content = template.read()
         return module_content

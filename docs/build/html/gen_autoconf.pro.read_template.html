@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="gen_autoconf.pro.write_template module" href="gen_autoconf.pro.write_template.html" />
-    <link rel="prev" title="gen_autoconf.pro.gen_pro module" href="gen_autoconf.pro.gen_pro.html" /> 
+    <link rel="prev" title="gen_autoconf.pro package" href="gen_autoconf.pro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.2.0
+                1.4.0
               </div>
             
           
@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="gen_autoconf.html#module-gen_autoconf">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="gen_autoconf_run.html">gen_autoconf_run module</a></li>
 </ul>
 </li>
 </ul>
@@ -190,12 +191,12 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
 <dd>Define class ReadTemplate with attribute(s) and method(s).
-Read a template (setup.template) and return a string representation.</dd>
+Read a templates and return a string representations.</dd>
 </dl>
 <dl class="class">
 <dt id="gen_autoconf.pro.read_template.ReadTemplate">
 <em class="property">class </em><code class="descclassname">gen_autoconf.pro.read_template.</code><code class="descname">ReadTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/read_template.html#ReadTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config.file_checking.FileChecking</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code></p>
 <p>Define class ReadTemplate with attribute(s) and method(s).
 Read a template and return a string representation.
 It defines:</p>
@@ -205,18 +206,17 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase</div>
-<div class="line">__checker - ATS checker for parameters</div>
-<div class="line">__TEMPLATE_DIR - Prefix path to templates</div>
-<div class="line">__template_dir - Absolute template dir</div>
+<div class="line">__slots__ - Setting class slots.</div>
+<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
+<div class="line">__TEMPLATE_DIR - Prefix path to templates.</div>
+<div class="line">__template_dir - Absolute template dir.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">get_template_dir - Getter for template dir path</div>
-<div class="line">read - Read a template and return a content or None</div>
+<div class="line">__init__ - Initial constructor.</div>
+<div class="line">get_template_dir - Getter for template dir path.</div>
+<div class="line">read - Read a template and return a content or None.</div>
 </div>
 </td>
 </tr>
@@ -236,7 +236,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Template dir path</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Template dir path.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt;</td>
 </tr>
@@ -255,12 +255,12 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<em>&lt;str&gt;</em>) – File name</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</li>
+<li><strong>template</strong> (<em>&lt;str&gt;</em>) – File name.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Template content | None</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Template content | None.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;str&gt; | &lt;NoneType&gt;</p>
@@ -288,7 +288,7 @@ It defines:</p>
         <a href="gen_autoconf.pro.write_template.html" class="btn btn-neutral float-right" title="gen_autoconf.pro.write_template module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gen_autoconf.pro.gen_pro.html" class="btn btn-neutral float-left" title="gen_autoconf.pro.gen_pro module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gen_autoconf.pro.html" class="btn btn-neutral float-left" title="gen_autoconf.pro package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.2.0'
+__version__ = '1.4.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -51,46 +51,39 @@ class WriteTemplate(object):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots
-                | VERBOSE - Console text indicator for current process-phase
-                | __checker - ATS checker for parameters
-                | __pro_dir - Project directory
-                | __src_dir - Source directory
-                | __pro_name - Project name
+                | __slots__ - Setting class slots.
+                | VERBOSE - Console text indicator for current process-phase.
+                | __pro_dir - Project directory.
+                | __src_dir - Source directory.
+                | __pro_name - Project name.
             :methods:
-                | __init__ - Initial constructor
-                | write - Write a template content with parameters to a file
-                | get_pro_dir - Getting project directory
-                | get_src_dir - getting source directory
-                | get_pro_name - Getting project name
+                | __init__ - Initial constructor.
+                | write - Write a template content with parameters to a file.
+                | get_pro_dir - Getting project directory.
+                | get_src_dir - getting source directory.
+                | get_pro_name - Getting project name.
     """
 
-    __slots__ = (
-        'VERBOSE',
-        '__pro_dir',
-        '__src_dir',
-        '__pro_name',
-        '__checker'
-    )
+    __slots__ = ('VERBOSE', '__pro_dir', '__src_dir', '__pro_name')
     VERBOSE = 'GEN_AUTOCONF::PRO::WRITE_TEMPLATE'
 
     def __init__(self, project_name, verbose=False):
         """
             Initial constructor.
 
-            :param project_name: Project name
+            :param project_name: Project name.
             :type project_name: <str>
-            :param verbose: Enable/disable verbose option
+            :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         """
-        self.__checker = ATSChecker()
-        error, status = self.__checker.check_params(
+        checker, error, status = ATSChecker(), None, False
+        error, status = checker.check_params(
             [('str:project_name', project_name)]
         )
         if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
-        verbose_message(WriteTemplate.VERBOSE, verbose, 'Initial writer')
+        verbose_message(WriteTemplate.VERBOSE, verbose, 'init writer')
         self.__pro_dir = "{0}/{1}".format(getcwd(), project_name)
         self.__src_dir = "{0}/{1}".format(self.__pro_dir, 'src')
         self.__pro_name = project_name
@@ -123,33 +116,34 @@ class WriteTemplate(object):
         """
         return self.__pro_name
 
-    def write(self, content, template_name, verbose=False):
+    def write(self, content, module_name, verbose=False):
         """
             Write a template content with parameters to a file.
 
-            :param content: Template content
+            :param content: Template content.
             :type content: <str>
-            :param template_name: File name
-            :type template_name: <str>
-            :param verbose: Enable/disable verbose option
+            :param module_name: File module name.
+            :type module_name: <str>
+            :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
-            :return: Boolean status, True (success) | False
+            :return: Boolean status, True (success) | False.
             :rtype: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         """
-        error, status = self.__checker.check_params(
-            [('str:content', content), ('str:template_name', template_name)]
+        checker, error, status = ATSChecker(), None, False
+        error, status = checker.check_params(
+            [('str:content', content), ('str:module_name', module_name)]
         )
         if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
-        verbose_message(WriteTemplate.VERBOSE, verbose, 'Write templates')
+        verbose_message(WriteTemplate.VERBOSE, verbose, 'write templates')
         template, status = Template(content), False
-        template_path = "{0}/{1}".format(self.__pro_dir, template_name)
-        with open(template_path, 'w') as module_file:
+        module_path = "{0}/{1}".format(self.__pro_dir, module_name)
+        with open(module_path, 'w') as module_file:
             module_content = template.substitute(
                 {'PRO': "{0}".format(self.__pro_name)}
             )
             module_file.write(module_content)
-            chmod(template_path, 0o666)
+            chmod(module_path, 0o666)
             status = True
         return True if status else False

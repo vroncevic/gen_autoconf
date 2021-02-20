@@ -17,8 +17,11 @@ other information that should be provided before the modules are installed.
 **Table of Contents**
 
 - [Installation](#installation)
+    - [Install using pip](#install-using-pip)
+    - [Install using setuptools](#install-using-setuptools)
+    - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
-- [Library structure](#library-structure)
+- [Tool structure](#tool-structure)
 - [Docs](#docs)
 - [Copyright and Licence](#copyright-and-licence)
 
@@ -28,6 +31,22 @@ other information that should be provided before the modules are installed.
 
 ![Install Python2 Package](https://github.com/vroncevic/gen_autoconf/workflows/Install%20Python2%20Package%20gen_autoconf/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_autoconf/workflows/Install%20Python3%20Package%20gen_autoconf/badge.svg?branch=master)
 
+Currently there are three ways to install tool:
+* Install process based on pip
+* Install process based on setup.py (setuptools)
+* Install process based on docker mechanism
+
+##### Install using pip
+
+Python package is located at **[pypi.org](https://pypi.org/project/gen_autoconf/)**.
+
+You can install by using pip
+```
+pip install gen_autoconf
+```
+
+##### Install using setuptools
+
 Navigate to **[release page](https://github.com/vroncevic/gen_autoconf/releases)** download and extract release archive.
 
 To install modules, locate and run setup.py, type the following:
@@ -35,73 +54,14 @@ To install modules, locate and run setup.py, type the following:
 tar xvzf gen_autoconf-x.y.z.tar.gz
 cd gen_autoconf-x.y.z
 pip install -r requirements.txt
-```
-
-Install lib process
-```
 python setup.py install_lib
-running install_lib
-running build_py
-creating build
-creating build/lib.linux-x86_64-2.7
-creating build/lib.linux-x86_64-2.7/gen_autoconf
-copying gen_autoconf/__init__.py -> build/lib.linux-x86_64-2.7/gen_autoconf
-creating build/lib.linux-x86_64-2.7/gen_autoconf/pro
-copying gen_autoconf/pro/__init__.py -> build/lib.linux-x86_64-2.7/gen_autoconf/pro
-copying gen_autoconf/pro/write_template.py -> build/lib.linux-x86_64-2.7/gen_autoconf/pro
-copying gen_autoconf/pro/read_template.py -> build/lib.linux-x86_64-2.7/gen_autoconf/pro
-copying gen_autoconf/pro/gen_pro.py -> build/lib.linux-x86_64-2.7/gen_autoconf/pro
-creating /usr/local/lib/python2.7/dist-packages/gen_autoconf
-copying build/lib.linux-x86_64-2.7/gen_autoconf/__init__.py -> /usr/local/lib/python2.7/dist-packages/gen_autoconf
-creating /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro
-copying build/lib.linux-x86_64-2.7/gen_autoconf/pro/__init__.py -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro
-copying build/lib.linux-x86_64-2.7/gen_autoconf/pro/write_template.py -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro
-copying build/lib.linux-x86_64-2.7/gen_autoconf/pro/read_template.py -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro
-copying build/lib.linux-x86_64-2.7/gen_autoconf/pro/gen_pro.py -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_autoconf/__init__.py to __init__.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro/__init__.py to __init__.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro/write_template.py to write_template.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro/read_template.py to read_template.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_autoconf/pro/gen_pro.py to gen_pro.pyc
-```
-
-Install lib egg info
-```
 python setup.py install_egg_info
-running install_egg_info
-running egg_info
-creating gen_autoconf.egg-info
-writing requirements to gen_autoconf.egg-info/requires.txt
-writing gen_autoconf.egg-info/PKG-INFO
-writing top-level names to gen_autoconf.egg-info/top_level.txt
-writing dependency_links to gen_autoconf.egg-info/dependency_links.txt
-writing manifest file 'gen_autoconf.egg-info/SOURCES.txt'
-reading manifest file 'gen_autoconf.egg-info/SOURCES.txt'
-writing manifest file 'gen_autoconf.egg-info/SOURCES.txt'
-Copying gen_autoconf.egg-info to /usr/local/lib/python2.7/dist-packages/gen_autoconf-1.0.0.egg-info
-```
-
-Install lib data
-```
 python setup.py install_data
-running install_data
-copying gen_autoconf/run/gen_autoconf_run.py -> /usr/local/bin/
-creating /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf
-copying gen_autoconf/conf/gen_autoconf.cfg -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/
-copying gen_autoconf/conf/gen_autoconf_util.cfg -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/
-creating /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template
-copying gen_autoconf/conf/template/README.md -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/
-copying gen_autoconf/conf/template/Makefile.am -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/
-copying gen_autoconf/conf/template/configure.ac -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/
-creating /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src
-copying gen_autoconf/conf/template/src/Makefile.am -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src/
-copying gen_autoconf/conf/template/src/main.c -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src/
-creating /usr/local/lib/python2.7/dist-packages/gen_autoconf/log
-copying gen_autoconf/log/gen_autoconf.log -> /usr/local/lib/python2.7/dist-packages/gen_autoconf/log/
-
 ```
 
-Or You can use docker to create image/container.
+##### Install using docker
+
+You can use Dockerfile to create image/container.
 
 [![gen_autoconf docker checker](https://github.com/vroncevic/gen_autoconf/workflows/gen_autoconf%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions?query=workflow%3A%22gen_autoconf+docker+checker%22)
 
@@ -111,13 +71,14 @@ Or You can use docker to create image/container.
 
 * [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 
-### Library structure
+### Tool structure
 
 **gen_autoconf** is based on OOP:
 
-Library structure:
+Generator structure:
+
 ```
-.
+gen_autoconf/
 ├── conf/
 │   ├── gen_autoconf.cfg
 │   ├── gen_autoconf_util.cfg
@@ -132,7 +93,6 @@ Library structure:
 ├── log/
 │   └── gen_autoconf.log
 ├── pro/
-│   ├── gen_pro.py
 │   ├── __init__.py
 │   ├── read_template.py
 │   └── write_template.py
