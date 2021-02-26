@@ -17,28 +17,78 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define setup for gen_autoconf package.
+     Define setup for gen_autoconf tool package.
 """
 
-from os.path import abspath, dirname, join
+from sys import argv, version_info, prefix, exit
+from os.path import abspath, dirname, join, exists
+from site import getusersitepackages
 from setuptools import setup
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.0'
+__version__ = '1.4.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
+
+def install_directory():
+    """
+        Return the installation directory, or None.
+
+        :return: Path (success) | None.
+        :rtype: <str> | <NoneType>
+        :exceptions: None
+    """
+    if '--user' in argv:
+        paths = (getusersitepackages(),)
+    else:
+        py_version = '%s.%s' % (version_info[0], version_info[1])
+        paths = (s % (py_version) for s in (
+            prefix + '/local/lib/python%s/dist-packages/',
+            prefix + '/local/lib/python%s/site-packages/'
+        ))
+    for path in paths:
+        if exists(path):
+            return path
+    print('[setup] No installation path found, check {0}\n'.format(prefix))
+    return None
+
+INSTALL_DIR = install_directory()
+
+if not INSTALL_DIR:
+    print('[setup] Force exit from install process')
+    exit(127)
 
 THIS_DIR, LONG_DESCRIPTION = abspath(dirname(__file__)), None
 with open(join(THIS_DIR, 'README.md')) as readme:
     LONG_DESCRIPTION = readme.read()
 
+PROGRAMMING_LANG = 'Programming Language :: Python ::'
+VERSIONS = ['2.7', '3', '3.2', '3.3', '3.4']
+SUPPORTED_PY_VERSIONS = [
+    '{0} {1}'.format(PROGRAMMING_LANG, VERSION) for VERSION in VERSIONS
+]
+
+LICENSE_PREFIX = 'License :: OSI Approved ::'
+LICENSES = [
+    'GNU Lesser General Public License v2 (LGPLv2)',
+    'GNU Lesser General Public License v2 or later (LGPLv2+)',
+    'GNU Lesser General Public License v3 (LGPLv3)',
+    'GNU Lesser General Public License v3 or later (LGPLv3+)',
+    'GNU Library or Lesser General Public License (LGPL)'
+]
+APPROVED_LICENSES = [
+    '{0}{1}'.format(LICENSE_PREFIX, LICENSE) for LICENSE in LICENSES
+]
+
+PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
+
 setup(
     name='gen_autoconf',
-    version='1.4.0',
+    version='1.4.1',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -47,18 +97,7 @@ setup(
     long_description_content_type='text/markdown',
     keywords='Unix, Linux, Development, ANSI C, autoconf',
     platforms='POSIX',
-    classifiers=[
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)',
-        'License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)',
-        'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
-        'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
-        'License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)'
-    ],
+    classifiers=PYP_CLASSIFIERS,
     packages=[
         'gen_autoconf',
         'gen_autoconf.pro',
@@ -67,35 +106,39 @@ setup(
     data_files=[
         ('/usr/local/bin/', ['gen_autoconf/run/gen_autoconf_run.py']),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/',
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/'),
             ['gen_autoconf/conf/gen_autoconf.cfg']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/',
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/'),
             ['gen_autoconf/conf/gen_autoconf_util.cfg']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/'),
+            ['gen_autoconf/conf/project.yaml']
+        ),
+        (
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
             ['gen_autoconf/conf/template/README.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
             ['gen_autoconf/conf/template/Makefile.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/',
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
             ['gen_autoconf/conf/template/configure.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src/',
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/src/'),
             ['gen_autoconf/conf/template/src/Makefile.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_autoconf/conf/template/src/',
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/src/'),
             ['gen_autoconf/conf/template/src/main.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_autoconf/log/',
+            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/log/'),
             ['gen_autoconf/log/gen_autoconf.log']
         )
     ]
