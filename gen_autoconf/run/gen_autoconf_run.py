@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      gen_autoconf_run.py
  Copyright
@@ -18,21 +18,21 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Generator main entry point.
-"""
+'''
 
 import sys
 
 try:
     from gen_autoconf import GenAutoconf
 except ImportError as error_message:
-    MSG = "\n{0}\n{1}\n".format(__file__, error_message)
+    MSG = '\n{0}\n{1}\n'.format(__file__, error_message)
     sys.exit(MSG)  # Force close python ATS ##################################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.1'
+__version__ = '1.4.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'

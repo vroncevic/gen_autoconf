@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      __init__.py
  Copyright
@@ -18,7 +18,7 @@
  Info
      Define class GenPro with attribute(s) and method(s).
      Generate project by template and parameters.
-"""
+'''
 
 import sys
 
@@ -34,21 +34,21 @@ try:
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as error_message:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error_message)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.1'
+__version__ = '1.4.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
 class GenPro(FileChecking):
-    """
+    '''
         Define class GenPro with attribute(s) and method(s).
         Generate project by template and parameters.
         It defines:
@@ -65,7 +65,7 @@ class GenPro(FileChecking):
                 | get_reader - Getter for reader object.
                 | get_writer - Getter for writer object.
                 | gen_project - Generate python tool.
-    """
+    '''
 
     __slots__ = (
         'VERBOSE',
@@ -78,7 +78,7 @@ class GenPro(FileChecking):
     __PRO_STRUCTURE = '../conf/project.yaml'
 
     def __init__(self, project_name, verbose=False):
-        """
+        '''
             Initial constructor.
 
             :param project_name: Parameter tool name.
@@ -86,7 +86,7 @@ class GenPro(FileChecking):
             :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
-        """
+        '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params(
             [('str:project_name', project_name)]
@@ -97,7 +97,7 @@ class GenPro(FileChecking):
         FileChecking.__init__(self, verbose=verbose)
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(project_name, verbose=verbose)
-        project = "{0}/{1}".format(
+        project = '{0}/{1}'.format(
             Path(__file__).parent, GenPro.__PRO_STRUCTURE
         )
         self.check_path(file_path=project, verbose=verbose)
@@ -112,27 +112,27 @@ class GenPro(FileChecking):
             self.__config = None
 
     def get_reader(self):
-        """
+        '''
             Getter for reader object.
 
             :return: Read template object.
             :rtype: <ReadTemplate>
             :exceptions: None
-        """
+        '''
         return self.__reader
 
     def get_writer(self):
-        """
+        '''
             Getter for writer object.
 
             :return: Write template object.
             :rtype: <WriteTemplate>
             :exceptions: None
-        """
+        '''
         return self.__writer
 
     def gen_project(self, verbose=False):
-        """
+        '''
             Generate project structure.
 
             :param verbose: Enable/disable verbose option.
@@ -140,7 +140,7 @@ class GenPro(FileChecking):
             :return: Boolean status True (success) | False.
             :rtype: <bool>
             :exceptions: None
-        """
+        '''
         status, statuses = False, []
         templates = self.__config['templates'].split(' ')
         modules = self.__config['modules'].split(' ')
