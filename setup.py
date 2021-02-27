@@ -44,6 +44,8 @@ def install_directory():
     '''
     py_version = '{0}.{1}'.format(version_info[0], version_info[1])
     if '--github' in argv:
+        index = argv.index('--github')
+        argv.pop(index)
         paths = (
             '{0}/lib/python{1}/dist-packages/'.format(prefix, py_version),
             '{0}/lib/python{1}/site-packages/'.format(prefix, py_version)
