@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      setup.py
  Copyright
@@ -18,7 +18,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define setup for gen_autoconf tool package.
-"""
+'''
 
 from sys import argv, version_info, prefix, exit
 from os.path import abspath, dirname, join, exists
@@ -35,31 +35,40 @@ __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 def install_directory():
-    """
+    '''
         Return the installation directory, or None.
 
         :return: Path (success) | None.
         :rtype: <str> | <NoneType>
         :exceptions: None
-    """
-    if '--user' in argv:
-        paths = (getusersitepackages(),)
+    '''
+    py_version = '{0}.{1}'.format(version_info[0], version_info[1])
+    if '--github' in argv:
+        paths = (
+            '{0}/lib/python{1}/dist-packages/'.format(prefix, py_version),
+            '{0}/lib/python{1}/site-packages/'.format(prefix, py_version)
+        )
     else:
-        py_version = '%s.%s' % (version_info[0], version_info[1])
-        paths = (s % (py_version) for s in (
-            prefix + '/local/lib/python%s/dist-packages/',
-            prefix + '/local/lib/python%s/site-packages/'
+        paths = (s for s in (
+            '{0}/local/lib/python{1}/dist-packages/'.format(
+                prefix, py_version
+            ),
+            '{0}/local/lib/python{1}/site-packages/'.format(
+                prefix, py_version
+            )
         ))
     for path in paths:
+        print('[setup] check path {0}'.format(path))
         if exists(path):
+            print('[setup] using path {0}'.format(path))
             return path
-    print('[setup] No installation path found, check {0}\n'.format(prefix))
+    print('[setup] no installation path found, check {0}\n'.format(prefix))
     return None
 
 INSTALL_DIR = install_directory()
 
 if not INSTALL_DIR:
-    print('[setup] Force exit from install process')
+    print('[setup] force exit from install process')
     exit(127)
 
 THIS_DIR, LONG_DESCRIPTION = abspath(dirname(__file__)), None
@@ -106,39 +115,39 @@ setup(
     data_files=[
         ('/usr/local/bin/', ['gen_autoconf/run/gen_autoconf_run.py']),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/'),
             ['gen_autoconf/conf/gen_autoconf.cfg']
         ),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/'),
             ['gen_autoconf/conf/gen_autoconf_util.cfg']
         ),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/'),
             ['gen_autoconf/conf/project.yaml']
         ),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
             ['gen_autoconf/conf/template/README.template']
         ),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
             ['gen_autoconf/conf/template/Makefile.template']
         ),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
             ['gen_autoconf/conf/template/configure.template']
         ),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/src/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/template/src/'),
             ['gen_autoconf/conf/template/src/Makefile.template']
         ),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/template/src/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/template/src/'),
             ['gen_autoconf/conf/template/src/main.template']
         ),
         (
-            "{0}{1}".format(INSTALL_DIR, 'gen_autoconf/conf/log/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/log/'),
             ['gen_autoconf/log/gen_autoconf.log']
         )
     ]
