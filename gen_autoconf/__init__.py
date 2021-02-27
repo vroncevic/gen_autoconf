@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      __init__.py
  Copyright
@@ -18,7 +18,7 @@
  Info
      Define class GenAutoconf with attribute(s) and method(s).
      Load a base info, create an CLI interface and run operation(s).
-"""
+'''
 
 import sys
 from os.path import exists
@@ -31,21 +31,21 @@ try:
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
 except ImportError as error_message:
-    MSG = "\n{0}\n{1}\n".format(__file__, error_message)
+    MSG = '\n{0}\n{1}\n'.format(__file__, error_message)
     sys.exit(MSG)  # Force close python ATS ##################################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.1'
+__version__ = '1.4.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
 class GenAutoconf(CfgCLI):
-    """
+    '''
         Define class GenAutoconf with attribute(s) and method(s).
         Load a base info, create an CLI interface and run operation(s).
         It defines:
@@ -58,7 +58,7 @@ class GenAutoconf(CfgCLI):
             :methods:
                 | __init__ - Initial constructor.
                 | process - Process and run tool option(s).
-    """
+    '''
 
     __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
     VERBOSE = 'GEN_AUTOCONF'
@@ -66,16 +66,16 @@ class GenAutoconf(CfgCLI):
     __OPS = ['-g', '--gen', '-v']
 
     def __init__(self, verbose=False):
-        """
+        '''
             Initial constructor.
 
             :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
-        """
+        '''
         verbose_message(GenAutoconf.VERBOSE, verbose, 'init configuration')
         current_dir = Path(__file__).resolve().parent
-        base_info = "{0}{1}".format(current_dir, GenAutoconf.__CONFIG)
+        base_info = '{0}{1}'.format(current_dir, GenAutoconf.__CONFIG)
         CfgCLI.__init__(self, base_info, verbose=verbose)
         if self.tool_operational:
             self.add_new_option(
@@ -83,12 +83,12 @@ class GenAutoconf(CfgCLI):
                 dest='gen', help='Generate project'
             )
             self.add_new_option(
-                GenAutoconf.__OPS[2], action="store_true", default=False,
+                GenAutoconf.__OPS[2], action='store_true', default=False,
                 help='activate verbose mode for generation'
             )
 
     def process(self, verbose=False):
-        """
+        '''
             Process and run operation.
 
             :param verbose: Enable/disable verbose option.
@@ -96,7 +96,7 @@ class GenAutoconf(CfgCLI):
             :return: True (success) | False.
             :rtype: <bool>
             :exceptions: None
-        """
+        '''
         status = False
         if self.tool_operational:
             num_of_args_sys = len(sys.argv)
@@ -112,8 +112,8 @@ class GenAutoconf(CfgCLI):
             if not pro_exists:
                 if num_of_args >= 1 and bool(opts.gen):
                     print(
-                        "{0} {1} [{2}]".format(
-                            "[{0}]".format(GenAutoconf.VERBOSE.lower()),
+                        '{0} {1} [{2}]'.format(
+                            '[{0}]'.format(GenAutoconf.VERBOSE.lower()),
                             'generating project', opts.gen
                         )
                     )
