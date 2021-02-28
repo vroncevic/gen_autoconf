@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.2'
+__version__ = '1.5.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -99,7 +99,7 @@ PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 
 setup(
     name='gen_autoconf',
-    version='1.4.2',
+    version='1.5.2',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -135,6 +135,10 @@ setup(
         (
             '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
             ['gen_autoconf/conf/template/Makefile.template']
+        ),
+        (
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/template/'),
+            ['gen_autoconf/conf/template/autogen.template']
         ),
         (
             '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/template/'),

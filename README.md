@@ -83,12 +83,13 @@ gen_autoconf/
 │   ├── gen_autoconf.cfg
 │   ├── gen_autoconf_util.cfg
 │   └── template/
-│       ├── configure.ac
-│       ├── Makefile.am
-│       ├── README.md
+│       ├── autogen.template
+│       ├── configure.template
+│       ├── Makefile.template
+│       ├── README.template
 │       └── src/
-│           ├── main.c
-│           └── Makefile.am
+│           ├── main.template
+│           └── Makefile.template
 ├── __init__.py
 ├── log/
 │   └── gen_autoconf.log

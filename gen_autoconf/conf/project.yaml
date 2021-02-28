@@ -1,4 +1,5 @@
 templates:
+    autogen.template
     configure.template
     Makefile.template
     README.template
@@ -6,6 +7,7 @@ templates:
     src/Makefile.template
 
 modules:
+    autogen.sh
     configure.ac
     Makefile.am
     README.md
