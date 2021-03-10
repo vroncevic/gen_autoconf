@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.5.2'
+__version__ = '1.6.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -80,7 +80,7 @@ class GenAutoconf(CfgCLI):
         if self.tool_operational:
             self.add_new_option(
                 GenAutoconf.__OPS[0], GenAutoconf.__OPS[1],
-                dest='gen', help='Generate project'
+                dest='gen', help='generate project'
             )
             self.add_new_option(
                 GenAutoconf.__OPS[2], action='store_true', default=False,
