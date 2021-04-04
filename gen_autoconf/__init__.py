@@ -16,7 +16,7 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class GenAutoconf with attribute(s) and method(s).
+     Defined class GenAutoconf with attribute(s) and method(s).
      Load a base info, create an CLI interface and run operation(s).
 '''
 
@@ -30,15 +30,15 @@ try:
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
-except ImportError as error_message:
-    MSG = '\n{0}\n{1}\n'.format(__file__, error_message)
-    sys.exit(MSG)  # Force close python ATS ##################################
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2020, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.6.3'
+__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/master/LICENSE'
+__version__ = '1.7.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -46,7 +46,7 @@ __status__ = 'Updated'
 
 class GenAutoconf(CfgCLI):
     '''
-        Define class GenAutoconf with attribute(s) and method(s).
+        Defined class GenAutoconf with attribute(s) and method(s).
         Load a base info, create an CLI interface and run operation(s).
         It defines:
 
@@ -58,6 +58,7 @@ class GenAutoconf(CfgCLI):
             :methods:
                 | __init__ - Initial constructor.
                 | process - Process and run tool option(s).
+                | __str__ - Dunder method for GenAutoconf.
     '''
 
     __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
@@ -80,7 +81,7 @@ class GenAutoconf(CfgCLI):
         if self.tool_operational:
             self.add_new_option(
                 GenAutoconf.__OPS[0], GenAutoconf.__OPS[1],
-                dest='gen', help='generate project'
+                dest='pro', help='generate project'
             )
             self.add_new_option(
                 GenAutoconf.__OPS[2], action='store_true', default=False,
@@ -108,16 +109,16 @@ class GenAutoconf(CfgCLI):
             else:
                 sys.argv.append('-h')
             opts, args = self.parse_args(sys.argv)
-            num_of_args, pro_exists = len(args), exists(opts.gen)
+            num_of_args, pro_exists = len(args), exists(opts.pro)
             if not pro_exists:
-                if num_of_args >= 1 and bool(opts.gen):
+                if num_of_args >= 1 and bool(opts.pro):
                     print(
                         '{0} {1} [{2}]'.format(
                             '[{0}]'.format(GenAutoconf.VERBOSE.lower()),
-                            'generating project', opts.gen
+                            'generating project', opts.pro
                         )
                     )
-                    generator = GenPro(opts.gen, verbose=opts.v or verbose)
+                    generator = GenPro(opts.pro, verbose=opts.v or verbose)
                     status = generator.gen_project(verbose=opts.v or verbose)
                     if status:
                         success_message(GenAutoconf.VERBOSE, 'done\n')
@@ -134,3 +135,15 @@ class GenAutoconf(CfgCLI):
         else:
             error_message(GenAutoconf.VERBOSE, 'tool is not operational')
         return True if status else False
+
+    def __str__(self):
+        '''
+            Dunder method for GenAutoconf.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1})'.format(
+            self.__class__.__name__, CfgCLI.__str__(self)
+        )

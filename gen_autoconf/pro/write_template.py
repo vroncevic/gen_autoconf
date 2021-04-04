@@ -16,8 +16,8 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class WriteTemplate with attribute(s) and method(s).
-     Write a template content with parameters to a file.
+     Defined class WriteTemplate with attribute(s) and method(s).
+     Created API for write a template content with parameters to a file.
 '''
 
 import sys
@@ -30,15 +30,15 @@ try:
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2020, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.6.3'
+__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/master/LICENSE'
+__version__ = '1.7.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -46,8 +46,8 @@ __status__ = 'Updated'
 
 class WriteTemplate(object):
     '''
-        Define class WriteTemplate with attribute(s) and method(s).
-        Write a template content with parameters to a file.
+        Defined class WriteTemplate with attribute(s) and method(s).
+        Created API for write a template content with parameters to a file.
         It defines:
 
             :attributes:
@@ -62,6 +62,7 @@ class WriteTemplate(object):
                 | get_pro_dir - Getting project directory.
                 | get_src_dir - getting source directory.
                 | get_pro_name - Getting project name.
+                | __str__ - Dunder method for WriteTemplate.
     '''
 
     __slots__ = ('VERBOSE', '__pro_dir', '__src_dir', '__pro_name')
@@ -81,8 +82,10 @@ class WriteTemplate(object):
         error, status = checker.check_params(
             [('str:project_name', project_name)]
         )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         verbose_message(WriteTemplate.VERBOSE, verbose, 'init writer')
         self.__pro_dir = '{0}/{1}'.format(getcwd(), project_name)
         self.__src_dir = '{0}/{1}'.format(self.__pro_dir, 'src')
@@ -96,14 +99,18 @@ class WriteTemplate(object):
         '''
             Getting project directory.
 
+            :return: Project directory | None.
+            :rtype: <str> | <NoneType>
             :exceptions: None
         '''
         return self.__pro_dir
 
     def get_src_dir(self):
         '''
-            Getting project name.
+            Getting source dir.
 
+            :return: Source directory | None.
+            :rtype: <str> | <NoneType>
             :exceptions: None
         '''
         return self.__src_dir
@@ -112,6 +119,8 @@ class WriteTemplate(object):
         '''
             Getting project name.
 
+            :return: Project name | None.
+            :rtype: <str> | <NoneType>
             :exceptions: None
         '''
         return self.__pro_name
@@ -134,8 +143,10 @@ class WriteTemplate(object):
         error, status = checker.check_params(
             [('str:content', content), ('str:module_name', module_name)]
         )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         verbose_message(WriteTemplate.VERBOSE, verbose, 'write templates')
         template, status = Template(content), False
         module_path = '{0}/{1}'.format(self.__pro_dir, module_name)
@@ -147,3 +158,16 @@ class WriteTemplate(object):
             chmod(module_path, 0o666)
             status = True
         return True if status else False
+
+    def __str__(self):
+        '''
+            Dunder method for WriteTemplate.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1}, {2}, {3})'.format(
+            self.__class__.__name__, self.__pro_dir,
+            self.__src_dir, self.__pro_name
+        )

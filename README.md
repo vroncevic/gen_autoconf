@@ -42,7 +42,10 @@ Python package is located at **[pypi.org](https://pypi.org/project/gen_autoconf/
 
 You can install by using pip
 ```
+#python2
 pip install gen_autoconf
+#python3
+pip3 install gen_autoconf
 ```
 
 ##### Install using setuptools
@@ -53,10 +56,16 @@ To install modules, locate and run setup.py, type the following:
 ```
 tar xvzf gen_autoconf-x.y.z.tar.gz
 cd gen_autoconf-x.y.z
+#python2
 pip install -r requirements.txt
 python setup.py install_lib
 python setup.py install_egg_info
 python setup.py install_data
+#python3
+pip3 install -r requirements.txt
+python3 setup.py install_lib
+python3 setup.py install_egg_info
+python3 setup.py install_data
 ```
 
 ##### Install using docker
@@ -82,6 +91,7 @@ gen_autoconf/
 ├── conf/
 │   ├── gen_autoconf.cfg
 │   ├── gen_autoconf_util.cfg
+│   ├── project.yaml
 │   └── template/
 │       ├── autogen.template
 │       ├── configure.template

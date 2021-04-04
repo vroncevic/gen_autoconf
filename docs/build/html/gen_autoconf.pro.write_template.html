@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.6.3
+                1.7.3
               </div>
             
           
@@ -188,15 +188,15 @@ See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
-<dd>Define class WriteTemplate with attribute(s) and method(s).
-Write a template content with parameters to a file.</dd>
+<dd>Defined class WriteTemplate with attribute(s) and method(s).
+Created API for write a template content with parameters to a file.</dd>
 </dl>
 <dl class="class">
 <dt id="gen_autoconf.pro.write_template.WriteTemplate">
 <em class="property">class </em><code class="descclassname">gen_autoconf.pro.write_template.</code><code class="descname">WriteTemplate</code><span class="sig-paren">(</span><em>project_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Define class WriteTemplate with attribute(s) and method(s).
-Write a template content with parameters to a file.
+<p>Defined class WriteTemplate with attribute(s) and method(s).
+Created API for write a template content with parameters to a file.
 It defines:</p>
 <blockquote>
 <div><table class="docutils field-list" frame="void" rules="none">
@@ -218,6 +218,7 @@ It defines:</p>
 <div class="line">get_pro_dir - Getting project directory.</div>
 <div class="line">get_src_dir - getting source directory.</div>
 <div class="line">get_pro_name - Getting project name.</div>
+<div class="line">__str__ - Dunder method for WriteTemplate.</div>
 </div>
 </td>
 </tr>
@@ -237,6 +238,10 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Project directory | None.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
 </tr>
 </tbody>
@@ -251,6 +256,10 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Project name | None.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
 </tr>
 </tbody>
@@ -260,11 +269,15 @@ It defines:</p>
 <dl class="method">
 <dt id="gen_autoconf.pro.write_template.WriteTemplate.get_src_dir">
 <code class="descname">get_src_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate.get_src_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate.get_src_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getting project name.</p>
+<dd><p>Getting source dir.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Source directory | None.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
 </tr>
 </tbody>

@@ -16,8 +16,8 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class ReadTemplate with attribute(s) and method(s).
-     Read a templates and return a string representations.
+     Defined class ReadTemplate with attribute(s) and method(s).
+     Created API for read a templates and return a string representations.
 '''
 
 import sys
@@ -30,15 +30,15 @@ try:
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2020, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.6.3'
+__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/master/LICENSE'
+__version__ = '1.7.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -46,8 +46,8 @@ __status__ = 'Updated'
 
 class ReadTemplate(FileChecking):
     '''
-        Define class ReadTemplate with attribute(s) and method(s).
-        Read a template and return a string representation.
+        Defined class ReadTemplate with attribute(s) and method(s).
+        Created API for read a templates and return a string representations.
         It defines:
 
             :attributes:
@@ -59,6 +59,7 @@ class ReadTemplate(FileChecking):
                 | __init__ - Initial constructor.
                 | get_template_dir - Getter for template dir path.
                 | read - Read a template and return a content or None.
+                | __str__ - Dunder method for ReadTemplate.
     '''
 
     __slots__ = ('VERBOSE', '__TEMPLATE_DIR', '__template_dir')
@@ -95,12 +96,12 @@ class ReadTemplate(FileChecking):
         '''
         return self.__template_dir
 
-    def read(self, template, verbose=False):
+    def read(self, template_file, verbose=False):
         '''
             Read a template and return a content.
 
-            :param template: File name.
-            :type template: <str>
+            :param template_file: File name.
+            :type template_file: <str>
             :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :return: Template content | None.
@@ -108,17 +109,37 @@ class ReadTemplate(FileChecking):
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params([('str:template', template)])
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
-        module_content, template_file = None, None
-        template_file = '{0}{1}'.format(self.__template_dir, template)
-        self.check_path(file_path=template_file, verbose=verbose)
+        error, status = checker.check_params([
+            ('str:template_file', template_file)
+        ])
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
+        module_content, template_file_path = None, None
+        template_file_path = '{0}{1}'.format(
+            self.__template_dir, template_file
+        )
+        self.check_path(file_path=template_file_path, verbose=verbose)
         self.check_mode(file_mode='r', verbose=verbose)
         self.check_format(
-            file_path=template_file, file_format='template', verbose=verbose
+            file_path=template_file_path, file_format='template',
+            verbose=verbose
         )
         if self.is_file_ok():
-            with open(template_file, 'r') as template:
+            with open(template_file_path, 'r') as template:
                 module_content = template.read()
         return module_content
+
+    def __str__(self):
+        '''
+            Dunder method for ReadTemplate.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1}, {2})'.format(
+            self.__class__.__name__, FileChecking.__str__(self),
+            self.__template_dir
+        )
