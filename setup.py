@@ -17,7 +17,7 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define setup for gen_autoconf tool package.
+     Defined setup for gen_autoconf tool package.
 '''
 
 from sys import argv, version_info, prefix, exit
@@ -26,10 +26,10 @@ from site import getusersitepackages
 from setuptools import setup
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2020, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.6.3'
+__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/master/LICENSE'
+__version__ = '1.7.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -99,20 +99,17 @@ PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 
 setup(
     name='gen_autoconf',
-    version='1.6.3',
+    version='1.7.3',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
-    url='https://vroncevic.github.io/gen_autoconf/',
+    url='https://vroncevic.github.io/gen_autoconf',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
     keywords='Unix, Linux, Development, ANSI C, autoconf',
     platforms='POSIX',
     classifiers=PYP_CLASSIFIERS,
-    packages=[
-        'gen_autoconf',
-        'gen_autoconf.pro',
-    ],
+    packages=['gen_autoconf', 'gen_autoconf.pro'],
     install_requires=['ats-utilities'],
     data_files=[
         ('/usr/local/bin/', ['gen_autoconf/run/gen_autoconf_run.py']),
@@ -153,7 +150,7 @@ setup(
             ['gen_autoconf/conf/template/src/main.template']
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/conf/log/'),
+            '{0}{1}'.format(INSTALL_DIR, 'gen_autoconf/log/'),
             ['gen_autoconf/log/gen_autoconf.log']
         )
     ]

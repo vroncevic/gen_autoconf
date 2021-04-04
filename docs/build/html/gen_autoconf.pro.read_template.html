@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.6.3
+                1.7.3
               </div>
             
           
@@ -189,15 +189,15 @@ See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
-<dd>Define class ReadTemplate with attribute(s) and method(s).
-Read a templates and return a string representations.</dd>
+<dd>Defined class ReadTemplate with attribute(s) and method(s).
+Created API for read a templates and return a string representations.</dd>
 </dl>
 <dl class="class">
 <dt id="gen_autoconf.pro.read_template.ReadTemplate">
 <em class="property">class </em><code class="descclassname">gen_autoconf.pro.read_template.</code><code class="descname">ReadTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/read_template.html#ReadTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code></p>
-<p>Define class ReadTemplate with attribute(s) and method(s).
-Read a template and return a string representation.
+<p>Defined class ReadTemplate with attribute(s) and method(s).
+Created API for read a templates and return a string representations.
 It defines:</p>
 <blockquote>
 <div><table class="docutils field-list" frame="void" rules="none">
@@ -216,6 +216,7 @@ It defines:</p>
 <div class="line">__init__ - Initial constructor.</div>
 <div class="line">get_template_dir - Getter for template dir path.</div>
 <div class="line">read - Read a template and return a content or None.</div>
+<div class="line">__str__ - Dunder method for ReadTemplate.</div>
 </div>
 </td>
 </tr>
@@ -247,14 +248,14 @@ It defines:</p>
 
 <dl class="method">
 <dt id="gen_autoconf.pro.read_template.ReadTemplate.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>template</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/read_template.html#ReadTemplate.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.read" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read</code><span class="sig-paren">(</span><em>template_file</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/read_template.html#ReadTemplate.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a template and return a content.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<em>&lt;str&gt;</em>) – File name.</li>
+<li><strong>template_file</strong> (<em>&lt;str&gt;</em>) – File name.</li>
 <li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
 </ul>
 </td>

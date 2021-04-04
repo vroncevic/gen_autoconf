@@ -16,7 +16,7 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class GenPro with attribute(s) and method(s).
+     Defined class GenPro with attribute(s) and method(s).
      Generate project by template and parameters.
 '''
 
@@ -24,24 +24,24 @@ import sys
 
 try:
     from pathlib import Path
-    from ats_utilities.checker import ATSChecker
     from gen_autoconf.pro.read_template import ReadTemplate
     from gen_autoconf.pro.write_template import WriteTemplate
+    from ats_utilities.checker import ATSChecker
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.success import success_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.config_io.yaml.yaml2object import Yaml2Object
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2020, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.6.3'
+__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/master/LICENSE'
+__version__ = '1.7.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -49,7 +49,7 @@ __status__ = 'Updated'
 
 class GenPro(FileChecking):
     '''
-        Define class GenPro with attribute(s) and method(s).
+        Defined class GenPro with attribute(s) and method(s).
         Generate project by template and parameters.
         It defines:
 
@@ -65,14 +65,11 @@ class GenPro(FileChecking):
                 | get_reader - Getter for reader object.
                 | get_writer - Getter for writer object.
                 | gen_project - Generate python tool.
+                | __str__ - Dunder method for GenPro.
     '''
 
     __slots__ = (
-        'VERBOSE',
-        '__PRO_STRUCTURE',
-        '__config',
-        '__reader',
-        '__writer'
+        'VERBOSE', '__PRO_STRUCTURE', '__config', '__reader', '__writer'
     )
     VERBOSE = 'GEN_AUTOCONF::PRO::GEN_PRO'
     __PRO_STRUCTURE = '../conf/project.yaml'
@@ -91,8 +88,10 @@ class GenPro(FileChecking):
         error, status = checker.check_params(
             [('str:project_name', project_name)]
         )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         verbose_message(GenPro.VERBOSE, verbose, 'init generator')
         FileChecking.__init__(self, verbose=verbose)
         self.__reader = ReadTemplate(verbose=verbose)
@@ -169,3 +168,16 @@ class GenPro(FileChecking):
                 )
                 status = True
         return True if status else False
+
+    def __str__(self):
+        '''
+            Dunder method for GenPro.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1})'.format(
+            self.__class__.__name__, FileChecking.__str__(self),
+            str(self.__reader), str(self.__writer), str(self.__config)
+        )

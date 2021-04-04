@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.6.3
+                1.7.3
               </div>
             
           
@@ -174,8 +174,8 @@
 <span class="sd">     You should have received a copy of the GNU General Public License along</span>
 <span class="sd">     with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 <span class="sd"> Info</span>
-<span class="sd">     Define class WriteTemplate with attribute(s) and method(s).</span>
-<span class="sd">     Write a template content with parameters to a file.</span>
+<span class="sd">     Defined class WriteTemplate with attribute(s) and method(s).</span>
+<span class="sd">     Created API for write a template content with parameters to a file.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -188,15 +188,15 @@
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_type_error</span> <span class="kn">import</span> <span class="n">ATSTypeError</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_bad_call_error</span> <span class="kn">import</span> <span class="n">ATSBadCallError</span>
-<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error_message</span><span class="p">:</span>
-    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ats_error_message</span><span class="p">:</span>
+    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">ats_error_message</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">)</span>  <span class="c1"># Force close python ATS ##############################</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2020, Free software to use and distributed it.&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2020, https://vroncevic.github.io/gen_autoconf&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GNU General Public License (GPL)&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.6.3&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_autoconf/blob/master/LICENSE&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.7.3&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -204,8 +204,8 @@
 
 <div class="viewcode-block" id="WriteTemplate"><a class="viewcode-back" href="../../../gen_autoconf.pro.write_template.html#gen_autoconf.pro.write_template.WriteTemplate">[docs]</a><span class="k">class</span> <span class="nc">WriteTemplate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Define class WriteTemplate with attribute(s) and method(s).</span>
-<span class="sd">        Write a template content with parameters to a file.</span>
+<span class="sd">        Defined class WriteTemplate with attribute(s) and method(s).</span>
+<span class="sd">        Created API for write a template content with parameters to a file.</span>
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
@@ -220,6 +220,7 @@
 <span class="sd">                | get_pro_dir - Getting project directory.</span>
 <span class="sd">                | get_src_dir - getting source directory.</span>
 <span class="sd">                | get_pro_name - Getting project name.</span>
+<span class="sd">                | __str__ - Dunder method for WriteTemplate.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__pro_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;__src_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;__pro_name&#39;</span><span class="p">)</span>
@@ -239,8 +240,10 @@
         <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">(</span>
             <span class="p">[(</span><span class="s1">&#39;str:project_name&#39;</span><span class="p">,</span> <span class="n">project_name</span><span class="p">)]</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
         <span class="n">verbose_message</span><span class="p">(</span><span class="n">WriteTemplate</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init writer&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">project_name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__src_dir</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">)</span>
@@ -254,14 +257,18 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Getting project directory.</span>
 
+<span class="sd">            :return: Project directory | None.</span>
+<span class="sd">            :rtype: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span></div>
 
 <div class="viewcode-block" id="WriteTemplate.get_src_dir"><a class="viewcode-back" href="../../../gen_autoconf.pro.write_template.html#gen_autoconf.pro.write_template.WriteTemplate.get_src_dir">[docs]</a>    <span class="k">def</span> <span class="nf">get_src_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">            Getting project name.</span>
+<span class="sd">            Getting source dir.</span>
 
+<span class="sd">            :return: Source directory | None.</span>
+<span class="sd">            :rtype: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__src_dir</span></div>
@@ -270,6 +277,8 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Getting project name.</span>
 
+<span class="sd">            :return: Project name | None.</span>
+<span class="sd">            :rtype: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pro_name</span></div>
@@ -292,8 +301,10 @@
         <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">(</span>
             <span class="p">[(</span><span class="s1">&#39;str:content&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;str:module_name&#39;</span><span class="p">,</span> <span class="n">module_name</span><span class="p">)]</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
         <span class="n">verbose_message</span><span class="p">(</span><span class="n">WriteTemplate</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;write templates&#39;</span><span class="p">)</span>
         <span class="n">template</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">content</span><span class="p">),</span> <span class="kc">False</span>
         <span class="n">module_path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span><span class="p">,</span> <span class="n">module_name</span><span class="p">)</span>
@@ -304,7 +315,20 @@
             <span class="n">module_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">module_content</span><span class="p">)</span>
             <span class="n">chmod</span><span class="p">(</span><span class="n">module_path</span><span class="p">,</span> <span class="mo">0o666</span><span class="p">)</span>
             <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">status</span> <span class="k">else</span> <span class="kc">False</span></div></div>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">status</span> <span class="k">else</span> <span class="kc">False</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Dunder method for WriteTemplate.</span>
+
+<span class="sd">            :return: Object in a human-readable format.</span>
+<span class="sd">            :rtype: &lt;str&gt;</span>
+<span class="sd">            :exceptions: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">, </span><span class="si">{3}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__src_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pro_name</span>
+        <span class="p">)</span></div>
 </pre></div>
 
            </div>

@@ -24,20 +24,19 @@ import sys
 
 try:
     from gen_autoconf import GenAutoconf
-except ImportError as error_message:
-    MSG = '\n{0}\n{1}\n'.format(__file__, error_message)
-    sys.exit(MSG)  # Force close python ATS ##################################
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2020, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.6.3'
+__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/master/LICENSE'
+__version__ = '1.7.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 if __name__ == '__main__':
-
     TOOL = GenAutoconf(verbose=False)
     TOOL.process(verbose=False)

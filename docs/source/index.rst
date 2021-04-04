@@ -50,17 +50,26 @@ To install this set of modules type the following:
 .. code-block:: bash
 
     tar xvzf gen_autoconf-x.y.z.tar.gz
-    cd gen_autoconf-x.y.z/
+    cd gen_autoconf-x.y.z
+    #python2
     pip install -r requirements.txt
     python setup.py install_lib
     python setup.py install_egg_info
     python setup.py install_data
+    #python3
+    pip3 install -r requirements.txt
+    python3 setup.py install_lib
+    python3 setup.py install_egg_info
+    python3 setup.py install_data
 
 You can use Docker to create image/container, or You can use pip to install:
 
 .. code-block:: bash
 
+    #python2
     pip install gen_autoconf
+    #python3
+    pip3 install gen_autoconf
 
 |GitHub docker checker|
 
@@ -87,6 +96,7 @@ Code structure:
     ├── conf/
     │   ├── gen_autoconf.cfg
     │   ├── gen_autoconf_util.cfg
+    │   ├── project.yaml
     │   └── template/
     │       ├── autogen.template
     │       ├── configure.template
