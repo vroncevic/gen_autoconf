@@ -37,8 +37,8 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/master/LICENSE'
-__version__ = '1.7.3'
+__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
+__version__ = '1.8.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -74,7 +74,7 @@ class GenAutoconf(CfgCLI):
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(GenAutoconf.VERBOSE, verbose, 'init configuration')
+        verbose_message(GenAutoconf.VERBOSE, verbose, 'init tool info')
         current_dir = Path(__file__).resolve().parent
         base_info = '{0}{1}'.format(current_dir, GenAutoconf.__CONFIG)
         CfgCLI.__init__(self, base_info, verbose=verbose)
