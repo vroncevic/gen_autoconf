@@ -157,13 +157,13 @@ setup(
             ]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR), [
-                '{0}{1}'.format(TEMPLATE_DIR, 'Makefile.template')
+            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'src'), [
+                '{0}{1}'.format(TEMPLATE_DIR, 'src/Makefile.template')
             ]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR), [
-                '{0}{1}'.format(TEMPLATE_DIR, 'main.template')
+            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'src'), [
+                '{0}{1}'.format(TEMPLATE_DIR, 'src/main.template')
             ]
         ),
         (
