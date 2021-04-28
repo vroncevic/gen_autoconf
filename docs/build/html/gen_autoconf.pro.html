@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.8.3
+                1.9.3
               </div>
             
           
@@ -214,21 +214,21 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__PRO_STRUCTURE - Project structure.</div>
-<div class="line">__config - Configuration dictionary.</div>
-<div class="line">__reader - Reader API.</div>
-<div class="line">__writer - Writer API.</div>
+<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">PRO_STRUCTURE - project structure.</div>
+<div class="line">__config - configuration dictionary.</div>
+<div class="line">__reader - reader API.</div>
+<div class="line">__writer - writer API.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor.</div>
-<div class="line">get_reader - Getter for reader object.</div>
-<div class="line">get_writer - Getter for writer object.</div>
-<div class="line">gen_project - Generate python tool.</div>
-<div class="line">__str__ - Dunder method for GenPro.</div>
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">get_reader - getter for reader object.</div>
+<div class="line">get_writer - getter for writer object.</div>
+<div class="line">gen_project - generate python tool.</div>
+<div class="line">__str__ - dunder method for GenPro.</div>
 </div>
 </td>
 </tr>
@@ -236,8 +236,18 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
+<dt id="gen_autoconf.pro.GenPro.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AUTOCONF::PRO::GEN_PRO'</em><a class="headerlink" href="#gen_autoconf.pro.GenPro.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_autoconf.pro.GenPro.PRO_STRUCTURE">
+<code class="descname">PRO_STRUCTURE</code><em class="property"> = '../conf/project.yaml'</em><a class="headerlink" href="#gen_autoconf.pro.GenPro.PRO_STRUCTURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="gen_autoconf.pro.GenPro.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AUTOCONF::PRO::GEN_PRO'</em><a class="headerlink" href="#gen_autoconf.pro.GenPro.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_autoconf.pro.GenPro.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -248,9 +258,9 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Boolean status True (success) | False.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">boolean status True (success) | False.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;bool&gt;</td>
 </tr>
@@ -268,7 +278,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Read template object.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">read template object.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;ReadTemplate&gt;</td>
 </tr>
@@ -286,7 +296,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Write template object.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">write template object.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;WriteTemplate&gt;</td>
 </tr>

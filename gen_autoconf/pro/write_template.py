@@ -27,6 +27,8 @@ from string import Template
 
 try:
     from ats_utilities.checker import ATSChecker
+    from ats_utilities.cooperative import CooperativeMeta
+    from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
@@ -38,43 +40,43 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class WriteTemplate(object):
+class WriteTemplate(FileChecking):
     '''
         Defined class WriteTemplate with attribute(s) and method(s).
         Created API for write a template content with parameters to a file.
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __pro_dir - Project directory.
-                | __src_dir - Source directory.
-                | __pro_name - Project name.
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | __pro_dir - project directory.
+                | __src_dir - cource directory.
+                | __pro_name - project name.
             :methods:
-                | __init__ - Initial constructor.
-                | write - Write a template content with parameters to a file.
-                | get_pro_dir - Getting project directory.
+                | __init__ - initial constructor.
+                | write - write a template content with parameters to a file.
+                | get_pro_dir - getting project directory.
                 | get_src_dir - getting source directory.
-                | get_pro_name - Getting project name.
-                | __str__ - Dunder method for WriteTemplate.
+                | get_pro_name - getting project name.
+                | __str__ - dunder method for WriteTemplate.
     '''
 
-    __slots__ = ('VERBOSE', '__pro_dir', '__src_dir', '__pro_name')
-    VERBOSE = 'GEN_AUTOCONF::PRO::WRITE_TEMPLATE'
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AUTOCONF::PRO::WRITE_TEMPLATE'
 
     def __init__(self, project_name, verbose=False):
         '''
             Initial constructor.
 
-            :param project_name: Project name.
+            :param project_name: project name.
             :type project_name: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
@@ -86,7 +88,8 @@ class WriteTemplate(object):
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
-        verbose_message(WriteTemplate.VERBOSE, verbose, 'init writer')
+        FileChecking.__init__(self, verbose=verbose)
+        verbose_message(WriteTemplate.GEN_VERBOSE, verbose, 'init writer')
         self.__pro_dir = '{0}/{1}'.format(getcwd(), project_name)
         self.__src_dir = '{0}/{1}'.format(self.__pro_dir, 'src')
         self.__pro_name = project_name
@@ -99,7 +102,7 @@ class WriteTemplate(object):
         '''
             Getting project directory.
 
-            :return: Project directory | None.
+            :return: project directory | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
@@ -109,7 +112,7 @@ class WriteTemplate(object):
         '''
             Getting source dir.
 
-            :return: Source directory | None.
+            :return: source directory | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
@@ -119,7 +122,7 @@ class WriteTemplate(object):
         '''
             Getting project name.
 
-            :return: Project name | None.
+            :return: project name | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
@@ -129,25 +132,25 @@ class WriteTemplate(object):
         '''
             Write a template content with parameters to a file.
 
-            :param content: Template content.
+            :param content: template content.
             :type content: <str>
-            :param module_name: File module name.
+            :param module_name: file module name.
             :type module_name: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Boolean status, True (success) | False.
+            :return: boolean status, True (success) | False.
             :rtype: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('str:content', content), ('str:module_name', module_name)]
-        )
+        error, status = checker.check_params([
+            ('str:content', content), ('str:module_name', module_name)
+        ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
-        verbose_message(WriteTemplate.VERBOSE, verbose, 'write templates')
+        verbose_message(WriteTemplate.GEN_VERBOSE, verbose, 'write templates')
         template, status = Template(content), False
         module_path = '{0}/{1}'.format(self.__pro_dir, module_name)
         with open(module_path, 'w') as module_file:
@@ -156,14 +159,20 @@ class WriteTemplate(object):
             )
             module_file.write(module_content)
             chmod(module_path, 0o666)
-            status = True
-        return True if status else False
+            self.check_path(module_path, verbose=verbose)
+            self.check_mode('w', verbose=verbose)
+            self.check_format(
+                module_path, module_path.split('.')[1], verbose=verbose
+            )
+            if self.is_file_ok():
+                status = True
+        return status
 
     def __str__(self):
         '''
             Dunder method for WriteTemplate.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

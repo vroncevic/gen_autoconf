@@ -26,6 +26,7 @@ from os.path import isdir
 try:
     from pathlib import Path
     from ats_utilities.checker import ATSChecker
+    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
@@ -38,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -51,34 +52,34 @@ class ReadTemplate(FileChecking):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __TEMPLATE_DIR - Prefix path to templates.
-                | __template_dir - Absolute template dir.
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | TEMPLATE_DIR - prefix path to templates.
+                | __template_dir - absolute template dir.
             :methods:
-                | __init__ - Initial constructor.
-                | get_template_dir - Getter for template dir path.
-                | read - Read a template and return a content or None.
-                | __str__ - Dunder method for ReadTemplate.
+                | __init__ - initial constructor.
+                | get_template_dir - getter for template dir path.
+                | read - read a template and return a content or None.
+                | __str__ - dunder method for ReadTemplate.
     '''
 
-    __slots__ = ('VERBOSE', '__TEMPLATE_DIR', '__template_dir')
-    VERBOSE = 'GEN_AUTOCONF::PRO::READ_TEMPLATE'
-    __TEMPLATE_DIR = '/../conf/template/'
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AUTOCONF::PRO::READ_TEMPLATE'
+    TEMPLATE_DIR = '/../conf/template/'
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(ReadTemplate.VERBOSE, verbose, 'init reader')
         FileChecking.__init__(self, verbose=verbose)
+        verbose_message(ReadTemplate.GEN_VERBOSE, verbose, 'init reader')
         current_dir = Path(__file__).parent
         template_dir = '{0}{1}'.format(
-            current_dir, ReadTemplate.__TEMPLATE_DIR
+            current_dir, ReadTemplate.TEMPLATE_DIR
         )
         check_template_dir = isdir(template_dir)
         if check_template_dir:
@@ -90,7 +91,7 @@ class ReadTemplate(FileChecking):
         '''
             Getter for template dir path.
 
-            :return: Template dir path.
+            :return: template dir path.
             :rtype: <str>
             :exceptions: None
         '''
@@ -100,11 +101,11 @@ class ReadTemplate(FileChecking):
         '''
             Read a template and return a content.
 
-            :param template_file: File name.
+            :param template_file: file name.
             :type template_file: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Template content | None.
+            :return: template content | None.
             :rtype: <str> | <NoneType>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
@@ -135,7 +136,7 @@ class ReadTemplate(FileChecking):
         '''
             Dunder method for ReadTemplate.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

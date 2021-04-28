@@ -27,6 +27,7 @@ try:
     from gen_autoconf.pro.read_template import ReadTemplate
     from gen_autoconf.pro.write_template import WriteTemplate
     from ats_utilities.checker import ATSChecker
+    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.success import success_message
     from ats_utilities.console_io.verbose import verbose_message
@@ -41,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -54,50 +55,48 @@ class GenPro(FileChecking):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __PRO_STRUCTURE - Project structure.
-                | __config - Configuration dictionary.
-                | __reader - Reader API.
-                | __writer - Writer API.
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | PRO_STRUCTURE - project structure.
+                | __config - configuration dictionary.
+                | __reader - reader API.
+                | __writer - writer API.
             :methods:
-                | __init__ - Initial constructor.
-                | get_reader - Getter for reader object.
-                | get_writer - Getter for writer object.
-                | gen_project - Generate python tool.
-                | __str__ - Dunder method for GenPro.
+                | __init__ - initial constructor.
+                | get_reader - getter for reader object.
+                | get_writer - getter for writer object.
+                | gen_project - generate python tool.
+                | __str__ - dunder method for GenPro.
     '''
 
-    __slots__ = (
-        'VERBOSE', '__PRO_STRUCTURE', '__config', '__reader', '__writer'
-    )
-    VERBOSE = 'GEN_AUTOCONF::PRO::GEN_PRO'
-    __PRO_STRUCTURE = '../conf/project.yaml'
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AUTOCONF::PRO::GEN_PRO'
+    PRO_STRUCTURE = '../conf/project.yaml'
 
     def __init__(self, project_name, verbose=False):
         '''
             Initial constructor.
 
-            :param project_name: Parameter tool name.
+            :param project_name: parameter tool name.
             :type project_name: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('str:project_name', project_name)]
-        )
+        error, status = checker.check_params([
+            ('str:project_name', project_name)
+        ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
-        verbose_message(GenPro.VERBOSE, verbose, 'init generator')
         FileChecking.__init__(self, verbose=verbose)
+        verbose_message(GenPro.GEN_VERBOSE, verbose, 'init generator')
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(project_name, verbose=verbose)
         project = '{0}/{1}'.format(
-            Path(__file__).parent, GenPro.__PRO_STRUCTURE
+            Path(__file__).parent, GenPro.PRO_STRUCTURE
         )
         self.check_path(file_path=project, verbose=verbose)
         self.check_mode(file_mode='r', verbose=verbose)
@@ -114,7 +113,7 @@ class GenPro(FileChecking):
         '''
             Getter for reader object.
 
-            :return: Read template object.
+            :return: read template object.
             :rtype: <ReadTemplate>
             :exceptions: None
         '''
@@ -124,7 +123,7 @@ class GenPro(FileChecking):
         '''
             Getter for writer object.
 
-            :return: Write template object.
+            :return: write template object.
             :rtype: <WriteTemplate>
             :exceptions: None
         '''
@@ -134,9 +133,9 @@ class GenPro(FileChecking):
         '''
             Generate project structure.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Boolean status True (success) | False.
+            :return: boolean status True (success) | False.
             :rtype: <bool>
             :exceptions: None
         '''
@@ -161,23 +160,23 @@ class GenPro(FileChecking):
                     break
             if all([len(statuses) == expected_num_files, all(statuses)]):
                 success_message(
-                    GenPro.VERBOSE, 'successfully loaded templates'
+                    GenPro.GEN_VERBOSE, 'successfully loaded templates'
                 )
                 success_message(
-                    GenPro.VERBOSE, 'successfully written modules'
+                    GenPro.GEN_VERBOSE, 'successfully written modules'
                 )
                 status = True
-        return True if status else False
+        return status
 
     def __str__(self):
         '''
             Dunder method for GenPro.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''
-        return '{0} ({1})'.format(
+        return '{0} ({1}, {2}, {3}, {4})'.format(
             self.__class__.__name__, FileChecking.__str__(self),
             str(self.__reader), str(self.__writer), str(self.__config)
         )
