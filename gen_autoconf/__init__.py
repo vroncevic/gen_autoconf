@@ -26,7 +26,9 @@ from os.path import exists
 try:
     from pathlib import Path
     from gen_autoconf.pro import GenPro
+    from ats_utilities.logging import ATSLogger
     from ats_utilities.cli.cfg_cli import CfgCLI
+    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
@@ -38,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -51,48 +53,60 @@ class GenAutoconf(CfgCLI):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __CONFIG - Configuration file path.
-                | __OPS - Tool options (list).
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | CONFIG - configuration file path.
+                | LOG - tool log file path.
+                | OPS - tool options (list).
+                | logger - logger object API.
             :methods:
-                | __init__ - Initial constructor.
-                | process - Process and run tool option(s).
-                | __str__ - Dunder method for GenAutoconf.
+                | __init__ - initial constructor.
+                | process - process and run tool option(s).
+                | __str__ - dunder method for GenAutoconf.
     '''
 
-    __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
-    VERBOSE = 'GEN_AUTOCONF'
-    __CONFIG = '/conf/gen_autoconf.cfg'
-    __OPS = ['-g', '--gen', '-v']
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AUTOCONF'
+    CONFIG = '/conf/gen_autoconf.cfg'
+    LOG = '/log/gen_autoconf.log'
+    OPS = ['-g', '--gen', '-v', '--verbose', '--version']
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(GenAutoconf.VERBOSE, verbose, 'init tool info')
         current_dir = Path(__file__).resolve().parent
-        base_info = '{0}{1}'.format(current_dir, GenAutoconf.__CONFIG)
+        base_info = '{0}{1}'.format(current_dir, GenAutoconf.CONFIG)
         CfgCLI.__init__(self, base_info, verbose=verbose)
+        verbose_message(GenAutoconf.GEN_VERBOSE, verbose, 'init tool info')
+        self.logger = ATSLogger(
+            GenAutoconf.GEN_VERBOSE.lower(),
+            '{0}{1}'.format(current_dir, GenAutoconf.LOG),
+            verbose=verbose
+        )
         if self.tool_operational:
             self.add_new_option(
-                GenAutoconf.__OPS[0], GenAutoconf.__OPS[1],
+                GenAutoconf.OPS[0], GenAutoconf.OPS[1],
                 dest='pro', help='generate project'
             )
             self.add_new_option(
-                GenAutoconf.__OPS[2], action='store_true', default=False,
+                GenAutoconf.OPS[2], GenAutoconf.OPS[3],
+                action='store_true', default=False,
                 help='activate verbose mode for generation'
+            )
+            self.add_new_option(
+                GenAutoconf.OPS[4], action='version', version=__version__
             )
 
     def process(self, verbose=False):
         '''
             Process and run operation.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: True (success) | False.
             :rtype: <bool>
@@ -102,39 +116,59 @@ class GenAutoconf(CfgCLI):
         if self.tool_operational:
             num_of_args_sys = len(sys.argv)
             if num_of_args_sys > 1:
-                option = sys.argv[1]
-                if option not in GenAutoconf.__OPS:
-                    sys.argv = []
+                operation = sys.argv[1]
+                if operation not in GenAutoconf.OPS:
                     sys.argv.append('-h')
             else:
                 sys.argv.append('-h')
-            opts, args = self.parse_args(sys.argv)
-            num_of_args, pro_exists = len(args), exists(opts.pro)
+            args = self.parse_args(sys.argv[1:])
+            pro_exists = exists(args.pro)
             if not pro_exists:
-                if num_of_args >= 1 and bool(opts.pro):
+                if bool(args.pro):
                     print(
                         '{0} {1} [{2}]'.format(
-                            '[{0}]'.format(GenAutoconf.VERBOSE.lower()),
-                            'generating project', opts.pro
+                            '[{0}]'.format(GenAutoconf.GEN_VERBOSE.lower()),
+                            'generating project', args.pro
                         )
                     )
-                    generator = GenPro(opts.pro, verbose=opts.v or verbose)
-                    status = generator.gen_project(verbose=opts.v or verbose)
+                    generator = GenPro(
+                        args.pro, verbose=args.verbose or verbose
+                    )
+                    status = generator.gen_project(
+                        verbose=args.verbose or verbose
+                    )
                     if status:
-                        success_message(GenAutoconf.VERBOSE, 'done\n')
+                        success_message(GenAutoconf.GEN_VERBOSE, 'done\n')
+                        self.logger.write_log(
+                            '{0} {1} done'.format(
+                                'generating project', args.pro
+                            ), ATSLogger.ATS_INFO
+                        )
                     else:
                         error_message(
-                            GenAutoconf.VERBOSE, 'failed to generate project'
+                            GenAutoconf.GEN_VERBOSE, 'generation failed'
+                        )
+                        self.logger.write_log(
+                            'generation failed', ATSLogger.ATS_ERROR
                         )
                 else:
                     error_message(
-                        GenAutoconf.VERBOSE, 'provide project name'
+                        GenAutoconf.GEN_VERBOSE, 'provide project name'
+                    )
+                    self.logger.write_log(
+                        'provide project name', ATSLogger.ATS_ERROR
                     )
             else:
-                error_message(GenAutoconf.VERBOSE, 'project already exist')
+                error_message(GenAutoconf.GEN_VERBOSE, 'project already exist')
+                self.logger.write_log(
+                    'project already exist', ATSLogger.ATS_ERROR
+                )
         else:
-            error_message(GenAutoconf.VERBOSE, 'tool is not operational')
-        return True if status else False
+            error_message(GenAutoconf.GEN_VERBOSE, 'tool is not operational')
+            self.logger.write_log(
+                'tool is not operational', ATSLogger.ATS_ERROR
+            )
+        return status
 
     def __str__(self):
         '''
@@ -144,6 +178,6 @@ class GenAutoconf(CfgCLI):
             :rtype: <str>
             :exceptions: None
         '''
-        return '{0} ({1})'.format(
-            self.__class__.__name__, CfgCLI.__str__(self)
+        return '{0} ({1}, {2})'.format(
+            self.__class__.__name__, CfgCLI.__str__(self), str(self.logger)
         )

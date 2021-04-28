@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.8.3
+                1.9.3
               </div>
             
           
@@ -205,18 +205,18 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__TEMPLATE_DIR - Prefix path to templates.</div>
-<div class="line">__template_dir - Absolute template dir.</div>
+<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">TEMPLATE_DIR - prefix path to templates.</div>
+<div class="line">__template_dir - absolute template dir.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor.</div>
-<div class="line">get_template_dir - Getter for template dir path.</div>
-<div class="line">read - Read a template and return a content or None.</div>
-<div class="line">__str__ - Dunder method for ReadTemplate.</div>
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">get_template_dir - getter for template dir path.</div>
+<div class="line">read - read a template and return a content or None.</div>
+<div class="line">__str__ - dunder method for ReadTemplate.</div>
 </div>
 </td>
 </tr>
@@ -224,8 +224,18 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
+<dt id="gen_autoconf.pro.read_template.ReadTemplate.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AUTOCONF::PRO::READ_TEMPLATE'</em><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_autoconf.pro.read_template.ReadTemplate.TEMPLATE_DIR">
+<code class="descname">TEMPLATE_DIR</code><em class="property"> = '/../conf/template/'</em><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.TEMPLATE_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="gen_autoconf.pro.read_template.ReadTemplate.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AUTOCONF::PRO::READ_TEMPLATE'</em><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -236,7 +246,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Template dir path.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">template dir path.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt;</td>
 </tr>
@@ -255,12 +265,12 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template_file</strong> (<em>&lt;str&gt;</em>) – File name.</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
+<li><strong>template_file</strong> (<em>&lt;str&gt;</em>) – file name.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Template content | None.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">template content | None.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;str&gt; | &lt;NoneType&gt;</p>

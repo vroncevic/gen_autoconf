@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -38,7 +38,7 @@ def install_directory():
     '''
         Return the installation directory, or None.
 
-        :return: Path (success) | None.
+        :return: path (success) | None.
         :rtype: <str> | <NoneType>
         :exceptions: None
     '''
@@ -102,7 +102,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_autoconf',
-    version='1.8.3',
+    version='1.9.3',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
