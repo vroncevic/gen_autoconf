@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.9.3
+                2.0.3
               </div>
             
           
@@ -194,7 +194,7 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2020, https://vroncevic.github.io/gen_autoconf&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.9.3&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.0.3&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -285,8 +285,12 @@
                             <span class="s1">&#39;generating project&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">pro</span>
                         <span class="p">)</span>
                     <span class="p">)</span>
-                    <span class="n">generator</span> <span class="o">=</span> <span class="n">GenPro</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">pro</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">v</span> <span class="ow">or</span> <span class="n">verbose</span><span class="p">)</span>
-                    <span class="n">status</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_project</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">v</span> <span class="ow">or</span> <span class="n">verbose</span><span class="p">)</span>
+                    <span class="n">generator</span> <span class="o">=</span> <span class="n">GenPro</span><span class="p">(</span>
+                        <span class="n">args</span><span class="o">.</span><span class="n">pro</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">verbose</span> <span class="ow">or</span> <span class="n">verbose</span>
+                    <span class="p">)</span>
+                    <span class="n">status</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_project</span><span class="p">(</span>
+                        <span class="n">verbose</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">verbose</span> <span class="ow">or</span> <span class="n">verbose</span>
+                    <span class="p">)</span>
                     <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
                         <span class="n">success_message</span><span class="p">(</span><span class="n">GenAutoconf</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="s1">&#39;done</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>

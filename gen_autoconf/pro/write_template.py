@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '1.9.3'
+__version__ = '2.0.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -176,7 +176,7 @@ class WriteTemplate(FileChecking):
             :rtype: <str>
             :exceptions: None
         '''
-        return '{0} ({1}, {2}, {3})'.format(
-            self.__class__.__name__, self.__pro_dir,
-            self.__src_dir, self.__pro_name
+        return '{0} ({1}, {2}, {3}, {4})'.format(
+            self.__class__.__name__, FileChecking.__str__(self),
+            self.__pro_dir, self.__src_dir, self.__pro_name
         )
