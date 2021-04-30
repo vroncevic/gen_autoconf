@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                2.0.3
+                2.0.4
               </div>
             
           
@@ -198,7 +198,7 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2020, https://vroncevic.github.io/gen_autoconf&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.0.3&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.0.4&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -221,13 +221,13 @@
 <span class="sd">                | __init__ - initial constructor.</span>
 <span class="sd">                | get_reader - getter for reader object.</span>
 <span class="sd">                | get_writer - getter for writer object.</span>
-<span class="sd">                | gen_project - generate python tool.</span>
+<span class="sd">                | gen_project - generate autotools project.</span>
 <span class="sd">                | __str__ - dunder method for GenPro.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">CooperativeMeta</span>
     <span class="n">GEN_VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AUTOCONF::PRO::GEN_PRO&#39;</span>
-    <span class="n">PRO_STRUCTURE</span> <span class="o">=</span> <span class="s1">&#39;../conf/project.yaml&#39;</span>
+    <span class="n">PRO_STRUCTURE</span> <span class="o">=</span> <span class="s1">&#39;/../conf/project.yaml&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -251,7 +251,7 @@
         <span class="n">verbose_message</span><span class="p">(</span><span class="n">GenPro</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init generator&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span> <span class="o">=</span> <span class="n">ReadTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span> <span class="o">=</span> <span class="n">WriteTemplate</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">GenPro</span><span class="o">.</span><span class="n">PRO_STRUCTURE</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_path</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>

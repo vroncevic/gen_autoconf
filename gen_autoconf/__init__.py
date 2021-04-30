@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.0.3'
+__version__ = '2.0.4'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -57,7 +57,7 @@ class GenAutoconf(CfgCLI):
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | CONFIG - configuration file path.
                 | LOG - tool log file path.
-                | OPS - tool options (list).
+                | OPS - list of tool options.
                 | logger - logger object API.
             :methods:
                 | __init__ - initial constructor.
@@ -174,7 +174,7 @@ class GenAutoconf(CfgCLI):
         '''
             Dunder method for GenAutoconf.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

@@ -42,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.0.3'
+__version__ = '2.0.4'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -65,13 +65,13 @@ class GenPro(FileChecking):
                 | __init__ - initial constructor.
                 | get_reader - getter for reader object.
                 | get_writer - getter for writer object.
-                | gen_project - generate python tool.
+                | gen_project - generate autotools project.
                 | __str__ - dunder method for GenPro.
     '''
 
     __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_AUTOCONF::PRO::GEN_PRO'
-    PRO_STRUCTURE = '../conf/project.yaml'
+    PRO_STRUCTURE = '/../conf/project.yaml'
 
     def __init__(self, project_name, verbose=False):
         '''
@@ -95,7 +95,7 @@ class GenPro(FileChecking):
         verbose_message(GenPro.GEN_VERBOSE, verbose, 'init generator')
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(project_name, verbose=verbose)
-        project = '{0}/{1}'.format(
+        project = '{0}{1}'.format(
             Path(__file__).parent, GenPro.PRO_STRUCTURE
         )
         self.check_path(file_path=project, verbose=verbose)
