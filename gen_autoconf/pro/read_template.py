@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.0.4'
+__version__ = '2.0.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -78,9 +78,7 @@ class ReadTemplate(FileChecking):
         FileChecking.__init__(self, verbose=verbose)
         verbose_message(ReadTemplate.GEN_VERBOSE, verbose, 'init reader')
         current_dir = Path(__file__).parent
-        template_dir = '{0}{1}'.format(
-            current_dir, ReadTemplate.TEMPLATE_DIR
-        )
+        template_dir = '{0}{1}'.format(current_dir, ReadTemplate.TEMPLATE_DIR)
         check_template_dir = isdir(template_dir)
         if check_template_dir:
             self.__template_dir = template_dir

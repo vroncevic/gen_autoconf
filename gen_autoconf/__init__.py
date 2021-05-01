@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.0.4'
+__version__ = '2.0.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -108,7 +108,7 @@ class GenAutoconf(CfgCLI):
 
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: True (success) | False.
+            :return: boolean value True (success) | False.
             :rtype: <bool>
             :exceptions: None
         '''
@@ -122,26 +122,27 @@ class GenAutoconf(CfgCLI):
             else:
                 sys.argv.append('-h')
             args = self.parse_args(sys.argv[1:])
-            pro_exists = exists(args.pro)
+            pro_exists = exists(getattr(args, 'pro'))
             if not pro_exists:
-                if bool(args.pro):
+                if bool(getattr(args, 'pro')):
                     print(
                         '{0} {1} [{2}]'.format(
                             '[{0}]'.format(GenAutoconf.GEN_VERBOSE.lower()),
-                            'generating project', args.pro
+                            'generating project', getattr(args, 'pro')
                         )
                     )
                     generator = GenPro(
-                        args.pro, verbose=args.verbose or verbose
+                        getattr(args, 'pro'),
+                        verbose=getattr(args, 'verbose') or verbose
                     )
                     status = generator.gen_project(
-                        verbose=args.verbose or verbose
+                        verbose=getattr(args, 'verbose') or verbose
                     )
                     if status:
                         success_message(GenAutoconf.GEN_VERBOSE, 'done\n')
                         self.logger.write_log(
                             '{0} {1} done'.format(
-                                'generating project', args.pro
+                                'generating project', getattr(args, 'pro')
                             ), ATSLogger.ATS_INFO
                         )
                     else:
