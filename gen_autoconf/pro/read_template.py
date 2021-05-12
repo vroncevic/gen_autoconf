@@ -26,7 +26,6 @@ from os.path import isdir
 try:
     from pathlib import Path
     from ats_utilities.checker import ATSChecker
-    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
@@ -39,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.0.5'
+__version__ = '2.1.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -52,7 +51,6 @@ class ReadTemplate(FileChecking):
         It defines:
 
             :attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | TEMPLATE_DIR - prefix path to templates.
                 | __template_dir - absolute template dir.
@@ -63,7 +61,6 @@ class ReadTemplate(FileChecking):
                 | __str__ - dunder method for ReadTemplate.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_AUTOCONF::PRO::READ_TEMPLATE'
     TEMPLATE_DIR = '/../conf/template/'
 

@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.0.5'
+__version__ = '2.1.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -91,7 +91,7 @@ class GenAutoconf(CfgCLI):
         if self.tool_operational:
             self.add_new_option(
                 GenAutoconf.OPS[0], GenAutoconf.OPS[1],
-                dest='pro', help='generate project'
+                dest='gen', help='generate project'
             )
             self.add_new_option(
                 GenAutoconf.OPS[2], GenAutoconf.OPS[3],
@@ -108,7 +108,7 @@ class GenAutoconf(CfgCLI):
 
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: boolean value True (success) | False.
+            :return: boolean status, True (success) | False.
             :rtype: <bool>
             :exceptions: None
         '''
@@ -122,17 +122,17 @@ class GenAutoconf(CfgCLI):
             else:
                 sys.argv.append('-h')
             args = self.parse_args(sys.argv[1:])
-            pro_exists = exists(getattr(args, 'pro'))
+            pro_exists = exists(getattr(args, 'gen'))
             if not pro_exists:
-                if bool(getattr(args, 'pro')):
+                if bool(getattr(args, 'gen')):
                     print(
                         '{0} {1} [{2}]'.format(
                             '[{0}]'.format(GenAutoconf.GEN_VERBOSE.lower()),
-                            'generating project', getattr(args, 'pro')
+                            'generating project', getattr(args, 'gen')
                         )
                     )
                     generator = GenPro(
-                        getattr(args, 'pro'),
+                        getattr(args, 'gen'),
                         verbose=getattr(args, 'verbose') or verbose
                     )
                     status = generator.gen_project(
@@ -142,7 +142,7 @@ class GenAutoconf(CfgCLI):
                         success_message(GenAutoconf.GEN_VERBOSE, 'done\n')
                         self.logger.write_log(
                             '{0} {1} done'.format(
-                                'generating project', getattr(args, 'pro')
+                                'generating project', getattr(args, 'gen')
                             ), ATSLogger.ATS_INFO
                         )
                     else:
