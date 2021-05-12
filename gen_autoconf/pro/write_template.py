@@ -27,7 +27,6 @@ from string import Template
 
 try:
     from ats_utilities.checker import ATSChecker
-    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
@@ -40,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.0.5'
+__version__ = '2.1.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -53,7 +52,6 @@ class WriteTemplate(FileChecking):
         It defines:
 
             :attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | __pro_dir - project directory.
                 | __src_dir - cource directory.
@@ -67,7 +65,6 @@ class WriteTemplate(FileChecking):
                 | __str__ - dunder method for WriteTemplate.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_AUTOCONF::PRO::WRITE_TEMPLATE'
 
     def __init__(self, project_name, verbose=False):
