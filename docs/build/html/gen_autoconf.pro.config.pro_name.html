@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>gen_autoconf.pro.read_template module &mdash; gen_autoconf https://github.com/vroncevic/gen_autoconf/releases documentation</title>
+  <title>gen_autoconf.pro.config.pro_name module &mdash; gen_autoconf https://github.com/vroncevic/gen_autoconf/releases documentation</title>
   
 
   
@@ -36,8 +36,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="gen_autoconf.pro.write_template module" href="gen_autoconf.pro.write_template.html" />
-    <link rel="prev" title="gen_autoconf.pro.config.template_dir module" href="gen_autoconf.pro.config.template_dir.html" /> 
+    <link rel="next" title="gen_autoconf.pro.config.template_dir module" href="gen_autoconf.pro.config.template_dir.html" />
+    <link rel="prev" title="gen_autoconf.pro.config package" href="gen_autoconf.pro.config.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -152,13 +152,15 @@
         
           <li><a href="gen_autoconf.pro.html">gen_autoconf.pro package</a> &raquo;</li>
         
-      <li>gen_autoconf.pro.read_template module</li>
+          <li><a href="gen_autoconf.pro.config.html">gen_autoconf.pro.config package</a> &raquo;</li>
+        
+      <li>gen_autoconf.pro.config.pro_name module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/gen_autoconf.pro.read_template.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/gen_autoconf.pro.config.pro_name.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,15 +173,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-gen_autoconf.pro.read_template">
-<span id="gen-autoconf-pro-read-template-module"></span><h1>gen_autoconf.pro.read_template module<a class="headerlink" href="#module-gen_autoconf.pro.read_template" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-gen_autoconf.pro.config.pro_name">
+<span id="gen-autoconf-pro-config-pro-name-module"></span><h1>gen_autoconf.pro.config.pro_name module<a class="headerlink" href="#module-gen_autoconf.pro.config.pro_name" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
 <dt>Module</dt>
-<dd>read_template.py</dd>
+<dd>pro_name.py</dd>
 <dt>Copyright</dt>
 <dd>Copyright (C) 2020 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
-gen_autoconf is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
+gen_autoconf is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the
 Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 gen_autoconf is distributed in the hope that it will be useful, but
@@ -189,15 +191,14 @@ See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
-<dd>Defined class ReadTemplate with attribute(s) and method(s).
-Created API for read a templates and return a string representations.</dd>
+<dd>Defined class ProName with attribute(s) and method(s).
+Defined API for project name with preparations for generation.</dd>
 </dl>
 <dl class="class">
-<dt id="gen_autoconf.pro.read_template.ReadTemplate">
-<em class="property">class </em><code class="descclassname">gen_autoconf.pro.read_template.</code><code class="descname">ReadTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/read_template.html#ReadTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code>, <a class="reference internal" href="gen_autoconf.pro.config.template_dir.html#gen_autoconf.pro.config.template_dir.TemplateDir" title="gen_autoconf.pro.config.template_dir.TemplateDir"><code class="xref py py-class docutils literal notranslate"><span class="pre">gen_autoconf.pro.config.template_dir.TemplateDir</span></code></a></p>
-<p>Defined class ReadTemplate with attribute(s) and method(s).
-Created API for read a templates and return a string representations.
+<dt id="gen_autoconf.pro.config.pro_name.ProName">
+<em class="property">class </em><code class="descclassname">gen_autoconf.pro.config.pro_name.</code><code class="descname">ProName</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/config/pro_name.html#ProName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.config.pro_name.ProName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defined class ProName with attribute(s) and method(s).
+Defined API for project name with preparations for generation.
 It defines:</p>
 <blockquote>
 <div><table class="docutils field-list" frame="void" rules="none">
@@ -206,14 +207,16 @@ It defines:</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
 <div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
-<div class="line">TEMPLATE_DIR - prefix path to templates.</div>
+<div class="line">__verbose - enable/disable verbose option.</div>
+<div class="line">__pro_name - project name.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
 <div class="line">__init__ - initial constructor.</div>
-<div class="line">read - read a templates and return a content.</div>
-<div class="line">__str__ - dunder method for ReadTemplate.</div>
+<div class="line">pro_name - property methods for set/get operations.</div>
+<div class="line">is_pro_name_ok - checking is project name ok.</div>
+<div class="line">__str__ - dunder method for ProName.</div>
 </div>
 </td>
 </tr>
@@ -221,42 +224,41 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
-<dt id="gen_autoconf.pro.read_template.ReadTemplate.GEN_VERBOSE">
-<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AUTOCONF::PRO::READ_TEMPLATE'</em><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="gen_autoconf.pro.read_template.ReadTemplate.TEMPLATE_DIR">
-<code class="descname">TEMPLATE_DIR</code><em class="property"> = '/../conf/template/'</em><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.TEMPLATE_DIR" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="gen_autoconf.pro.read_template.ReadTemplate.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dt id="gen_autoconf.pro.config.pro_name.ProName.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AUTOCONF::PRO::CONFIG::PRO_NAME'</em><a class="headerlink" href="#gen_autoconf.pro.config.pro_name.ProName.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="gen_autoconf.pro.read_template.ReadTemplate.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>config</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/read_template.html#ReadTemplate.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.read_template.ReadTemplate.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read a templates and return a content.</p>
+<dt id="gen_autoconf.pro.config.pro_name.ProName.is_pro_name_ok">
+<code class="descname">is_pro_name_ok</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/config/pro_name.html#ProName.is_pro_name_ok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.config.pro_name.ProName.is_pro_name_ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checking is project name ok.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>config</strong> (<em>&lt;dict&gt;</em>) – parameter file name.</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">boolean status, True (not None) | False.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">template content list | empty list.</p>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;bool&gt;</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;list&gt;</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first last">ATSTypeError | ATSBadCallError</p>
-</td>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gen_autoconf.pro.config.pro_name.ProName.pro_name">
+<code class="descname">pro_name</code><a class="headerlink" href="#gen_autoconf.pro.config.pro_name.ProName.pro_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property method for getting project name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">formatted project name | None.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
 </tr>
 </tbody>
 </table>
@@ -274,10 +276,10 @@ It defines:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gen_autoconf.pro.write_template.html" class="btn btn-neutral float-right" title="gen_autoconf.pro.write_template module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gen_autoconf.pro.config.template_dir.html" class="btn btn-neutral float-right" title="gen_autoconf.pro.config.template_dir module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gen_autoconf.pro.config.template_dir.html" class="btn btn-neutral float-left" title="gen_autoconf.pro.config.template_dir module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gen_autoconf.pro.config.html" class="btn btn-neutral float-left" title="gen_autoconf.pro.config package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

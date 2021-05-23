@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                2.1.6
+                2.1.7
               </div>
             
           
@@ -173,17 +173,18 @@
 <span class="sd">     with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 <span class="sd"> Info</span>
 <span class="sd">     Defined class GenPro with attribute(s) and method(s).</span>
-<span class="sd">     Generate project by template and parameters.</span>
+<span class="sd">     Generate project_structure by templates and parameters.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">gen_autoconf.pro.config</span> <span class="kn">import</span> <span class="n">ProConfig</span>
+    <span class="kn">from</span> <span class="nn">gen_autoconf.pro.config.pro_name</span> <span class="kn">import</span> <span class="n">ProName</span>
     <span class="kn">from</span> <span class="nn">gen_autoconf.pro.read_template</span> <span class="kn">import</span> <span class="n">ReadTemplate</span>
     <span class="kn">from</span> <span class="nn">gen_autoconf.pro.write_template</span> <span class="kn">import</span> <span class="n">WriteTemplate</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.checker</span> <span class="kn">import</span> <span class="n">ATSChecker</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.cooperative</span> <span class="kn">import</span> <span class="n">CooperativeMeta</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.config_io.base_check</span> <span class="kn">import</span> <span class="n">FileChecking</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.success</span> <span class="kn">import</span> <span class="n">success_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
@@ -198,72 +199,59 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2020, https://vroncevic.github.io/gen_autoconf&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.1.6&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.1.7&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
-<div class="viewcode-block" id="GenPro"><a class="viewcode-back" href="../../gen_autoconf.pro.html#gen_autoconf.pro.GenPro">[docs]</a><span class="k">class</span> <span class="nc">GenPro</span><span class="p">(</span><span class="n">FileChecking</span><span class="p">):</span>
+<div class="viewcode-block" id="GenPro"><a class="viewcode-back" href="../../gen_autoconf.pro.html#gen_autoconf.pro.GenPro">[docs]</a><span class="k">class</span> <span class="nc">GenPro</span><span class="p">(</span><span class="n">FileChecking</span><span class="p">,</span> <span class="n">ProConfig</span><span class="p">,</span> <span class="n">ProName</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Defined class GenPro with attribute(s) and method(s).</span>
-<span class="sd">        Generate project by template and parameters.</span>
+<span class="sd">        Generate project_structure by template and parameters.</span>
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
-<span class="sd">                | __metaclass__ - setting cooperative metaclasses.</span>
 <span class="sd">                | GEN_VERBOSE - console text indicator for process-phase.</span>
-<span class="sd">                | PRO_STRUCTURE - project structure.</span>
-<span class="sd">                | __config - configuration dictionary.</span>
+<span class="sd">                | PRO_STRUCTURE - project_structure structure.</span>
 <span class="sd">                | __reader - reader API.</span>
 <span class="sd">                | __writer - writer API.</span>
 <span class="sd">            :methods:</span>
 <span class="sd">                | __init__ - initial constructor.</span>
 <span class="sd">                | get_reader - getter for reader object.</span>
 <span class="sd">                | get_writer - getter for writer object.</span>
-<span class="sd">                | gen_project - generate autotools project.</span>
+<span class="sd">                | gen_project - generate autotools project_structure.</span>
 <span class="sd">                | __str__ - dunder method for GenPro.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">CooperativeMeta</span>
     <span class="n">GEN_VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AUTOCONF::PRO::GEN_PRO&#39;</span>
     <span class="n">PRO_STRUCTURE</span> <span class="o">=</span> <span class="s1">&#39;/../conf/project.yaml&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Initial constructor.</span>
 
-<span class="sd">            :param project_name: parameter tool name.</span>
-<span class="sd">            :type project_name: &lt;str&gt;</span>
 <span class="sd">            :param verbose: enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: ATSTypeError | ATSBadCallError</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">checker</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">ATSChecker</span><span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
-        <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">([</span>
-            <span class="p">(</span><span class="s1">&#39;str:project_name&#39;</span><span class="p">,</span> <span class="n">project_name</span><span class="p">)</span>
-        <span class="p">])</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
         <span class="n">FileChecking</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="n">ProConfig</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="n">ProName</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="n">verbose_message</span><span class="p">(</span><span class="n">GenPro</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init generator&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span> <span class="o">=</span> <span class="n">ReadTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span> <span class="o">=</span> <span class="n">WriteTemplate</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span> <span class="o">=</span> <span class="n">WriteTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="n">project_structure</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">GenPro</span><span class="o">.</span><span class="n">PRO_STRUCTURE</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">check_path</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_path</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="n">project_structure</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_mode</span><span class="p">(</span><span class="n">file_mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_format</span><span class="p">(</span>
-            <span class="n">file_path</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;yaml&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+            <span class="n">file_path</span><span class="o">=</span><span class="n">project_structure</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;yaml&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_file_ok</span><span class="p">():</span>
-            <span class="n">yml2obj</span> <span class="o">=</span> <span class="n">Yaml2Object</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__config</span> <span class="o">=</span> <span class="n">yml2obj</span><span class="o">.</span><span class="n">read_configuration</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__config</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">yml2obj</span> <span class="o">=</span> <span class="n">Yaml2Object</span><span class="p">(</span><span class="n">project_structure</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">yml2obj</span><span class="o">.</span><span class="n">read_configuration</span><span class="p">()</span>
 
 <div class="viewcode-block" id="GenPro.get_reader"><a class="viewcode-back" href="../../gen_autoconf.pro.html#gen_autoconf.pro.GenPro.get_reader">[docs]</a>    <span class="k">def</span> <span class="nf">get_reader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -285,43 +273,33 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span></div>
 
-<div class="viewcode-block" id="GenPro.gen_project"><a class="viewcode-back" href="../../gen_autoconf.pro.html#gen_autoconf.pro.GenPro.gen_project">[docs]</a>    <span class="k">def</span> <span class="nf">gen_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="GenPro.gen_project"><a class="viewcode-back" href="../../gen_autoconf.pro.html#gen_autoconf.pro.GenPro.gen_project">[docs]</a>    <span class="k">def</span> <span class="nf">gen_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">            Generate project structure.</span>
+<span class="sd">            Generate project_structure structure.</span>
 
+<span class="sd">            :param project_name: parameter tool name.</span>
+<span class="sd">            :type project_name: &lt;str&gt;</span>
 <span class="sd">            :param verbose: enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
 <span class="sd">            :return: boolean status, True (success) | False.</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">status</span><span class="p">,</span> <span class="n">statuses</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="p">[]</span>
-        <span class="n">templates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">[</span><span class="s1">&#39;templates&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-        <span class="n">modules</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-        <span class="n">expected_num_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">templates</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">)</span> <span class="ow">and</span> <span class="n">expected_num_files</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">modules</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">template_file</span><span class="p">,</span> <span class="n">module_file</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">templates</span><span class="p">,</span> <span class="n">modules</span><span class="p">):</span>
-                <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
-                    <span class="n">template_file</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+        <span class="n">checker</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">ATSChecker</span><span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
+        <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">([</span>
+            <span class="p">(</span><span class="s1">&#39;str:project_name&#39;</span><span class="p">,</span> <span class="n">project_name</span><span class="p">)</span>
+        <span class="p">])</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">):</span>
+            <span class="n">templates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">templates</span><span class="p">):</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="n">templates</span><span class="p">,</span> <span class="n">project_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
                 <span class="p">)</span>
-                <span class="k">if</span> <span class="n">template</span><span class="p">:</span>
-                    <span class="n">status_write</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                        <span class="n">template</span><span class="p">,</span> <span class="n">module_file</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
-                    <span class="p">)</span>
-                    <span class="k">if</span> <span class="n">status_write</span><span class="p">:</span>
-                        <span class="n">statuses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">status_write</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="k">break</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">break</span>
-            <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">statuses</span><span class="p">)</span> <span class="o">==</span> <span class="n">expected_num_files</span><span class="p">,</span> <span class="nb">all</span><span class="p">(</span><span class="n">statuses</span><span class="p">)]):</span>
-                <span class="n">success_message</span><span class="p">(</span>
-                    <span class="n">GenPro</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="s1">&#39;successfully loaded templates&#39;</span>
-                <span class="p">)</span>
-                <span class="n">success_message</span><span class="p">(</span>
-                    <span class="n">GenPro</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="s1">&#39;successfully written modules&#39;</span>
-                <span class="p">)</span>
-                <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">status</span></div>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -332,9 +310,10 @@
 <span class="sd">            :rtype: &lt;str&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">, </span><span class="si">{3}</span><span class="s1">, </span><span class="si">{4}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">, </span><span class="si">{3}</span><span class="s1">, </span><span class="si">{4}</span><span class="s1">, </span><span class="si">{5}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">FileChecking</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
-            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__writer</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">)</span>
+            <span class="n">ProConfig</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">ProName</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__writer</span><span class="p">)</span>
         <span class="p">)</span></div>
 </pre></div>
 

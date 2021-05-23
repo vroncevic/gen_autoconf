@@ -36,7 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="gen_autoconf.pro.read_template module" href="gen_autoconf.pro.read_template.html" />
+    <link rel="next" title="gen_autoconf.pro.config package" href="gen_autoconf.pro.config.html" />
     <link rel="prev" title="gen_autoconf package" href="gen_autoconf.html" /> 
 </head>
 
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                2.1.6
+                2.1.7
               </div>
             
           
@@ -171,6 +171,22 @@
             
   <div class="section" id="gen-autoconf-pro-package">
 <h1>gen_autoconf.pro package<a class="headerlink" href="#gen-autoconf-pro-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gen_autoconf.pro.config.html">gen_autoconf.pro.config package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gen_autoconf.pro.config.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gen_autoconf.pro.config.pro_name.html">gen_autoconf.pro.config.pro_name module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gen_autoconf.pro.config.template_dir.html">gen_autoconf.pro.config.template_dir module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gen_autoconf.pro.config.html#module-gen_autoconf.pro.config">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -199,14 +215,14 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
 <dd>Defined class GenPro with attribute(s) and method(s).
-Generate project by template and parameters.</dd>
+Generate project_structure by templates and parameters.</dd>
 </dl>
 <dl class="class">
 <dt id="gen_autoconf.pro.GenPro">
-<em class="property">class </em><code class="descclassname">gen_autoconf.pro.</code><code class="descname">GenPro</code><span class="sig-paren">(</span><em>project_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro.html#GenPro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.GenPro" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code></p>
+<em class="property">class </em><code class="descclassname">gen_autoconf.pro.</code><code class="descname">GenPro</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro.html#GenPro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.GenPro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code>, <a class="reference internal" href="gen_autoconf.pro.config.html#gen_autoconf.pro.config.ProConfig" title="gen_autoconf.pro.config.ProConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">gen_autoconf.pro.config.ProConfig</span></code></a>, <a class="reference internal" href="gen_autoconf.pro.config.pro_name.html#gen_autoconf.pro.config.pro_name.ProName" title="gen_autoconf.pro.config.pro_name.ProName"><code class="xref py py-class docutils literal notranslate"><span class="pre">gen_autoconf.pro.config.pro_name.ProName</span></code></a></p>
 <p>Defined class GenPro with attribute(s) and method(s).
-Generate project by template and parameters.
+Generate project_structure by template and parameters.
 It defines:</p>
 <blockquote>
 <div><table class="docutils field-list" frame="void" rules="none">
@@ -214,10 +230,8 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
 <div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
-<div class="line">PRO_STRUCTURE - project structure.</div>
-<div class="line">__config - configuration dictionary.</div>
+<div class="line">PRO_STRUCTURE - project_structure structure.</div>
 <div class="line">__reader - reader API.</div>
 <div class="line">__writer - writer API.</div>
 </div>
@@ -227,7 +241,7 @@ It defines:</p>
 <div class="line">__init__ - initial constructor.</div>
 <div class="line">get_reader - getter for reader object.</div>
 <div class="line">get_writer - getter for writer object.</div>
-<div class="line">gen_project - generate autotools project.</div>
+<div class="line">gen_project - generate autotools project_structure.</div>
 <div class="line">__str__ - dunder method for GenPro.</div>
 </div>
 </td>
@@ -252,19 +266,26 @@ It defines:</p>
 
 <dl class="method">
 <dt id="gen_autoconf.pro.GenPro.gen_project">
-<code class="descname">gen_project</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro.html#GenPro.gen_project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.GenPro.gen_project" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate project structure.</p>
+<code class="descname">gen_project</code><span class="sig-paren">(</span><em>project_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro.html#GenPro.gen_project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.GenPro.gen_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate project_structure structure.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>project_name</strong> (<em>&lt;str&gt;</em>) – parameter tool name.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">boolean status, True (success) | False.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">boolean status, True (success) | False.</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;bool&gt;</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;bool&gt;</p>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
+<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first last">None</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -319,7 +340,7 @@ It defines:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gen_autoconf.pro.read_template.html" class="btn btn-neutral float-right" title="gen_autoconf.pro.read_template module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gen_autoconf.pro.config.html" class="btn btn-neutral float-right" title="gen_autoconf.pro.config package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gen_autoconf.html" class="btn btn-neutral float-left" title="gen_autoconf package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

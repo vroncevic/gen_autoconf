@@ -17,7 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Defined class WriteTemplate with attribute(s) and method(s).
-     Created API for write a template content with parameters to a file.
+     Created API for write a templates with parameters.
 '''
 
 import sys
@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.6'
+__version__ = '2.1.7'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -48,91 +48,38 @@ __status__ = 'Updated'
 class WriteTemplate(FileChecking):
     '''
         Defined class WriteTemplate with attribute(s) and method(s).
-        Created API for write a template content with parameters to a file.
+        Created API for write a templates with parameters.
         It defines:
 
             :attributes:
                 | GEN_VERBOSE - console text indicator for process-phase.
-                | __pro_dir - project directory.
-                | __src_dir - cource directory.
-                | __pro_name - project name.
             :methods:
                 | __init__ - initial constructor.
-                | write - write a template content with parameters to a file.
-                | get_pro_dir - getting project directory.
-                | get_src_dir - getting source directory.
-                | get_pro_name - getting project name.
+                | write - write a templates with parameters.
                 | __str__ - dunder method for WriteTemplate.
     '''
 
     GEN_VERBOSE = 'GEN_AUTOCONF::PRO::WRITE_TEMPLATE'
 
-    def __init__(self, project_name, verbose=False):
+    def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param project_name: project name.
-            :type project_name: <str>
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
-        checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params([
-            ('str:project_name', project_name)
-        ])
-        if status == ATSChecker.TYPE_ERROR:
-            raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR:
-            raise ATSBadCallError(error)
         FileChecking.__init__(self, verbose=verbose)
         verbose_message(WriteTemplate.GEN_VERBOSE, verbose, 'init writer')
-        self.__pro_dir = '{0}/{1}'.format(getcwd(), project_name)
-        self.__src_dir = '{0}/{1}'.format(self.__pro_dir, 'src')
-        self.__pro_name = project_name
-        if not exists(self.__pro_dir):
-            mkdir(self.__pro_dir)
-        if not exists(self.__src_dir):
-            mkdir(self.__src_dir)
 
-    def get_pro_dir(self):
+    def write(self, templates, project_name, verbose=False):
         '''
-            Getting project directory.
+            Write a templates with parameters.
 
-            :return: project directory | None.
-            :rtype: <str> | <NoneType>
-            :exceptions: None
-        '''
-        return self.__pro_dir
-
-    def get_src_dir(self):
-        '''
-            Getting source dir.
-
-            :return: source directory | None.
-            :rtype: <str> | <NoneType>
-            :exceptions: None
-        '''
-        return self.__src_dir
-
-    def get_pro_name(self):
-        '''
-            Getting project name.
-
-            :return: project name | None.
-            :rtype: <str> | <NoneType>
-            :exceptions: None
-        '''
-        return self.__pro_name
-
-    def write(self, content, module_name, verbose=False):
-        '''
-            Write a template content with parameters to a file.
-
-            :param content: parameter template content.
-            :type content: <str>
-            :param module_name: parameter file module name.
-            :type module_name: <str>
+            :param templates: parameter templates.
+            :type templates: <list>
+            :param project_name: parameter project name.
+            :type project_name: <str>
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: boolean status, True (success) | False.
@@ -141,34 +88,46 @@ class WriteTemplate(FileChecking):
         '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params([
-            ('str:content', content), ('str:module_name', module_name)
+            ('list:templates', templates), ('str:project_name', project_name)
         ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
-        verbose_message(WriteTemplate.GEN_VERBOSE, verbose, 'write templates')
-        template, status = Template(content), False
-        module_path = '{0}/{1}'.format(self.__pro_dir, module_name)
-        with open(module_path, 'w') as module_file:
-            module_content = template.substitute(
-                {'PRO': '{0}'.format(self.__pro_name)}
-            )
-            module_file.write(module_content)
-            chmod(module_path, 0o666)
-            self.check_path(module_path, verbose=verbose)
-            self.check_mode('w', verbose=verbose)
-            if 'makefile'.capitalize() in module_path:
-                self.check_format(
-                    module_path, 'makefile', verbose=verbose
+        statuses = []
+        pro_dir = '{0}/{1}/'.format(getcwd(), project_name)
+        src_dir = '{0}/{1}/src'.format(getcwd(), project_name)
+        status, expected_num_of_modules = False, len(templates)
+        if not exists(pro_dir):
+            mkdir(pro_dir)
+            mkdir(src_dir)
+        for template_content in templates:
+            module_name = template_content.keys()[0]
+            template = Template(template_content[module_name])
+            module_path = '{0}{1}'.format(pro_dir, module_name)
+            with open(module_path, 'w') as module_file:
+                module_content = template.substitute(
+                    {'PRO': '{0}'.format(project_name)}
                 )
-            else:
-                self.check_format(
-                    module_path, module_path.split('.')[1],
-                    verbose=verbose
-                )
-            if self.is_file_ok():
-                status = True
+                module_file.write(module_content)
+                chmod(module_path, 0o666)
+                self.check_path(module_path, verbose=verbose)
+                self.check_mode('w', verbose=verbose)
+                if 'makefile'.capitalize() in module_path:
+                    self.check_format(
+                        module_path, 'makefile', verbose=verbose
+                    )
+                else:
+                    self.check_format(
+                        module_path, module_path.split('.')[1],
+                        verbose=verbose
+                    )
+                if self.is_file_ok():
+                    statuses.append(True)
+                else:
+                    statuses.append(False)
+        if all(statuses) and len(statuses) == expected_num_of_modules:
+            status = True
         return status
 
     def __str__(self):
@@ -179,7 +138,6 @@ class WriteTemplate(FileChecking):
             :rtype: <str>
             :exceptions: None
         '''
-        return '{0} ({1}, {2}, {3}, {4})'.format(
-            self.__class__.__name__, FileChecking.__str__(self),
-            self.__pro_dir, self.__src_dir, self.__pro_name
+        return '{0} ({1})'.format(
+            self.__class__.__name__, FileChecking.__str__(self)
         )

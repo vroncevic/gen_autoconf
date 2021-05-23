@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.6'
+__version__ = '2.1.7'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -132,10 +132,10 @@ class GenAutoconf(CfgCLI):
                         )
                     )
                     generator = GenPro(
-                        getattr(args, 'gen'),
                         verbose=getattr(args, 'verbose') or verbose
                     )
                     status = generator.gen_project(
+                        '{0}'.format(getattr(args, 'gen')),
                         verbose=getattr(args, 'verbose') or verbose
                     )
                     if status:

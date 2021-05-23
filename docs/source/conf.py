@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 project = u'gen_autoconf'
 copyright = u'2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
-version = u'2.1.6'
+version = u'2.1.7'
 release = u'https://github.com/vroncevic/gen_autoconf/releases'
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
 templates_path = ['_templates']
@@ -30,9 +30,8 @@ man_pages = [(
     master_doc, 'gen_autoconf', u'gen_autoconf Documentation', [author], 1
 )]
 texinfo_documents = [(
-    master_doc, 'gen_autoconf', u'gen_autoconf Documentation',
-    author, 'gen_autoconf', 'One line description of project.',
-    'Miscellaneous'
+    master_doc, 'gen_autoconf', u'gen_autoconf Documentation', author,
+    'gen_autoconf', 'One line description of project.', 'Miscellaneous'
 )]
 epub_title = project
 epub_exclude_files = ['search.html']
