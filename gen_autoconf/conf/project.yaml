@@ -1,15 +1,15 @@
 templates:
-    autogen.template
-    configure.template
-    Makefile.template
-    README.template
-    src/main.template
-    src/Makefile.template
+  - autogen.template
+  - configure.template
+  - Makefile.template
+  - README.template
+  - src/main.template
+  - src/Makefile.template
 
 modules:
-    autogen.sh
-    configure.ac
-    Makefile.am
-    README.md
-    src/main.c
-    src/Makefile.am
+  - autogen.sh
+  - configure.ac
+  - Makefile.am
+  - README.md
+  - src/main.c
+  - src/Makefile.am

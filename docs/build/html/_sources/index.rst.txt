@@ -109,6 +109,10 @@ Code structure:
     ├── log/
     │   └── gen_autoconf.log
     ├── pro/
+    │   ├── config/
+    │   │   ├── __init__.py
+    │   │   ├── pro_name.py
+    │   │   └── template_dir.py
     │   ├── __init__.py
     │   ├── read_template.py
     │   └── write_template.py
@@ -126,7 +130,7 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2017 by `vroncevic.github.io/gen_autoconf <https://vroncevic.github.io/gen_autoconf>`_
+Copyright (C) 2020 by `vroncevic.github.io/gen_autoconf <https://vroncevic.github.io/gen_autoconf>`_
 
 **gen_autoconf** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,

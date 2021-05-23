@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.6'
+__version__ = '2.1.7'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -100,7 +100,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_autoconf',
-    version='2.1.6',
+    version='2.1.7',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -111,7 +111,7 @@ setup(
     keywords='Unix, Linux, Development, ANSI C, autoconf, generator',
     platforms='POSIX',
     classifiers=PYP_CLASSIFIERS,
-    packages=['gen_autoconf', 'gen_autoconf.pro'],
+    packages=['gen_autoconf', 'gen_autoconf.pro', 'gen_autoconf.pro.config'],
     install_requires=['ats-utilities'],
     package_data = {
         'gen_autoconf': [

@@ -1,6 +1,13 @@
 gen\_autoconf.pro package
 =========================
 
+Subpackages
+-----------
+
+.. toctree::
+
+    gen_autoconf.pro.config
+
 Submodules
 ----------
 

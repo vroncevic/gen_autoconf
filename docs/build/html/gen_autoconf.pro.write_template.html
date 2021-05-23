@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                2.1.6
+                2.1.7
               </div>
             
           
@@ -189,14 +189,14 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
 <dd>Defined class WriteTemplate with attribute(s) and method(s).
-Created API for write a template content with parameters to a file.</dd>
+Created API for write a templates with parameters.</dd>
 </dl>
 <dl class="class">
 <dt id="gen_autoconf.pro.write_template.WriteTemplate">
-<em class="property">class </em><code class="descclassname">gen_autoconf.pro.write_template.</code><code class="descname">WriteTemplate</code><span class="sig-paren">(</span><em>project_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gen_autoconf.pro.write_template.</code><code class="descname">WriteTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code></p>
 <p>Defined class WriteTemplate with attribute(s) and method(s).
-Created API for write a template content with parameters to a file.
+Created API for write a templates with parameters.
 It defines:</p>
 <blockquote>
 <div><table class="docutils field-list" frame="void" rules="none">
@@ -205,18 +205,12 @@ It defines:</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
 <div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
-<div class="line">__pro_dir - project directory.</div>
-<div class="line">__src_dir - cource directory.</div>
-<div class="line">__pro_name - project name.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
 <div class="line">__init__ - initial constructor.</div>
-<div class="line">write - write a template content with parameters to a file.</div>
-<div class="line">get_pro_dir - getting project directory.</div>
-<div class="line">get_src_dir - getting source directory.</div>
-<div class="line">get_pro_name - getting project name.</div>
+<div class="line">write - write a templates with parameters.</div>
 <div class="line">__str__ - dunder method for WriteTemplate.</div>
 </div>
 </td>
@@ -235,70 +229,16 @@ It defines:</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="gen_autoconf.pro.write_template.WriteTemplate.get_pro_dir">
-<code class="descname">get_pro_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate.get_pro_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate.get_pro_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getting project directory.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">project directory | None.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="gen_autoconf.pro.write_template.WriteTemplate.get_pro_name">
-<code class="descname">get_pro_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate.get_pro_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate.get_pro_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getting project name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">project name | None.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="gen_autoconf.pro.write_template.WriteTemplate.get_src_dir">
-<code class="descname">get_src_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate.get_src_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate.get_src_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getting source dir.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">source directory | None.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="gen_autoconf.pro.write_template.WriteTemplate.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>content</em>, <em>module_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write a template content with parameters to a file.</p>
+<code class="descname">write</code><span class="sig-paren">(</span><em>templates</em>, <em>project_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/pro/write_template.html#WriteTemplate.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_autoconf.pro.write_template.WriteTemplate.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a templates with parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>content</strong> (<em>&lt;str&gt;</em>) – parameter template content.</li>
-<li><strong>module_name</strong> (<em>&lt;str&gt;</em>) – parameter file module name.</li>
+<li><strong>templates</strong> (<em>&lt;list&gt;</em>) – parameter templates.</li>
+<li><strong>project_name</strong> (<em>&lt;str&gt;</em>) – parameter project name.</li>
 <li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
 </ul>
 </td>
