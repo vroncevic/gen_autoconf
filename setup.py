@@ -108,7 +108,7 @@ setup(
     license='GPL 2017 Free software to use and distributed it.',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
-    keywords='Unix, Linux, Development, ANSI C, autoconf', 'generator',
+    keywords='Unix, Linux, Development, ANSI C, autoconf, generator',
     platforms='POSIX',
     classifiers=PYP_CLASSIFIERS,
     packages=['gen_autoconf', 'gen_autoconf.pro'],
