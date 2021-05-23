@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.5'
+__version__ = '2.1.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -96,7 +96,7 @@ class ReadTemplate(FileChecking):
         '''
             Read a template and return a content.
 
-            :param template_file: file name.
+            :param template_file: parameter file name.
             :type template_file: <str>
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>

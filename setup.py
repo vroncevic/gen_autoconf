@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.5'
+__version__ = '2.1.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -100,7 +100,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_autoconf',
-    version='2.1.5',
+    version='2.1.6',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -108,7 +108,7 @@ setup(
     license='GPL 2017 Free software to use and distributed it.',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
-    keywords='Unix, Linux, Development, ANSI C, autoconf',
+    keywords='Unix, Linux, Development, ANSI C, autoconf', 'generator',
     platforms='POSIX',
     classifiers=PYP_CLASSIFIERS,
     packages=['gen_autoconf', 'gen_autoconf.pro'],
@@ -127,11 +127,9 @@ setup(
             'log/gen_autoconf.log'
         ]
     },
-    data_files=[
-        (
-            '/usr/local/bin/', [
-                '{0}{1}'.format(TOOL_DIR, 'run/gen_autoconf_run.py')
-            ]
-        )
-    ]
+    data_files=[(
+        '/usr/local/bin/', [
+            '{0}{1}'.format(TOOL_DIR, 'run/gen_autoconf_run.py')
+        ]
+    )]
 )

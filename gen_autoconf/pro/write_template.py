@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.5'
+__version__ = '2.1.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -129,9 +129,9 @@ class WriteTemplate(FileChecking):
         '''
             Write a template content with parameters to a file.
 
-            :param content: template content.
+            :param content: parameter template content.
             :type content: <str>
-            :param module_name: file module name.
+            :param module_name: parameter file module name.
             :type module_name: <str>
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
@@ -158,9 +158,15 @@ class WriteTemplate(FileChecking):
             chmod(module_path, 0o666)
             self.check_path(module_path, verbose=verbose)
             self.check_mode('w', verbose=verbose)
-            self.check_format(
-                module_path, module_path.split('.')[1], verbose=verbose
-            )
+            if 'makefile'.capitalize() in module_path:
+                self.check_format(
+                    module_path, 'makefile', verbose=verbose
+                )
+            else:
+                self.check_format(
+                    module_path, module_path.split('.')[1],
+                    verbose=verbose
+                )
             if self.is_file_ok():
                 status = True
         return status
