@@ -24,6 +24,7 @@ import sys
 from os.path import exists
 
 try:
+    from six import add_metaclass
     from pathlib import Path
     from gen_autoconf.pro import GenPro
     from ats_utilities.logging import ATSLogger
@@ -40,12 +41,13 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.7'
+__version__ = '2.1.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
+@add_metaclass(CooperativeMeta)
 class GenAutoconf(CfgCLI):
     '''
         Defined class GenAutoconf with attribute(s) and method(s).
@@ -53,7 +55,6 @@ class GenAutoconf(CfgCLI):
         It defines:
 
             :attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | CONFIG - configuration file path.
                 | LOG - tool log file path.
@@ -65,7 +66,6 @@ class GenAutoconf(CfgCLI):
                 | __str__ - dunder method for GenAutoconf.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_AUTOCONF'
     CONFIG = '/conf/gen_autoconf.cfg'
     LOG = '/log/gen_autoconf.log'
