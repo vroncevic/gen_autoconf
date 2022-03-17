@@ -31,7 +31,7 @@ other information that should be provided before the modules are installed.
 
 ![Install Python2 Package](https://github.com/vroncevic/gen_autoconf/workflows/Install%20Python2%20Package%20gen_autoconf/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_autoconf/workflows/Install%20Python3%20Package%20gen_autoconf/badge.svg?branch=master)
 
-Currently there are three ways to install tool:
+Currently there are three ways to install tool
 * Install process based on pip
 * Install process based on setup.py (setuptools)
 * Install process based on docker mechanism
@@ -52,7 +52,7 @@ pip3 install gen_autoconf
 
 Navigate to **[release page](https://github.com/vroncevic/gen_autoconf/releases)** download and extract release archive.
 
-To install modules, locate and run setup.py, type the following:
+To install modules, locate and run setup.py, type the following
 ```
 tar xvzf gen_autoconf-x.y.z.tar.gz
 cd gen_autoconf-x.y.z
@@ -76,19 +76,20 @@ You can use Dockerfile to create image/container.
 
 ### Dependencies
 
-**gen_autoconf** requires next modules and libraries:
+**gen_autoconf** requires next modules and libraries
 
 * [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 
 ### Tool structure
 
-**gen_autoconf** is based on OOP:
+**gen_autoconf** is based on OOP
 
 Generator structure:
 
 ```
 gen_autoconf/
 ├── conf/
+|   ├── gen_autoconf.logo
 │   ├── gen_autoconf.cfg
 │   ├── gen_autoconf_util.cfg
 │   ├── project.yaml
@@ -119,7 +120,7 @@ gen_autoconf/
 
 [![Documentation Status](https://readthedocs.org/projects/gen_autoconf/badge/?version=latest)](https://gen_autoconf.readthedocs.io/projects/gen_autoconf/en/latest/?badge=latest)
 
-More documentation and info at:
+More documentation and info at
 * [gen_autoconf.readthedocs.io](https://gen_autoconf.readthedocs.io/en/latest/)
 * [www.python.org](https://www.python.org/)
 

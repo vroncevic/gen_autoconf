@@ -21,10 +21,9 @@
 '''
 
 import sys
-from os.path import isdir
+from os.path import dirname, realpath, isdir
 
 try:
-    from pathlib import Path
     from gen_autoconf.pro.config import ProConfig
     from gen_autoconf.pro.config.template_dir import TemplateDir
     from ats_utilities.checker import ATSChecker
@@ -40,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.8'
+__version__ = '2.2.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -76,7 +75,7 @@ class ReadTemplate(FileChecking, TemplateDir):
         TemplateDir.__init__(self, verbose=verbose)
         verbose_message(ReadTemplate.GEN_VERBOSE, verbose, 'init reader')
         pro_template_dir = '{0}{1}'.format(
-            Path(__file__).parent, ReadTemplate.TEMPLATE_DIR
+            dirname(realpath(__file__)), ReadTemplate.TEMPLATE_DIR
         )
         if isdir(pro_template_dir):
             self.template_dir = pro_template_dir
