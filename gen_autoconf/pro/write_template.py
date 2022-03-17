@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.1.8'
+__version__ = '2.2.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -102,7 +102,8 @@ class WriteTemplate(FileChecking):
             mkdir(pro_dir)
             mkdir(src_dir)
         for template_content in templates:
-            module_name = template_content.keys()[0]
+            print(template_content)
+            module_name = list(template_content.keys())[0]
             template = Template(template_content[module_name])
             module_path = '{0}{1}'.format(pro_dir, module_name)
             with open(module_path, 'w') as module_file:
