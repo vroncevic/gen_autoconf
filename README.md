@@ -6,6 +6,9 @@
 
 Developed in **[python](https://www.python.org/)** code: **100%**.
 
+[![codecov](https://codecov.io/gh/vroncevic/gen_autoconf/branch/master/graph/badge.svg?token=21LYIV9SNU)](https://codecov.io/gh/vroncevic/gen_autoconf)
+[![CircleCI](https://circleci.com/gh/vroncevic/gen_autoconf/tree/master.svg?style=svg)](https://circleci.com/gh/vroncevic/gen_autoconf/tree/master)
+
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
