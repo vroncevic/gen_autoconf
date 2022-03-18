@@ -112,7 +112,7 @@ class ProName:
             :exceptions: None
         '''
         return all([
-            self.__pro_name is not None, isinstance(self.__pro_name, str)
+            bool(self.__pro_name), isinstance(self.__pro_name, str)
         ])
 
     def __str__(self):

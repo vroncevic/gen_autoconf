@@ -118,7 +118,7 @@ class ProConfig:
             :exceptions: None
         '''
         return all([
-            self.__config is not None, isinstance(self.__config, dict)
+            bool(self.__config), isinstance(self.__config, dict)
         ])
 
     def __str__(self):

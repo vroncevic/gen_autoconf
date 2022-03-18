@@ -115,7 +115,7 @@ class TemplateDir:
             :exceptions: None
         '''
         return all([
-            self.__template_dir is not None,
+            bool(self.__template_dir),
             isinstance(self.__template_dir, str)
         ])
 

@@ -49,7 +49,7 @@ class ProConfigTestCase(unittest.TestCase):
         It defines:
 
             :attributes:
-                | configuration - Project config object.
+                | pro_configuration - Project config object.
             :methods:
                 | setUp - call before test case.
                 | tearDown - call after test case.
@@ -58,18 +58,18 @@ class ProConfigTestCase(unittest.TestCase):
 
     def setUp(self):
         '''Call before test case.'''
-        self.configuration = ProConfig()
+        self.pro_configuration = ProConfig()
 
     def tearDown(self):
         '''Call after test case.'''
-        self.configuration = None
+        self.pro_configuration = None
 
     def test_is_config_ok(self):
         '''Test project config check.'''
-        self.configuration.config = {
+        self.pro_configuration.config = {
             'base': 'none', 'extended': 'none', 'extra': 'none'
         }
-        self.assertEqual(self.configuration.is_config_ok(), True)
+        self.assertEqual(self.pro_configuration.is_config_ok(), True)
 
 
 if __name__ == '__main__':
