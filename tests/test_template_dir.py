@@ -49,7 +49,7 @@ class TemplateDirTestCase(unittest.TestCase):
         It defines:
 
             :attributes:
-                | template - Template dir object.
+                | template_handler - Template dir object.
             :methods:
                 | setUp - call before test case.
                 | tearDown - call after test case.
@@ -58,18 +58,18 @@ class TemplateDirTestCase(unittest.TestCase):
 
     def setUp(self):
         '''Call before test case.'''
-        self.template = TemplateDir()
+        self.template_handler = TemplateDir()
 
     def tearDown(self):
         '''Call after test case.'''
-        self.template = None
+        self.template_handler = None
 
     def test_is_template_dir_ok(self):
         '''Test template dir check.'''
-        self.template.template_dir = '{0}/{1}'.format(
+        self.template_handler.template_dir = '{0}/{1}'.format(
             dirname(realpath(__file__)), '../gen_autoconf/conf/template/'
         )
-        self.assertEqual(self.template.is_template_dir_ok(), True)
+        self.assertEqual(self.template_handler.is_template_dir_ok(), True)
 
 
 if __name__ == '__main__':
