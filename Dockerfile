@@ -25,8 +25,10 @@ RUN DEBIAN_FRONTEND=noninteractive \
     ca-certificates \
     openssl \
     python \
+    python-dev \
     python-wheel \
     python3 \
+    python3-dev \
     python3-wheel \
     libyaml-dev \
     binutils \
