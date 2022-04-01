@@ -17,13 +17,18 @@ FROM debian:10
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install -yq --no-install-recommends \
+    vim \
+    nano \
     tree \
     htop \
+    unzip \
+    ca-certificates \
+    openssl \
     python \
-    python-pip \
+    python-dev \
     python-wheel \
     python3 \
-    python3-pip \
+    python3-dev \
     python3-wheel \
     libyaml-dev \
     binutils \
@@ -32,27 +37,45 @@ RUN DEBIAN_FRONTEND=noninteractive \
     g++ \
     sed \
     gawk \
+    wget \
     autoconf \
     automake \
     autotools-dev
 
-RUN pip2 install --upgrade setuptools
-RUN pip3 install --upgrade setuptools
+RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+RUN python2 get-pip.py
+RUN python2 -m pip install --upgrade setuptools
+RUN python2 -m pip install --upgrade pip
+RUN python2 -m pip install --upgrade build
+RUN rm -f get-pip.py
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python3 get-pip.py
+RUN python3 -m pip install --upgrade setuptools
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install --upgrade build
+RUN rm -f get-pip.py
 RUN mkdir /gen_autoconf/
 COPY gen_autoconf /gen_autoconf/
 COPY setup.py /
+COPY setup.cfg /
+COPY pyproject.toml /
+COPY MANIFEST.in /
 COPY README.md /
+COPY LICENSE /
 COPY requirements.txt /
 RUN pip2 install -r requirements.txt
 RUN pip3 install -r requirements.txt
 RUN rm -f requirements.txt
 RUN find /gen_autoconf/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
-RUN python2 setup.py install_lib
-RUN python2 setup.py install_egg_info
-RUN python2 setup.py install_data
-RUN python3 setup.py install_lib
-RUN python3 setup.py install_egg_info
-RUN python3 setup.py install_data
+RUN python2 -m build --no-isolation --wheel
+RUN pip2 install /dist/gen_autoconf-*-py2-none-any.whl
+RUN python3 -m build --no-isolation --wheel
+RUN pip3 install /dist/gen_autoconf-*-py3-none-any.whl
 RUN rm -rf /gen_autoconf/
+RUN rm -rf dist/ tests/
+RUN rm -f setup.cfg
+RUN rm -f pyproject.toml
+RUN rm -f MANIFEST.in
 RUN rm -f setup.py
 RUN rm -f README.md
+RUN rm -f LICENSE

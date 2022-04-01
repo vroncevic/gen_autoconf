@@ -4,10 +4,9 @@
 
 **gen_autoconf** is tool for creating C project skeleton.
 
-Developed in **[python](https://www.python.org/)** code: **100%**.
+Developed in **[python](https://www.python.org/)** code.
 
-[![codecov](https://codecov.io/gh/vroncevic/gen_autoconf/branch/dev/graph/badge.svg?token=21LYIV9SNU)](https://codecov.io/gh/vroncevic/gen_autoconf)
-[![CircleCI](https://circleci.com/gh/vroncevic/gen_autoconf/tree/master.svg?style=svg)](https://circleci.com/gh/vroncevic/gen_autoconf/tree/master)
+[![codecov](https://codecov.io/gh/vroncevic/gen_autoconf/branch/dev/graph/badge.svg?token=21LYIV9SNU)](https://codecov.io/gh/vroncevic/gen_autoconf) [![CircleCI](https://circleci.com/gh/vroncevic/gen_autoconf/tree/master.svg?style=svg)](https://circleci.com/gh/vroncevic/gen_autoconf/tree/master)
 
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
@@ -26,6 +25,7 @@ other information that should be provided before the modules are installed.
 - [Dependencies](#dependencies)
 - [Tool structure](#tool-structure)
 - [Docs](#docs)
+- [Contributing](#contributing)
 - [Copyright and Licence](#copyright-and-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -44,7 +44,8 @@ Currently there are three ways to install tool
 Python package is located at **[pypi.org](https://pypi.org/project/gen_autoconf/)**.
 
 You can install by using pip
-```
+
+```bash
 #python2
 pip install gen_autoconf
 #python3
@@ -56,7 +57,8 @@ pip3 install gen_autoconf
 Navigate to **[release page](https://github.com/vroncevic/gen_autoconf/releases)** download and extract release archive.
 
 To install modules, locate and run setup.py, type the following
-```
+
+```bash
 tar xvzf gen_autoconf-x.y.z.tar.gz
 cd gen_autoconf-x.y.z
 #python2
@@ -87,9 +89,9 @@ You can use Dockerfile to create image/container.
 
 **gen_autoconf** is based on OOP
 
-Generator structure:
+Generator structure
 
-```
+```bash
 gen_autoconf/
 ├── conf/
 |   ├── gen_autoconf.logo
@@ -126,6 +128,10 @@ gen_autoconf/
 More documentation and info at
 * [gen_autoconf.readthedocs.io](https://gen_autoconf.readthedocs.io/en/latest/)
 * [www.python.org](https://www.python.org/)
+
+### Contributing
+
+[Contributing to ats_utilities](CONTRIBUTING.md)
 
 ### Copyright and Licence
 

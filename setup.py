@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.2.8'
+__version__ = '2.3.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -77,6 +77,7 @@ def install_directory():
 
 INSTALL_DIR = install_directory()
 TOOL_DIR = 'gen_autoconf/'
+CONF, TEMPLATE, LOG = 'conf', 'conf/template', 'log'
 if not bool(INSTALL_DIR):
     print('[setup] force exit from install process')
     sys.exit(127)
@@ -102,7 +103,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_autoconf',
-    version='2.2.8',
+    version='2.3.8',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -117,17 +118,17 @@ setup(
     install_requires=['ats-utilities'],
     package_data={
         'gen_autoconf': [
-            'conf/gen_autoconf.logo',
-            'conf/gen_autoconf.cfg',
-            'conf/gen_autoconf_util.cfg',
-            'conf/project.yaml',
-            'conf/template/README.template',
-            'conf/template/Makefile.template',
-            'conf/template/autogen.template',
-            'conf/template/configure.template',
-            'conf/template/src/Makefile.template',
-            'conf/template/src/main.template',
-            'log/gen_autoconf.log'
+            '{0}/{1}'.format(CONF, 'gen_autoconf.logo'),
+            '{0}/{1}'.format(CONF, 'gen_autoconf.cfg'),
+            '{0}/{1}'.format(CONF, 'gen_autoconf_util.cfg'),
+            '{0}/{1}'.format(CONF, 'project.yaml'),
+            '{0}/{1}'.format(TEMPLATE, 'README.template'),
+            '{0}/{1}'.format(TEMPLATE, 'Makefile.template'),
+            '{0}/{1}'.format(TEMPLATE, 'autogen.template'),
+            '{0}/{1}'.format(TEMPLATE, 'configure.template'),
+            '{0}/{1}'.format(TEMPLATE, 'src/Makefile.template'),
+            '{0}/{1}'.format(TEMPLATE, 'src/main.template'),
+            '{0}/{1}'.format(LOG, 'gen_autoconf.log')
         ]
     },
     data_files=[(
