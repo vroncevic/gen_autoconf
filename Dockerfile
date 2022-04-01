@@ -17,8 +17,13 @@ FROM debian:10
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install -yq --no-install-recommends \
+    vim \
+    nano \
     tree \
     htop \
+    unzip \
+    ca-certificates \
+    openssl \
     python \
     python-wheel \
     python3 \
