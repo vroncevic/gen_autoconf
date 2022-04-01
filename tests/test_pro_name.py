@@ -36,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2022, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.2.8'
+__version__ = '2.9.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -59,6 +59,7 @@ class ProNameTestCase(unittest.TestCase):
     def setUp(self):
         '''Call before test case.'''
         self.pro = ProName()
+        self.pro.pro_name = 'simple_test'
 
     def tearDown(self):
         '''Call after test case.'''
@@ -66,7 +67,6 @@ class ProNameTestCase(unittest.TestCase):
 
     def test_is_pro_name_ok(self):
         '''Test pro name check.'''
-        self.pro.pro_name = 'simple_test'
         self.assertEqual(self.pro.is_pro_name_ok(), True)
 
 
