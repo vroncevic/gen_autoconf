@@ -30,6 +30,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     g++ \
     sed \
     gawk \
+    wget \
     autoconf \
     automake \
     autotools-dev
