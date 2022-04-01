@@ -20,10 +20,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     tree \
     htop \
     python \
-    python-pip \
     python-wheel \
     python3 \
-    python3-pip \
     python3-wheel \
     libyaml-dev \
     binutils \
