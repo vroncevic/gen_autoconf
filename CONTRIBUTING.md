@@ -4,4 +4,4 @@ The following is a set of guidelines for contributing to gen_autoconf and its pa
 
 ## Code of Conduct
 
-gen_autoconf project and everyone participating in it is governed by the [gen_autoconf Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [gen_autoconf](mailto:elektron.ronca@gmail.com).
+gen_autoconf project and everyone participating in it is governed by the [gen_autoconf code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [gen_autoconf](mailto:elektron.ronca@gmail.com).
