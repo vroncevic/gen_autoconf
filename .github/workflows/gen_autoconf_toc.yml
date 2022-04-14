@@ -1,4 +1,4 @@
-name: TOC Generator gen_autoconf
+name: gen_autoconf toc generator
 on:
   push:
     branches: [ master ]
@@ -6,7 +6,7 @@ on:
       - '**.md'
 jobs:
   generateTOC:
-    name: TOC Generator
+    name: gen_autoconf toc generator
     runs-on: ubuntu-latest
     steps:
       - uses: technote-space/toc-generator@v2

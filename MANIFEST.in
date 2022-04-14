@@ -1,2 +1,13 @@
 global-exclude *.py[cod]
 global-exclude *.editorconfig
+include gen_autoconf/conf/
+include gen_autoconf/conf/gen_autoconf.logo
+include gen_autoconf/conf/gen_autoconf.cfg
+include gen_autoconf/conf/gen_autoconf_util.cfg
+include gen_autoconf/conf/project.yaml
+include gen_autoconf/conf/template/autogen.template
+include gen_autoconf/conf/template/configure.template
+include gen_autoconf/conf/template/Makefile.template
+include gen_autoconf/conf/template/README.template
+include gen_autoconf/conf/template/src/main.template
+include gen_autoconf/conf/template/src/Makefile.template
