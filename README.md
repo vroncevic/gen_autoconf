@@ -160,7 +160,7 @@ gen_autoconf/
 
 ### Docs
 
-[![documentation status](https://readthedocs.org/projects/gen-autoconf/badge/?version=master)](https://gen-autoconf.readthedocs.io/projects/gen-autoconf/en/master/?badge=master)
+[![documentation status](https://readthedocs.org/projects/gen-autoconf/badge/?version=latest)](https://gen-autoconf.readthedocs.io/en/latest/?badge=latest)
 
 📗 More documentation and info at
 
