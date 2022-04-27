@@ -20,8 +20,8 @@ other information that should be provided before the modules are installed.
 .. |github contributors| image:: https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg
    :target: https://github.com/vroncevic/gen_autoconf/graphs/contributors
 
-.. |documentation status| image:: https://readthedocs.org/projects/gen_autoconf/badge/?version=latest
-   :target: https://gen_autoconf.readthedocs.io/projects/gen_autoconf/en/latest/?badge=latest
+.. |documentation status| image:: https://readthedocs.org/projects/gen-autoconf/badge/?version=latest
+   :target: https://readthedocs.org/projects/gen-autoconf/badge/?version=latest
 
 .. toctree::
    :maxdepth: 4
