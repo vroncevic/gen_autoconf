@@ -1,4 +1,4 @@
-name: gen_autoconf install python2 package
+name: gen_autoconf_python3_build
 on:
   push:
     branches: [ master ]
@@ -24,12 +24,12 @@ jobs:
     - name: set up Python
       uses: actions/setup-python@v1
       with:
-        python-version: '2.7'
+        python-version: '3.9'
     - name: install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install setuptools wheel
         pip install -r requirements.txt
-    - name: build and publish
+    - name: Build and publish
       run: |
         python setup.py --github sdist bdist_wheel

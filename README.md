@@ -12,7 +12,7 @@ The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-[![gen_autoconf py checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_py_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_py_checker.yml) [![gen_autoconf python package](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/graphs/contributors)
+[![gen_autoconf python checker](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python_checker?style=flat&label=gen_autoconf%20python%20checker)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml) [![gen_autoconf package checker](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_package_checker?style=flat&label=gen_autoconf%20package%20checker)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -33,7 +33,11 @@ other information that should be provided before the modules are installed.
 
 ### Installation
 
-[![gen_autoconf build python2 package](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python2_publish.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python2_publish.yml) [![gen_autoconf build python3 package](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python3_publish.yml)
+Used next development environment
+
+![debian linux os](https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/debtux.png)
+
+[![gen_autoconf python2 build](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python2_build?style=flat&label=gen_autoconf%20python2%20build)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python2_build.yml) [![gen_autoconf python3 build](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python3_build?style=flat&label=gen_autoconf%20python3%20build)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python3_build.yml)
 
 Currently there are four ways to install framework
 * Install process based on using pip mechanism
@@ -58,7 +62,7 @@ pip3 install gen_autoconf
 
 Navigate to **[release page](https://github.com/vroncevic/gen_autoconf/releases)** download and extract release archive 📦.
 
-To install **gen-autoconf**, run
+To install **gen-autoconf** 📦 run
 
 ```bash
 tar xvzf gen-autoconf-x.y.z.tar.gz
@@ -89,7 +93,7 @@ rm -f get-pip.py
 
 Navigate to release **[page](https://github.com/vroncevic/gen_autoconf/releases/)** download and extract release archive 📦.
 
-To install **gen_autoconf** type the following
+To install **gen_autoconf** 📦 type the following
 
 ```bash
 tar xvzf gen_autoconf-x.y.z.tar.gz
@@ -110,13 +114,13 @@ python3 setup.py install_egg_info
 
 You can use Dockerfile to create image/container 🚢.
 
-[![gen_autoconf docker checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_docker_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_docker_checker.yml)
+[![gen_autoconf docker checker](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_docker_checker?style=flat&label=gen_autoconf%20docker%20checker)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_docker_checker.yml)
 
 ### Dependencies
 
 **gen_autoconf** requires next modules and libraries
 
-* [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
+* [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/gen_autoconf)
 
 ### Tool structure
 
@@ -156,7 +160,7 @@ gen_autoconf/
 
 ### Docs
 
-[![documentation status](https://readthedocs.org/projects/gen-autoconf/badge/?version=master)](https://gen-autoconf.readthedocs.io/projects/gen-autoconf/en/master/?badge=master) [![Pages build deployment](https://github.com/vroncevic/gen_autoconf/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/pages/pages-build-deployment)
+[![documentation status](https://readthedocs.org/projects/gen-autoconf/badge/?version=master)](https://gen-autoconf.readthedocs.io/projects/gen-autoconf/en/master/?badge=master)
 
 📗 More documentation and info at
 
