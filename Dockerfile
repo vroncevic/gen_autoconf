@@ -66,7 +66,6 @@ COPY requirements.txt /
 RUN pip2 install -r requirements.txt
 RUN pip3 install -r requirements.txt
 RUN rm -f requirements.txt
-RUN find /gen_autoconf/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
 RUN python2 -m build --no-isolation --wheel
 RUN pip2 install /dist/gen_autoconf-*-py2-none-any.whl
 RUN python3 -m build --no-isolation --wheel
@@ -79,3 +78,4 @@ RUN rm -f MANIFEST.in
 RUN rm -f setup.py
 RUN rm -f README.md
 RUN rm -f LICENSE
+

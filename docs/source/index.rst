@@ -1,26 +1,26 @@
 Create C project skeleton
 --------------------------
 
-**gen_autoconf** is tool for creating C project skeleton.
+☯️ **gen_autoconf** is tool for creating C project skeleton.
 
-Developed in `python <https://www.python.org/>`_ code.
+Developed in 🐍 `python <https://www.python.org/>`_ code.
 
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-|Python package| |GitHub issues| |Documentation Status| |GitHub contributors|
+|python package| |github issues| |documentation status| |github contributors|
 
-.. |Python package| image:: https://github.com/vroncevic/gen_autoconf/workflows/Python%20package%20gen_autoconf/badge.svg
-   :target: https://github.com/vroncevic/gen_autoconf/workflows/Python%20package%20gen_autoconf/badge.svg?branch=master
+.. |python package| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python_checker?style=flat&label=gen_autoconf%20python%20checker
+   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python_checker
 
-.. |GitHub issues| image:: https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg
-   :target: https://github.com/vroncevic/gen_autoconf/issues
+.. |github issues| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_package_checker?style=flat&label=gen_autoconf%20package%20checker
+   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_package_checker
 
-.. |GitHub contributors| image:: https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg
+.. |github contributors| image:: https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg
    :target: https://github.com/vroncevic/gen_autoconf/graphs/contributors
 
-.. |Documentation Status| image:: https://readthedocs.org/projects/gen_autoconf/badge/?version=latest
+.. |documentation status| image:: https://readthedocs.org/projects/gen_autoconf/badge/?version=latest
    :target: https://gen_autoconf.readthedocs.io/projects/gen_autoconf/en/latest/?badge=latest
 
 .. toctree::
@@ -33,13 +33,13 @@ other information that should be provided before the modules are installed.
 Installation
 -------------
 
-|Install Python2 Package| |Install Python3 Package|
+|install python2 package| |install python3 package|
 
-.. |Install Python2 Package| image:: https://github.com/vroncevic/gen_autoconf/workflows/Install%20Python2%20Package%20gen_autoconf/badge.svg
-   :target: https://github.com/vroncevic/gen_autoconf/workflows/Install%20Python2%20Package%20gen_autoconf/badge.svg?branch=master
+.. |install python2 package| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python2_build?style=flat&label=gen_autoconf%20python2%20build
+   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python2_build
 
-.. |Install Python3 Package| image:: https://github.com/vroncevic/gen_autoconf/workflows/Install%20Python3%20Package%20gen_autoconf/badge.svg
-   :target: https://github.com/vroncevic/gen_autoconf/workflows/Install%20Python3%20Package%20gen_autoconf/badge.svg?branch=master
+.. |install python3 package| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python3_build?style=flat&label=gen_autoconf%20python3%20build
+   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python3_build
 
 Navigate to release `page`_ download and extract release archive.
 
@@ -71,10 +71,10 @@ You can use Docker to create image/container, or You can use pip to install
     #python3
     pip3 install gen_autoconf
 
-|GitHub docker checker|
+|github docker checker|
 
-.. |GitHub docker checker| image:: https://github.com/vroncevic/gen_autoconf/workflows/gen_autoconf%20docker%20checker/badge.svg
-   :target: https://github.com/vroncevic/gen_autoconf/actions?query=workflow%3A%22gen_autoconf+docker+checker%22
+.. |github docker checker| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_docker_checker?style=flat&label=gen_autoconf%20docker%20checker
+   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_docker_checker
 
 Dependencies
 -------------
@@ -88,7 +88,7 @@ Tool structure
 
 **gen_autoconf** is based on OOP
 
-Code structure
+🧰 Code structure
 
 .. code-block:: bash
 
@@ -123,13 +123,13 @@ Code structure
 Copyright and licence
 ----------------------
 
-|License: GPL v3| |License: Apache 2.0|
+|license: gpl v3| |license: apache 2.0|
 
-.. |License: GPL v3| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+.. |license: gpl v3| image:: https://img.shields.io/badge/license-gplv3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0
 
-.. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
-   :target: https://opensource.org/licenses/Apache-2.0
+.. |license: apache 2.0| image:: https://img.shields.io/badge/license-apache%202.0-blue.svg
+   :target: https://opensource.org/licenses/apache-2.0
 
 Copyright (C) 2020 by `vroncevic.github.io/gen_autoconf <https://vroncevic.github.io/gen_autoconf>`_
 
@@ -137,16 +137,16 @@ Copyright (C) 2020 by `vroncevic.github.io/gen_autoconf <https://vroncevic.githu
 it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
 
-Lets help and support PSF.
+🌎 🌍 🌏 Lets help and support PSF.
 
-|Python Software Foundation|
+|python software foundation|
 
-.. |Python Software Foundation| image:: https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/psf-logo-alpha.png
+.. |python software foundation| image:: https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/psf-logo-alpha.png
    :target: https://www.python.org/psf/
 
-|Donate|
+|donate|
 
-.. |Donate| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
+.. |donate| image:: https://www.paypalobjects.com/en_us/i/btn/btn_donatecc_lg.gif
    :target: https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2
 
 Indices and tables
