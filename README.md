@@ -2,11 +2,9 @@
 
 # Create C project skeleton
 
-☯️ **gen_autoconf** is tool for creating C project skeleton.
+**gen_autoconf** is tool for creating C project skeleton.
 
-Developed in 🐍 **[python](https://www.python.org/)** code.
-
-[![codecov](https://codecov.io/gh/vroncevic/gen_autoconf/branch/dev/graph/badge.svg?token=21LYIV9SNU)](https://codecov.io/gh/vroncevic/gen_autoconf) [![CircleCI](https://circleci.com/gh/vroncevic/gen_autoconf/tree/master.svg?style=svg)](https://circleci.com/gh/vroncevic/gen_autoconf/tree/master)
+Developed in **[python](https://www.python.org/)** code.
 
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
@@ -47,36 +45,24 @@ Currently there are four ways to install framework
 
 ##### Install using pip
 
-Python 📦 is located at **[pypi.org](https://pypi.org/project/gen_autoconf/)**.
+Python is located at **[pypi.org](https://pypi.org/project/gen_autoconf/)**.
 
 You can install by using pip
 
 ```bash
-#python2
-pip install gen_autoconf
 #python3
 pip3 install gen_autoconf
 ```
 
 ##### Install using build
 
-Navigate to **[release page](https://github.com/vroncevic/gen_autoconf/releases)** download and extract release archive 📦.
+Navigate to **[release page](https://github.com/vroncevic/gen_autoconf/releases)** download and extract release archive.
 
-To install **gen-autoconf** 📦 run
+To install **gen-autoconf** run
 
 ```bash
 tar xvzf gen-autoconf-x.y.z.tar.gz
 cd gen-autoconf-x.y.z
-# python2
-wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
-python2 get-pip.py
-python2 -m pip install --upgrade setuptools
-python2 -m pip install --upgrade pip
-python2 -m pip install --upgrade build
-pip2 install -r requirements.txt
-python2 -m build -s --no-isolation --wheel
-pip2 install dist/gen-autoconf-x.y.z-py2-none-any.whl
-rm -f get-pip.py
 # python3
 wget https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py 
@@ -91,18 +77,13 @@ rm -f get-pip.py
 
 ##### Install using py setup
 
-Navigate to release **[page](https://github.com/vroncevic/gen_autoconf/releases/)** download and extract release archive 📦.
+Navigate to release **[page](https://github.com/vroncevic/gen_autoconf/releases/)** download and extract release archive.
 
-To install **gen_autoconf** 📦 type the following
+To install **gen_autoconf** type the following
 
 ```bash
 tar xvzf gen_autoconf-x.y.z.tar.gz
 cd gen_autoconf-x.y.z/
-# python2
-pip2 install -r requirements.txt
-python2 setup.py install_lib
-python2 setup.py install_data
-python2 setup.py install_egg_info
 # python3
 pip3 install -r requirements.txt
 python3 setup.py install_lib
@@ -112,9 +93,7 @@ python3 setup.py install_egg_info
 
 ##### Install using docker
 
-You can use Dockerfile to create image/container 🚢.
-
-[![gen_autoconf docker checker](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_docker_checker?style=flat&label=gen_autoconf%20docker%20checker)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_docker_checker.yml)
+You can use Dockerfile to create image/container.
 
 ### Dependencies
 
@@ -126,7 +105,7 @@ You can use Dockerfile to create image/container 🚢.
 
 **gen_autoconf** is based on OOP
 
-🧰 Generator structure
+Generator structure
 
 ```bash
 gen_autoconf/
@@ -162,23 +141,23 @@ gen_autoconf/
 
 [![documentation status](https://readthedocs.org/projects/gen-autoconf/badge/?version=latest)](https://gen-autoconf.readthedocs.io/en/latest/?badge=latest)
 
-📗 More documentation and info at
+More documentation and info at
 
 * [gen_autoconf.readthedocs.io](https://gen_autoconf.readthedocs.io/en/latest/)
 * [www.python.org](https://www.python.org/)
 
 ### Contributing
 
-🌎 🌍 🌏 [Contributing to gen_autoconf](CONTRIBUTING.md)
+[Contributing to gen_autoconf](CONTRIBUTING.md)
 
 ### Copyright and Licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2020 by [vroncevic.github.io/gen_autoconf](https://vroncevic.github.io/gen_autoconf/)
+Copyright (C) 2020-2024 by [vroncevic.github.io/gen_autoconf](https://vroncevic.github.io/gen_autoconf/)
 
 **gen_autoconf** is free software; you can redistribute it and/or modify
-it under the same terms as Python itself, either Python version 2.x/3.x or,
+it under the same terms as Python itself, either Python version 3.x or,
 at your option, any later version of Python 3 you may have available.
 
 Lets help and support PSF.
