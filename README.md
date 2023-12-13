@@ -10,7 +10,7 @@ The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-[![gen_autoconf python checker](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python_checker?style=flat&label=gen_autoconf%20python%20checker)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml) [![gen_autoconf package checker](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_package_checker?style=flat&label=gen_autoconf%20package%20checker)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/graphs/contributors)
+[![gen_autoconf python checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml) [![gen_autoconf package checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -35,7 +35,7 @@ Used next development environment
 
 ![debian linux os](https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/debtux.png)
 
-[![gen_autoconf python2 build](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python2_build?style=flat&label=gen_autoconf%20python2%20build)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python2_build.yml) [![gen_autoconf python3 build](https://img.shields.io/github/workflow/status/vroncevic/gen_autoconf/gen_autoconf_python3_build?style=flat&label=gen_autoconf%20python3%20build)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python3_build.yml)
+[![gen_autoconf python3 build](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python3_build.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python3_build.yml)
 
 Currently there are four ways to install framework
 * Install process based on using pip mechanism
@@ -109,41 +109,37 @@ Generator structure
 
 ```bash
 gen_autoconf/
-├── conf/
-|   ├── gen_autoconf.logo
-│   ├── gen_autoconf.cfg
-│   ├── gen_autoconf_util.cfg
-│   ├── project.yaml
-│   └── template/
-│       ├── autogen.template
-│       ├── configure.template
-│       ├── Makefile.template
-│       ├── README.template
-│       └── src/
-│           ├── main.template
-│           └── Makefile.template
-├── __init__.py
-├── log/
-│   └── gen_autoconf.log
-├── pro/
-│   ├── config/
-│   │   ├── __init__.py
-│   │   ├── pro_name.py
-│   │   └── template_dir.py
-│   ├── __init__.py
-│   ├── read_template.py
-│   └── write_template.py
-└── run/
-    └── gen_autoconf_run.py
+    ├── conf/
+    |   ├── gen_autoconf.logo
+    │   ├── gen_autoconf.cfg
+    │   ├── gen_autoconf_util.cfg
+    │   ├── project.yaml
+    │   └── template/
+    │       ├── autogen.template
+    │       ├── configure.template
+    │       ├── Makefile.template
+    │       ├── README.template
+    │       └── src/
+    │           ├── main.template
+    │           └── Makefile.template
+    ├── __init__.py
+    ├── log/
+    │   └── gen_autoconf.log
+    ├── pro/
+    │   ├── __init__.py
+    │   ├── read_template.py
+    │   └── write_template.py
+    └── run/
+        └── gen_autoconf_run.py
 ```
 
 ### Docs
 
-[![documentation status](https://readthedocs.org/projects/gen-autoconf/badge/?version=latest)](https://gen-autoconf.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
 
 More documentation and info at
 
-* [gen_autoconf.readthedocs.io](https://gen_autoconf.readthedocs.io/en/latest/)
+* [gen_autoconf.readthedocs.io](https://gen-avr8.readthedocs.io)
 * [www.python.org](https://www.python.org/)
 
 ### Contributing
@@ -164,4 +160,4 @@ Lets help and support PSF.
 
 [![Python Software Foundation](https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/psf-logo-alpha.png)](https://www.python.org/psf/)
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.python.org/psf/donations/)
