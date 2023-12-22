@@ -4,7 +4,7 @@
 Module
     __init__.py
 Copyright
-    Copyright (C) 2020-2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2020 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_autoconf is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -25,7 +25,6 @@ from typing import List, Dict
 from os.path import dirname, realpath
 
 try:
-    from ats_utilities.checker import ATSChecker
     from ats_utilities.config_io.file_check import FileCheck
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.config_io.yaml.yaml2object import Yaml2Object
@@ -43,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.6.8'
+__version__ = '2.6.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -68,8 +67,8 @@ class GenPro(FileCheck, ProConfig, ProName):
                 | gen_project - Generates autoconf project structure.
     '''
 
-    _GEN_VERBOSE = 'GEN_AUTOCONF::PRO::GEN_PRO'
-    _PRO_STRUCTURE = '/../conf/project.yaml'
+    _GEN_VERBOSE: str = 'GEN_AUTOCONF::PRO::GEN_PRO'
+    _PRO_STRUCTURE: str = '/../conf/project.yaml'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
@@ -82,7 +81,9 @@ class GenPro(FileCheck, ProConfig, ProName):
         FileCheck.__init__(self, verbose)
         ProConfig.__init__(self, verbose)
         ProName.__init__(self, verbose)
-        verbose_message(verbose, [f'{self._GEN_VERBOSE} init generator'])
+        verbose_message(
+            verbose, [f'{self._GEN_VERBOSE.lower()} init generator']
+        )
         self._reader: ReadTemplate | None = ReadTemplate(verbose)
         self._writer: WriteTemplate | None = WriteTemplate(verbose)
         current_dir: str = dirname(realpath(__file__))
@@ -126,13 +127,12 @@ class GenPro(FileCheck, ProConfig, ProName):
             :rtype: <bool>
             :exceptions: ATSTypeError | ATSValueError
         '''
-        checker: ATSChecker = ATSChecker()
         error_msg: str | None = None
         error_id: int | None = None
-        error_msg, error_id = checker.check_params([
+        error_msg, error_id = self.check_params([
             ('str:pro_name', pro_name)
         ])
-        if error_id == checker.TYPE_ERROR:
+        if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)
         if not bool(pro_name):
             raise ATSValueError('missing project name')

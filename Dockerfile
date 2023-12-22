@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-FROM debian:10
+FROM debian:12
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install -yq --no-install-recommends \
@@ -46,6 +46,7 @@ RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --upgrade build
 RUN rm -f get-pip.py
 RUN mkdir /gen_autoconf/
+RUN mkdir /tests/
 COPY gen_autoconf /gen_autoconf/
 COPY setup.py /
 COPY setup.cfg /
@@ -54,6 +55,7 @@ COPY MANIFEST.in /
 COPY README.md /
 COPY LICENSE /
 COPY requirements.txt /
+COPY tests /tests/
 RUN pip3 install -r requirements.txt
 RUN rm -f requirements.txt
 RUN python3 -m build --no-isolation --wheel
