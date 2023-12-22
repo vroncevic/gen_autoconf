@@ -46,7 +46,7 @@
 <span class="sd">Module</span>
 <span class="sd">    __init__.py</span>
 <span class="sd">Copyright</span>
-<span class="sd">    Copyright (C) 2020-2024 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
+<span class="sd">    Copyright (C) 2020 - 2024 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
 <span class="sd">    gen_autoconf is free software: you can redistribute it and/or modify it</span>
 <span class="sd">    under the terms of the GNU General Public License as published by the</span>
 <span class="sd">    Free Software Foundation, either version 3 of the License, or</span>
@@ -83,7 +83,7 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;(C) 2024, https://vroncevic.github.io/gen_autoconf&#39;</span>
 <span class="n">__credits__</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.6.8&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.6.9&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -133,7 +133,9 @@
         <span class="n">Splash</span><span class="p">(</span><span class="n">gen_autoconf_property</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
         <span class="n">base_info</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_CONFIG</span><span class="si">}</span><span class="s1">&#39;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">base_info</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> init tool info&#39;</span><span class="p">])</span>
+        <span class="n">verbose_message</span><span class="p">(</span>
+            <span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> init tool info&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="p">:</span> <span class="n">ATSLogger</span> <span class="o">=</span> <span class="n">ATSLogger</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_LOG</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">verbose</span>
         <span class="p">)</span>
@@ -161,12 +163,12 @@
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">status</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_operational</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_OPS</span><span class="p">:</span>
                     <span class="n">error_message</span><span class="p">(</span>
-                        <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> provide project name&#39;</span><span class="p">]</span>
+                        <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> provide project name&#39;</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                         <span class="s1">&#39;provide project name&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
@@ -174,7 +176,7 @@
                     <span class="k">return</span> <span class="n">status</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">error_message</span><span class="p">(</span>
-                    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> provide project name&#39;</span><span class="p">]</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> provide project name&#39;</span><span class="p">]</span>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                     <span class="s1">&#39;provide project name&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
@@ -193,37 +195,43 @@
                     <span class="n">generator</span><span class="p">:</span> <span class="n">GenPro</span> <span class="o">=</span> <span class="n">GenPro</span><span class="p">(</span>
                         <span class="n">verbose</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
                     <span class="p">)</span>
-                    <span class="n">status</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_project</span><span class="p">(</span>
+                    <span class="n">status</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_project</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gen&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
                     <span class="p">)</span>
                     <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
-                        <span class="n">success_message</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> done</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">])</span>
+                        <span class="n">success_message</span><span class="p">(</span>
+                            <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> done</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+                        <span class="p">)</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                             <span class="sa">f</span><span class="s1">&#39;gen pro </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gen&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> done&#39;</span><span class="p">,</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_INFO</span>
                         <span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">error_message</span><span class="p">(</span>
-                            <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> generation failed&#39;</span><span class="p">]</span>
+                            <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> generation failed&#39;</span><span class="p">]</span>
                         <span class="p">)</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                             <span class="s1">&#39;generation failed&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
                         <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">error_message</span><span class="p">(</span>
-                        <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> provide project name&#39;</span><span class="p">]</span>
+                        <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> provide project name&#39;</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                         <span class="s1">&#39;provide project name&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
                     <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">error_message</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> project already exist&#39;</span><span class="p">])</span>
+                <span class="n">error_message</span><span class="p">(</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> project already exist&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                     <span class="s1">&#39;project already exist&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
                 <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">error_message</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> tool is not operational&#39;</span><span class="p">])</span>
+            <span class="n">error_message</span><span class="p">(</span>
+                <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> tool is not operational&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                 <span class="s1">&#39;tool is not operational&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
             <span class="p">)</span>
@@ -265,7 +273,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
+        &#169; Copyright 2024, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

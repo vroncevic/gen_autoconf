@@ -5,7 +5,7 @@
 Module
     setup.py
 Copyright
-    Copyright (C) 2020-2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2020 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_autoconf is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.6.8'
+__version__ = '2.6.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -42,12 +42,12 @@ THIS_DIR: str = abspath(dirname(__file__))
 long_description: str | None = None
 with open(join(THIS_DIR, 'README.md'), encoding='utf-8') as readme:
     long_description = readme.read()
-PROGRAMMING_LANG = 'Programming Language :: Python ::'
+PROGRAMMING_LANG: str = 'Programming Language :: Python ::'
 VERSIONS: List[str] = ['3.10', '3.11']
 SUPPORTED_PY_VERSIONS: List[str] = [
     f'{PROGRAMMING_LANG} {VERSION}' for VERSION in VERSIONS
 ]
-LICENSE_PREFIX = 'License :: OSI Approved ::'
+LICENSE_PREFIX: str = 'License :: OSI Approved ::'
 LICENSES: List[str] = [
     'GNU Lesser General Public License v2 (LGPLv2)',
     'GNU Lesser General Public License v2 or later (LGPLv2+)',
@@ -61,12 +61,12 @@ APPROVED_LICENSES: List[str] = [
 PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_autoconf',
-    version='2.6.8',
+    version='2.6.9',
     description='Generating C project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
     url='https://vroncevic.github.io/gen_autoconf',
-    license='GPL 2020-2024 Free software to use and distributed it.',
+    license='GPL 2020 - 2024 Free software to use and distributed it.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     keywords='Unix, Linux, Development, ANSI C, autoconf, generator',

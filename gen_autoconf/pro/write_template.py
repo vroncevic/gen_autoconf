@@ -4,7 +4,7 @@
 Module
     write_template.py
 Copyright
-    Copyright (C) 2020-2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2020 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_autoconf is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ import sys
 from typing import List, Dict
 from os import getcwd, chmod, mkdir
 from os.path import exists
+from datetime import datetime
 from string import Template
 
 try:
@@ -39,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.6.8'
+__version__ = '2.6.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -59,7 +60,7 @@ class WriteTemplate(FileCheck):
                 | write - Writes a templates with parameters.
     '''
 
-    _GEN_VERBOSE = 'GEN_AUTOCONF::PRO::WRITE_TEMPLATE'
+    _GEN_VERBOSE: str = 'GEN_AUTOCONF::PRO::WRITE_TEMPLATE'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
@@ -70,7 +71,7 @@ class WriteTemplate(FileCheck):
             :exceptions: ATSTypeError
         '''
         super().__init__(verbose)
-        verbose_message(verbose, [f'{self._GEN_VERBOSE} init writer'])
+        verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} init writer'])
 
     def write(
         self,
@@ -113,7 +114,10 @@ class WriteTemplate(FileCheck):
             module_path: str = f'{pro_dir}{module_name}'
             with open(module_path, 'w', encoding='utf-8') as module_file:
                 module_content: str = template.substitute(
-                    {'PRO': f'{pro_name}'}
+                    {
+                        'PRO': f'{pro_name}',
+                        'YEAR': f'{datetime.now().year}'
+                    }
                 )
                 module_file.write(module_content)
                 chmod(module_path, 0o666)
