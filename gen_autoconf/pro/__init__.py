@@ -42,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.6.9'
+__version__ = '2.7.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -92,7 +92,7 @@ class GenPro(FileCheck, ProConfig, ProName):
         self.check_mode('r', verbose)
         self.check_format(pro_structure, 'yaml', verbose)
         if self.is_file_ok():
-            yml2obj = Yaml2Object(pro_structure)
+            yml2obj: Yaml2Object | None = Yaml2Object(pro_structure)
             self.config = yml2obj.read_configuration()
 
     def get_reader(self) -> ReadTemplate | None:
@@ -137,10 +137,10 @@ class GenPro(FileCheck, ProConfig, ProName):
         if not bool(pro_name):
             raise ATSValueError('missing project name')
         status: bool = False
-        if self.config and self._reader and self._writer:
+        if bool(self.config) and self._reader and self._writer:
             templates: List[Dict[str, str]] = self._reader.read(
                 self.config, verbose
             )
-            if templates:
+            if bool(templates):
                 status = self._writer.write(templates, pro_name, verbose)
         return status

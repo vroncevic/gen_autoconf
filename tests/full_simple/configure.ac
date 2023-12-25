@@ -1,6 +1,6 @@
 dnl
 dnl configure.ac
-dnl Copyright (C) 2021 full_simple Vladimir Roncevic <elektron.ronca@gmail.com>
+dnl Copyright (C) 2023 full_simple Vladimir Roncevic <elektron.ronca@gmail.com>
 dnl
 dnl full_simple is free software: you can redistribute it and/or modify it
 dnl under the terms of the GNU General Public License as published by the

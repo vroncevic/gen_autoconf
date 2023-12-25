@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # autogen.sh
-# Copyright (C) 2021 latest Vladimir Roncevic <elektron.ronca@gmail.com>
+# Copyright (C) 2023 latest Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 # latest is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
