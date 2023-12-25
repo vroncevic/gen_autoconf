@@ -1,6 +1,6 @@
 #
 # Makefile.am
-# Copyright (C) 2021 new_simple_test Vladimir Roncevic <elektron.ronca@gmail.com>
+# Copyright (C) 2023 new_simple_test Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 # new_simple_test is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the

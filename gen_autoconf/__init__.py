@@ -32,6 +32,8 @@ try:
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
+    from ats_utilities.exceptions.ats_type_error import ATSTypeError
+    from ats_utilities.exceptions.ats_value_error import ATSValueError
     from gen_autoconf.pro import GenPro
 except ImportError as ats_error_message:
     # Force close python ATS ##################################################
@@ -41,7 +43,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.6.9'
+__version__ = '2.7.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -83,8 +85,8 @@ class GenAutoconf(CfgCLI):
         current_dir: str = dirname(realpath(__file__))
         gen_autoconf_property: Dict[Any, Any] = {
             'ats_organization': 'vroncevic',
-            'ats_repository': 'gen_autoconf',
-            'ats_name': 'gen_autoconf',
+            'ats_repository': f'{self._GEN_VERBOSE.lower()}',
+            'ats_name': f'{self._GEN_VERBOSE.lower()}',
             'ats_logo_path': f'{current_dir}{self._LOGO}',
             'ats_use_github_infrastructure': True
         }
@@ -100,7 +102,7 @@ class GenAutoconf(CfgCLI):
         if self.tool_operational:
             self.add_new_option(
                 self._OPS[0], self._OPS[1],
-                dest='gen', help='generate project'
+                dest='gen', help='generate project (provide name)'
             )
             self.add_new_option(
                 self._OPS[2], self._OPS[3],
@@ -126,18 +128,24 @@ class GenAutoconf(CfgCLI):
             if len(sys.argv) >= 4:
                 if sys.argv[2] not in self._OPS:
                     error_message(
-                        [f'{self._GEN_VERBOSE.lower()} provide project name']
+                        [
+                            f'{self._GEN_VERBOSE.lower()}',
+                            'provide project name (-g app | --gen app)'
+                        ]
                     )
                     self._logger.write_log(
-                        'provide project name', self._logger.ATS_ERROR
+                        'missing project name', self._logger.ATS_ERROR
                     )
                     return status
             else:
                 error_message(
-                    [f'{self._GEN_VERBOSE.lower()} provide project name']
+                    [
+                        f'{self._GEN_VERBOSE.lower()}',
+                        'provide project name (-g app | --gen app)'
+                    ]
                 )
                 self._logger.write_log(
-                    'provide project name', self._logger.ATS_ERROR
+                    'missing project name', self._logger.ATS_ERROR
                 )
                 return status
             args: Any | Namespace = self.parse_args(sys.argv[2:])
@@ -151,12 +159,20 @@ class GenAutoconf(CfgCLI):
                         ])
                     )
                     generator: GenPro = GenPro(
-                        verbose=getattr(args, 'verbose') or verbose
-                    )
-                    status = generator.gen_project(
-                        f'{getattr(args, "gen")}',
                         getattr(args, 'verbose') or verbose
                     )
+                    try:
+                        status = generator.gen_project(
+                            f'{getattr(args, "gen")}',
+                            getattr(args, 'verbose') or verbose
+                        )
+                    except (ATSTypeError, ATSValueError) as e:
+                        error_message(
+                            [f'{self._GEN_VERBOSE.lower()} {str(e)}']
+                        )
+                        self._logger.write_log(
+                            f'{str(e)}', self._logger.ATS_ERROR
+                        )
                     if status:
                         success_message(
                             [f'{self._GEN_VERBOSE.lower()} done\n']
@@ -174,17 +190,24 @@ class GenAutoconf(CfgCLI):
                         )
                 else:
                     error_message(
-                        [f'{self._GEN_VERBOSE.lower()} provide project name']
+                        [
+                            f'{self._GEN_VERBOSE.lower()}',
+                            'provide project name (-g app | --gen app)'
+                        ]
                     )
                     self._logger.write_log(
-                        'provide project name', self._logger.ATS_ERROR
+                        'missing project name', self._logger.ATS_ERROR
                     )
             else:
                 error_message(
-                    [f'{self._GEN_VERBOSE.lower()} project already exist']
+                    [
+                        f'{self._GEN_VERBOSE.lower()}',
+                        f'project with name [{getattr(args, "gen")}] exists'
+                    ]
                 )
                 self._logger.write_log(
-                    'project already exist', self._logger.ATS_ERROR
+                    f'project with name [{getattr(args, "gen")}] exists',
+                    self._logger.ATS_ERROR
                 )
         else:
             error_message(
