@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.7.0'
+__version__ = '2.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -82,7 +82,7 @@ class WriteTemplate(FileCheck):
         '''
             Writes a templates with parameters.
 
-            :param templates: List of templates.
+            :param templates: List of templates
             :type templates: <List[Dict[str, str]]>
             :param pro_name: Project name | None
             :type pro_name: <str> | <NoneType>
@@ -101,6 +101,8 @@ class WriteTemplate(FileCheck):
             raise ATSTypeError(error_msg)
         if not bool(templates):
             raise ATSValueError('missing templates')
+        if not bool(pro_name):
+            raise ATSValueError('missing project name')
         all_stat: List[bool] = []
         pro_dir: str = f'{getcwd()}/{pro_name}/'
         src_dir: str = f'{getcwd()}/{pro_name}/src'
