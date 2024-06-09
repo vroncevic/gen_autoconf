@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/gen_autoconf_logo.png" width="25%">
-
 # Create C project skeleton
+
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_autoconf/dev/docs/gen_autoconf_logo.png" width="25%">
 
 **gen_autoconf** is tool for creating C project skeleton.
 
@@ -135,11 +135,11 @@ gen_autoconf/
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen_autoconf/badge/?version=latest)](https://gen-autoconf.readthedocs.io/en/latest/?badge=latest)
 
 More documentation and info at
 
-* [gen_autoconf.readthedocs.io](https://gen-avr8.readthedocs.io)
+* [gen_autoconf.readthedocs.io](https://gen-autoconf.readthedocs.io)
 * [www.python.org](https://www.python.org/)
 
 ### Contributing

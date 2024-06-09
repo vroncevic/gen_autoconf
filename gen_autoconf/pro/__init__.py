@@ -42,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.7.0'
+__version__ = '2.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -117,7 +117,7 @@ class GenPro(FileCheck, ProConfig, ProName):
 
     def gen_project(self, pro_name: str | None, verbose: bool = False) -> bool:
         '''
-            Generate autoconf project structure.
+            Generates autoconf project structure.
 
             :param pro_name: Project name | None
             :type pro_name: <str> | <NoneType>
