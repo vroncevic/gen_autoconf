@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import List, Dict
+from typing import List, Dict, Optional
 from os import getcwd, chmod, mkdir
 from os.path import exists
 from datetime import datetime
@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.7.2'
+__version__ = '2.7.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -76,7 +76,7 @@ class WriteTemplate(FileCheck):
     def write(
         self,
         templates: List[Dict[str, str]],
-        pro_name: str | None,
+        pro_name: Optional[str],
         verbose: bool = False
     ) -> bool:
         '''
@@ -85,15 +85,15 @@ class WriteTemplate(FileCheck):
             :param templates: List of templates
             :type templates: <List[Dict[str, str]]>
             :param pro_name: Project name | None
-            :type pro_name: <str> | <NoneType>
+            :type pro_name: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: True (templates written) | False
             :rtype: <bool>
             :exceptions: ATSTypeError | ATSValueError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([
             ('list:templates', templates), ('str:pro_name', pro_name)
         ])

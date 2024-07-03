@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import Any, List, Dict
+from typing import Any, List, Dict, Optional
 from os.path import dirname, realpath, isdir
 
 try:
@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.7.2'
+__version__ = '2.7.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -93,8 +93,8 @@ class ReadTemplate(FileCheck, TemplateDir):
             :rtype: <List[Dict[str, str]]>
             :exceptions: ATSTypeError | ATSValueError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([('dict:config', config)])
         if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)
@@ -104,7 +104,7 @@ class ReadTemplate(FileCheck, TemplateDir):
         modules: List[str] = config[ProConfig.MODULES]
         loaded_templates: List[Dict[str, str]] = []
         for template_file, module_file in zip(templates, modules):
-            template_content: str | None = None
+            template_content: Optional[str] = None
             template_file_path: str = f'{self.template_dir}{template_file}'
             self.check_path(template_file_path, verbose)
             self.check_mode('r', verbose)

@@ -81,28 +81,31 @@ Code structure
 .. code-block:: bash
 
     gen_autoconf/
-        ├── conf/
-        │   ├── gen_autoconf.logo
-        │   ├── gen_autoconf.cfg
-        │   ├── gen_autoconf_util.cfg
-        │   ├── project.yaml
-        │   └── template/
-        │       ├── autogen.template
-        │       ├── configure.template
-        │       ├── Makefile.template
-        │       ├── README.template
-        │       └── src/
-        │           ├── main.template
-        │           └── Makefile.template
-        ├── __init__.py
-        ├── log/
-        │   └── gen_autoconf.log
-        ├── pro/
-        │   ├── __init__.py
-        │   ├── read_template.py
-        │   └── write_template.py
-        └── run/
-            └── gen_autoconf_run.py
+         ├── conf/
+         │   ├── gen_autoconf.cfg
+         │   ├── gen_autoconf.logo
+         │   ├── gen_autoconf_util.cfg
+         │   ├── project.yaml
+         │   └── template/
+         │       ├── autogen.template
+         │       ├── configure.template
+         │       ├── Makefile.template
+         │       ├── README.template
+         │       └── src/
+         │           ├── main.template
+         │           └── Makefile.template
+         ├── __init__.py
+         ├── log/
+         │   └── gen_autoconf.log
+         ├── pro/
+         │   ├── __init__.py
+         │   ├── read_template.py
+         │   └── write_template.py
+         ├── py.typed
+         └── run/
+             └── gen_autoconf_run.py
+    
+    7 directories, 17 files
 
 Copyright and licence
 ----------------------
