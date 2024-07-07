@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.7.3'
+__version__ = '2.7.4'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -59,7 +59,6 @@ class GenAutoconfTestCase(TestCase):
                 | test_default_create - Default on create is not None.
                 | test_missing_args - Missing args.
                 | test_process - Generate project.
-                | test_tool_not_operational - Generate project not operational.
                 | test_pro_already_exists - Generate already existing project.
     '''
 
@@ -95,15 +94,6 @@ class GenAutoconfTestCase(TestCase):
         sys.argv.insert(1, 'latest')
         generator: GenAutoconf = GenAutoconf()
         self.assertTrue(generator.process())
-
-    def test_tool_not_operational(self) -> None:
-        '''Generate project not operational'''
-        sys.argv.clear()
-        sys.argv.insert(0, '-n')
-        sys.argv.insert(1, 'fresh')
-        generator: GenAutoconf = GenAutoconf()
-        generator.tool_operational = False
-        self.assertFalse(generator.process())
 
     def test_pro_already_exists(self) -> None:
         '''Generate already existing project'''

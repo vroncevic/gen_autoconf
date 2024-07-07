@@ -136,6 +136,16 @@ Generator structure
     7 directories, 17 files
 ```
 
+### Code coverage
+
+| Name | Stmts | Miss | Cover |
+|------|-------|------|-------|
+| `gen_autoconf/__init__.py` | 71 | 12 | 83% |
+| `gen_autoconf/pro/__init__.py` | 59 | 2 | 97% |
+| `gen_autoconf/pro/read_template.py` | 53 | 2 | 96% |
+| `gen_autoconf/pro/write_template.py` | 60 | 4 | 93% |
+| **Total** | 243 | 20 | 92% |
+
 ### Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen_autoconf/badge/?version=latest)](https://gen-autoconf.readthedocs.io/en/latest/?badge=latest)
