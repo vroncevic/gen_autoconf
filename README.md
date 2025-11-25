@@ -23,6 +23,7 @@ other information that should be provided before the modules are installed.
     - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
 - [Tool structure](#tool-structure)
+- [Code coverage](#code-coverage)
 - [Docs](#docs)
 - [Contributing](#contributing)
 - [Copyright and Licence](#copyright-and-licence)
@@ -140,11 +141,11 @@ Generator structure
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_autoconf/__init__.py` | 71 | 12 | 83% |
-| `gen_autoconf/pro/__init__.py` | 59 | 2 | 97% |
-| `gen_autoconf/pro/read_template.py` | 53 | 2 | 96% |
-| `gen_autoconf/pro/write_template.py` | 60 | 4 | 93% |
-| **Total** | 243 | 20 | 92% |
+| `gen_autoconf/__init__.py` | 69 | 10 | 86%|
+| `gen_autoconf/pro/__init__.py` | 57 | 0 | 100%|
+| `gen_autoconf/pro/read_template.py` | 51 | 0 | 100%|
+| `gen_autoconf/pro/write_template.py` | 58 | 2 | 97%|
+| **Total** | 235 | 12 | 95% |
 
 ### Docs
 
@@ -163,7 +164,7 @@ More documentation and info at
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2020 - 2024 by [vroncevic.github.io/gen_autoconf](https://vroncevic.github.io/gen_autoconf/)
+Copyright (C) 2020 - 2026 by [vroncevic.github.io/gen_autoconf](https://vroncevic.github.io/gen_autoconf/)
 
 **gen_autoconf** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,

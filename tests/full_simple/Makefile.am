@@ -1,6 +1,6 @@
 #
 # Makefile.am
-# Copyright (C) 2024 full_simple Vladimir Roncevic <elektron.ronca@gmail.com>
+# Copyright (C) 2025 full_simple Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 # full_simple is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
