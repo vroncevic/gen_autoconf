@@ -4,7 +4,7 @@
 Module
     __init__.py
 Copyright
-    Copyright (C) 2020 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2020 - 2026 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_autoconf is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -36,18 +36,18 @@ try:
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_value_error import ATSValueError
     from gen_autoconf.pro import GenPro
-except ImportError as ats_error_message:
-    # Force close python ATS ##################################################
-    sys.exit(f'\n{__file__}\n{ats_error_message}\n')
+except ImportError as ats_error_message:  # pragma: no cover
+    # Force exit python #######################################################
+    sys.exit(f'\n{__file__}\n{ats_error_message}\n')  # pragma: no cover
 
-__author__ = 'Vladimir Roncevic'
-__copyright__ = '(C) 2024, https://vroncevic.github.io/gen_autoconf'
+__author__: str = 'Vladimir Roncevic'
+__copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_autoconf'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
-__license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.7.4'
-__maintainer__ = 'Vladimir Roncevic'
-__email__ = 'elektron.ronca@gmail.com'
-__status__ = 'Updated'
+__license__: str = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
+__version__: str = '2.7.5'
+__maintainer__: str = 'Vladimir Roncevic'
+__email__: str = 'elektron.ronca@gmail.com'
+__status__: str = 'Updated'
 
 
 class GenAutoconf(ATSCli):
