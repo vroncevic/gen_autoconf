@@ -24,6 +24,7 @@ other information that should be provided before the modules are installed.
 - [Dependencies](#dependencies)
 - [Tool structure](#tool-structure)
 - [Code coverage](#code-coverage)
+- [Usage](#usage)
 - [Docs](#docs)
 - [Contributing](#contributing)
 - [Copyright and Licence](#copyright-and-licence)
@@ -108,44 +109,91 @@ You can use Dockerfile to create image/container.
 
 Generator structure
 
+<details>
+<summary><b>Click to expand framework structure</b></summary>
+
 ```bash
     gen_autoconf/
-         ├── conf/
-         │   ├── gen_autoconf.cfg
-         │   ├── gen_autoconf.logo
-         │   ├── gen_autoconf_util.cfg
-         │   ├── project.yaml
-         │   └── template/
-         │       ├── autogen.template
-         │       ├── configure.template
-         │       ├── Makefile.template
-         │       ├── README.template
-         │       └── src/
-         │           ├── main.template
-         │           └── Makefile.template
-         ├── __init__.py
-         ├── log/
-         │   └── gen_autoconf.log
-         ├── pro/
+         ├── application/
          │   ├── __init__.py
-         │   ├── read_template.py
-         │   └── write_template.py
-         ├── py.typed
-         └── run/
-             └── gen_autoconf_run.py
-    
-    7 directories, 17 files
+         │   └── service.py
+         ├── domain/
+         │   ├── __init__.py
+         │   ├── models.py
+         │   └── ports/
+         │       ├── __init__.py
+         │       ├── iservice.py
+         │       └── isubprocessor.py
+         ├── engine.py
+         ├── gen_autoconf_bundle.py
+         ├── infrastructure/
+         │   ├── cli.py
+         │   ├── cli_bundle.py
+         │   ├── config/
+         │   │   ├── gen_autoconf.cfg
+         │   │   ├── gen_autoconf.logo
+         │   │   ├── scheme.json
+         │   │   └── templates.tgz
+         │   ├── gen_autoconf_command.py
+         │   ├── icli.py
+         │   ├── icli_command.py
+         │   ├── __init__.py
+         │   └── subprocessor.py
+         ├── __init__.py
+         └── py.typed
+
+     6 directories, 22 files
 ```
+</details>
 
 ### Code coverage
 
+<details>
+<summary><b>Click to expand code coverage</b></summary>
+
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_autoconf/__init__.py` | 69 | 10 | 86%|
-| `gen_autoconf/pro/__init__.py` | 57 | 0 | 100%|
-| `gen_autoconf/pro/read_template.py` | 51 | 0 | 100%|
-| `gen_autoconf/pro/write_template.py` | 58 | 2 | 97%|
-| **Total** | 235 | 12 | 95% |
+| `gen_autoconf/__init__.py` | 8 | 0 | 100%|
+| `gen_autoconf/application/__init__.py` | 8 | 0 | 100%|
+| `gen_autoconf/application/service.py` | 22 | 0 | 100%|
+| `gen_autoconf/domain/__init__.py` | 8 | 0 | 100%|
+| `gen_autoconf/domain/models.py` | 18 | 0 | 100%|
+| `gen_autoconf/domain/ports/__init__.py` | 8 | 0 | 100%|
+| `gen_autoconf/domain/ports/iservice.py` | 17 | 0 | 100%|
+| `gen_autoconf/domain/ports/isubprocessor.py` | 20 | 0 | 100%|
+| `gen_autoconf/engine.py` | 66 | 0 | 100%|
+| `gen_autoconf/gen_autoconf_bundle.py` | 39 | 0 | 100%|
+| `gen_autoconf/infrastructure/__init__.py` | 8 | 0 | 100%|
+| `gen_autoconf/infrastructure/cli.py` | 36 | 0 | 100%|
+| `gen_autoconf/infrastructure/cli_bundle.py` | 33 | 0 | 100%|
+| `gen_autoconf/infrastructure/gen_autoconf_command.py` | 32 | 0 | 100%|
+| `gen_autoconf/infrastructure/icli.py` | 20 | 0 | 100%|
+| `gen_autoconf/infrastructure/icli_command.py` | 32 | 0 | 100%|
+| `gen_autoconf/infrastructure/subprocessor.py` | 53 | 0 | 100%|
+| **Total** | 428 | 0 | 100% |
+
+</details>
+
+### Usage
+
+Install package
+
+```bash
+pip3 install gen_autoconf
+```
+
+Prepare main entry point by downloading [main.py](https://raw.githubusercontent.com/vroncevic/gen_autoconf/master/main.py) or create your own.
+
+
+```bash
+wget -O main.py https://raw.githubusercontent.com/vroncevic/gen_autoconf/master/main.py
+```
+
+Running tool for creating new C autoconf project
+
+```bash
+python3 main.py create --name mytool --output ./demo/
+```
 
 ### Docs
 

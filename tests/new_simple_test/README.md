@@ -1,1 +1,0 @@
-new_simple_test

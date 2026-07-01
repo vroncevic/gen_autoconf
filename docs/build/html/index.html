@@ -54,13 +54,21 @@ other information that should be provided before the modules are installed.</p>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">gen_autoconf</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gen_autoconf.html">gen_autoconf package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gen_autoconf.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="gen_autoconf.pro.html">gen_autoconf.pro package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_autoconf.application.html">gen_autoconf.application package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_autoconf.domain.html">gen_autoconf.domain package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_autoconf.infrastructure.html">gen_autoconf.infrastructure package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="gen_autoconf.html#module-gen_autoconf">Module contents</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="gen_autoconf.html#gen_autoconf.GenAutoconf"><code class="docutils literal notranslate"><span class="pre">GenAutoconf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="gen_autoconf.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gen_autoconf.engine.html">gen_autoconf.engine module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_autoconf.gen_autoconf_bundle.html">gen_autoconf.gen_autoconf_bundle module</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="gen_autoconf.html#module-gen_autoconf">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="main.html#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -100,31 +108,50 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_autoconf
 <p><strong>gen_autoconf</strong> is based on OOP</p>
 <p>Code structure</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_autoconf/
-<span class="w">     </span>├──<span class="w"> </span>conf/
-<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>gen_autoconf.cfg
-<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>gen_autoconf.logo
-<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>gen_autoconf_util.cfg
-<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>project.yaml
-<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>template/
-<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>autogen.template
-<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>configure.template
-<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>Makefile.template
-<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>README.template
-<span class="w">     </span>│<span class="w">       </span>└──<span class="w"> </span>src/
-<span class="w">     </span>│<span class="w">           </span>├──<span class="w"> </span>main.template
-<span class="w">     </span>│<span class="w">           </span>└──<span class="w"> </span>Makefile.template
-<span class="w">     </span>├──<span class="w"> </span>__init__.py
-<span class="w">     </span>├──<span class="w"> </span>log/
-<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>gen_autoconf.log
-<span class="w">     </span>├──<span class="w"> </span>pro/
+<span class="w">     </span>├──<span class="w"> </span>application/
 <span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
-<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>read_template.py
-<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>write_template.py
-<span class="w">     </span>├──<span class="w"> </span>py.typed
-<span class="w">     </span>└──<span class="w"> </span>run/
-<span class="w">         </span>└──<span class="w"> </span>gen_autoconf_run.py
+<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>service.py
+<span class="w">     </span>├──<span class="w"> </span>domain/
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>models.py
+<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>ports/
+<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>__init__.py
+<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>iservice.py
+<span class="w">     </span>│<span class="w">       </span>└──<span class="w"> </span>isubprocessor.py
+<span class="w">     </span>├──<span class="w"> </span>engine.py
+<span class="w">     </span>├──<span class="w"> </span>gen_autoconf_bundle.py
+<span class="w">     </span>├──<span class="w"> </span>infrastructure/
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>cli.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>cli_bundle.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>config/
+<span class="w">     </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>gen_autoconf.cfg
+<span class="w">     </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>gen_autoconf.logo
+<span class="w">     </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>scheme.json
+<span class="w">     </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>templates.tgz
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>gen_autoconf_command.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>icli.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>icli_command.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>subprocessor.py
+<span class="w">     </span>├──<span class="w"> </span>__init__.py
+<span class="w">     </span>└──<span class="w"> </span>py.typed
 
-<span class="m">7</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">17</span><span class="w"> </span>files
+<span class="w"> </span><span class="m">6</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">22</span><span class="w"> </span>files
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h1>
+<p>Install package</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>gen_autoconf
+</pre></div>
+</div>
+<p>Prepare main entry point by downloading <a class="reference external" href="https://raw.githubusercontent.com/vroncevic/gen_autoconf/master/main.py">main.py</a> or create your own.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>main.py<span class="w"> </span>https://raw.githubusercontent.com/vroncevic/gen_autoconf/master/main.py
+</pre></div>
+</div>
+<p>Running tool for creating new C autoconf project</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>main.py<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mytool<span class="w"> </span>--output<span class="w"> </span>./demo/
 </pre></div>
 </div>
 </section>
@@ -162,6 +189,7 @@ at your option, any later version of Python 3 you may have available.</p>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li><a class="reference internal" href="#tool-structure">Tool structure</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
 <li><a class="reference internal" href="#copyright-and-licence">Copyright and licence</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>

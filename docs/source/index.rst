@@ -81,31 +81,56 @@ Code structure
 .. code-block:: bash
 
     gen_autoconf/
-         ├── conf/
-         │   ├── gen_autoconf.cfg
-         │   ├── gen_autoconf.logo
-         │   ├── gen_autoconf_util.cfg
-         │   ├── project.yaml
-         │   └── template/
-         │       ├── autogen.template
-         │       ├── configure.template
-         │       ├── Makefile.template
-         │       ├── README.template
-         │       └── src/
-         │           ├── main.template
-         │           └── Makefile.template
-         ├── __init__.py
-         ├── log/
-         │   └── gen_autoconf.log
-         ├── pro/
+         ├── application/
          │   ├── __init__.py
-         │   ├── read_template.py
-         │   └── write_template.py
-         ├── py.typed
-         └── run/
-             └── gen_autoconf_run.py
-    
-    7 directories, 17 files
+         │   └── service.py
+         ├── domain/
+         │   ├── __init__.py
+         │   ├── models.py
+         │   └── ports/
+         │       ├── __init__.py
+         │       ├── iservice.py
+         │       └── isubprocessor.py
+         ├── engine.py
+         ├── gen_autoconf_bundle.py
+         ├── infrastructure/
+         │   ├── cli.py
+         │   ├── cli_bundle.py
+         │   ├── config/
+         │   │   ├── gen_autoconf.cfg
+         │   │   ├── gen_autoconf.logo
+         │   │   ├── scheme.json
+         │   │   └── templates.tgz
+         │   ├── gen_autoconf_command.py
+         │   ├── icli.py
+         │   ├── icli_command.py
+         │   ├── __init__.py
+         │   └── subprocessor.py
+         ├── __init__.py
+         └── py.typed
+
+     6 directories, 22 files
+
+Usage
+-----
+
+Install package
+
+.. code-block:: bash
+
+    pip3 install gen_autoconf
+
+Prepare main entry point by downloading `main.py <https://raw.githubusercontent.com/vroncevic/gen_autoconf/master/main.py>`_ or create your own.
+
+.. code-block:: bash
+
+    wget -O main.py https://raw.githubusercontent.com/vroncevic/gen_autoconf/master/main.py
+
+Running tool for creating new C autoconf project
+
+.. code-block:: bash
+
+    python3 main.py create --name mytool --output ./demo/
 
 Copyright and licence
 ----------------------
