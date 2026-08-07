@@ -1,4 +1,7 @@
-name: gen_autoconf_python_checker
+name: gen_autoconf_isp_checker
+
+permissions:
+  contents: read
 
 on:
   push:
@@ -12,17 +15,15 @@ on:
       - 'gen_autoconf/**/*.py'
       - 'setup.py'
 
-permissions:
-  contents: read
-
 jobs:
-  build:
+  isp_gate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository code
+        uses: actions/checkout@v4
         with:
           submodules: true
 
-      - name: Check module length and line limits
+      - name: Check Interface Segregation Principle violations
         run: |
-          python3 gates/gates/limits_checker.py gen_autoconf
+          python3 gates/gates/isp_checker.py gen_autoconf

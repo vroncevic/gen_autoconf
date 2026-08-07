@@ -1,3 +1,0 @@
-[**.{py,cfg,txt,in,toml,yml}]
-indent_style = tab
-tab_width = 4

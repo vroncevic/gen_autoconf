@@ -2,7 +2,7 @@
 
 '''
 Module
-    main.py
+    project_setup.py
 Copyright
     Copyright (C) 2026 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_autoconf is free software: you can redistribute it and/or modify it
@@ -16,15 +16,13 @@ Copyright
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
-    Main entry point for Task Code Generator CLI.
+    Defines domain model for a project setup.
 '''
 
 from __future__ import annotations
 
-from sys import exit
-
-from gen_autoconf.engine import GenAutoconf
-from gen_autoconf.setup.factory import GenAutoconfBundleFactory
+from collections.abc import Mapping
+from dataclasses import dataclass
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_autoconf'
@@ -36,23 +34,15 @@ __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-def main() -> bool:
+@dataclass(frozen=True, slots=True, kw_only=True)
+class ProjectSetup:
     '''
-        Bootstraps and runs the gen_autoconf with required adapters.
+        Defines domain model for a project setup.
 
-        :return: True if successful, False otherwise.
-        :exceptions: None
+        It defines:
+
+            :attributes:
+                | chip_config - Mapping with chip configuration.
     '''
-    gen_autoconf: GenAutoconf = GenAutoconf(GenAutoconfBundleFactory.create_bundle())
 
-    return gen_autoconf.process()
-
-
-if __name__ == '__main__':
-    '''
-        Entry point for gen_autoconf execution.
-
-        :exit code: 0 if successful, 1 otherwise.
-        :exceptions: None
-    '''
-    exit(0 if main() else 1)
+    chip_config: Mapping[str, object]
