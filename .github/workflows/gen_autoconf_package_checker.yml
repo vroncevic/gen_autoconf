@@ -1,12 +1,12 @@
 name: gen_autoconf_package_checker
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'gen_autoconf/**'
       - 'setup.py'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'gen_autoconf/**'
       - 'setup.py'
