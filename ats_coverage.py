@@ -182,13 +182,13 @@ def update_readme(coverage: dict[str, object], readme_path: str = 'README.md') -
     cover: str = 'percent_covered_display'
 
     for line in lines:
-        if '### Code coverage' in line:
+        if '###' in line and 'Code coverage' in line:
             inside_coverage = True
             new_lines.append(line)
             continue
 
         if inside_coverage:
-            if '### Docs' in line:
+            if '###' in line and 'Docs' in line:
                 inside_coverage = False
                 inside_table = False
                 new_lines.append(line)
@@ -347,12 +347,12 @@ def update_structure(pro_name: str, section: str, file_path: str = 'README.md') 
 
     for line in lines:
         if is_rst:
-            if line == rst_heading:
+            if section in line:
                 inside_tool_structure = True
                 new_lines.append(line)
                 continue
         else:
-            if markdown_heading in line:
+            if '###' in line and section in line:
                 inside_tool_structure = True
                 new_lines.append(line)
                 continue
@@ -375,7 +375,7 @@ def update_structure(pro_name: str, section: str, file_path: str = 'README.md') 
                     new_lines.append(line)
                     continue
             else:
-                if '### Code coverage' in line:
+                if '###' in line and 'Code coverage' in line:
                     inside_tool_structure = False
                     replace_mode = False
                     new_lines.append(line)
