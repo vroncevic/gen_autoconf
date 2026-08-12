@@ -15,8 +15,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="gen_autoconf.engine module" href="gen_autoconf.engine.html" />
-    <link rel="prev" title="gen_autoconf.infrastructure.icli_command module" href="gen_autoconf.infrastructure.icli_command.html" /> 
+    <link rel="next" title="gen_autoconf.setup package" href="gen_autoconf.setup.html" />
+    <link rel="prev" title="gen_autoconf.infrastructure.command.icommand_executor module" href="gen_autoconf.infrastructure.command.icommand_executor.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,10 +28,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="gen_autoconf.engine.html" title="gen_autoconf.engine module"
+          <a href="gen_autoconf.setup.html" title="gen_autoconf.setup package"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="gen_autoconf.infrastructure.icli_command.html" title="gen_autoconf.infrastructure.icli_command module"
+          <a href="gen_autoconf.infrastructure.command.icommand_executor.html" title="gen_autoconf.infrastructure.command.icommand_executor module"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">gen_autoconf https://github.com/vroncevic/gen_autoconf/releases documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gen_autoconf</a> &#187;</li>
@@ -68,8 +68,8 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gen_autoconf.infrastructure.subprocessor.</span></span><span class="sig-name descname"><span class="pre">SubProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IGenerator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/infrastructure/subprocessor.html#SubProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="gen_autoconf.domain.ports.isubprocessor.html#gen_autoconf.domain.ports.isubprocessor.ISubProcessor" title="gen_autoconf.domain.ports.isubprocessor.ISubProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISubProcessor</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gen_autoconf.infrastructure.subprocessor.</span></span><span class="sig-name descname"><span class="pre">SubProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IGeneratorManager</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_autoconf/infrastructure/subprocessor.html#SubProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Adapter that executes sub-processes.</p>
 <p>It defines:</p>
 <blockquote>
@@ -78,10 +78,8 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 <dd class="field-odd"><div class="line-block">
 <div class="line">_scheme - Path to the scheme json file.</div>
 <div class="line">_templates - Path to the templates tgz file.</div>
-<div class="line">_generator - Generator adapter used to generate code from templates.</div>
-<div class="line">_checker - Injected parameters checker (default Checker).</div>
-<div class="line">_reporter - Injected reporter for messaging (default Reporter).</div>
-<div class="line">_verbose - Injected Enable/Disable verbose option (default False).</div>
+<div class="line">_generator - Generator manager used to generate code from templates.</div>
+<div class="line">_logger - Logger used to log messages.</div>
 </div>
 </dd>
 <dt class="field-even">methods<span class="colon">:</span></dt>
@@ -94,18 +92,13 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 </dl>
 </div></blockquote>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor._abc_impl">
-<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._abc_impl" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor._generator">
+<span class="sig-name descname"><span class="pre">_generator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">IGeneratorManager</span></em><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._generator" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor._checker">
-<span class="sig-name descname"><span class="pre">_checker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">IChecker</span></em><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._checker" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor._reporter">
-<span class="sig-name descname"><span class="pre">_reporter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">IReporter</span></em><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._reporter" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor._logger">
+<span class="sig-name descname"><span class="pre">_logger</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ILogger</span></em><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._logger" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -118,11 +111,6 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 <span class="sig-name descname"><span class="pre">_templates</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'config/templates.tgz'</span></em><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._templates" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor._verbose">
-<span class="sig-name descname"><span class="pre">_verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._verbose" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor.is_initialized">
 <span class="sig-name descname"><span class="pre">is_initialized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gen_autoconf/infrastructure/subprocessor.html#SubProcessor.is_initialized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor.is_initialized" title="Link to this definition">¶</a></dt>
@@ -131,25 +119,25 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True if the subprocessor is initialized, False otherwise.</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>&lt;bool&gt;</p>
-</dd>
-<dt class="field-odd">Exceptions<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None.</p>
+<dt class="field-even">Exceptions<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gen_autoconf.infrastructure.subprocessor.SubProcessor.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gen_autoconf/infrastructure/subprocessor.html#SubProcessor.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor.run" title="Link to this definition">¶</a></dt>
-<dd><p>Executes a sub-process.</p>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gen_autoconf/infrastructure/subprocessor.html#SubProcessor.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor.run" title="Link to this definition">¶</a></dt>
+<dd><p>Executes the generator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>&lt;dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>&gt;</em>) – The command parameters to execute.</p>
+<dd class="field-odd"><p><strong>params</strong> – The command parameters for generator.</p>
 </dd>
-<dt class="field-even">Exceptions<span class="colon">:</span></dt>
-<dd class="field-even"><p>None.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code, stdout and stderr messages.</p>
+</dd>
+<dt class="field-odd">Exceptions<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -170,12 +158,10 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
     <ul>
 <li><a class="reference internal" href="#">gen_autoconf.infrastructure.subprocessor module</a><ul>
 <li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor"><code class="docutils literal notranslate"><span class="pre">SubProcessor</span></code></a><ul>
-<li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._abc_impl"><code class="docutils literal notranslate"><span class="pre">SubProcessor._abc_impl</span></code></a></li>
-<li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._checker"><code class="docutils literal notranslate"><span class="pre">SubProcessor._checker</span></code></a></li>
-<li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._reporter"><code class="docutils literal notranslate"><span class="pre">SubProcessor._reporter</span></code></a></li>
+<li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._generator"><code class="docutils literal notranslate"><span class="pre">SubProcessor._generator</span></code></a></li>
+<li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._logger"><code class="docutils literal notranslate"><span class="pre">SubProcessor._logger</span></code></a></li>
 <li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._scheme"><code class="docutils literal notranslate"><span class="pre">SubProcessor._scheme</span></code></a></li>
 <li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._templates"><code class="docutils literal notranslate"><span class="pre">SubProcessor._templates</span></code></a></li>
-<li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor._verbose"><code class="docutils literal notranslate"><span class="pre">SubProcessor._verbose</span></code></a></li>
 <li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor.is_initialized"><code class="docutils literal notranslate"><span class="pre">SubProcessor.is_initialized()</span></code></a></li>
 <li><a class="reference internal" href="#gen_autoconf.infrastructure.subprocessor.SubProcessor.run"><code class="docutils literal notranslate"><span class="pre">SubProcessor.run()</span></code></a></li>
 </ul>
@@ -187,13 +173,13 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="gen_autoconf.infrastructure.icli_command.html"
-                          title="previous chapter">gen_autoconf.infrastructure.icli_command module</a></p>
+    <p class="topless"><a href="gen_autoconf.infrastructure.command.icommand_executor.html"
+                          title="previous chapter">gen_autoconf.infrastructure.command.icommand_executor module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="gen_autoconf.engine.html"
-                          title="next chapter">gen_autoconf.engine module</a></p>
+    <p class="topless"><a href="gen_autoconf.setup.html"
+                          title="next chapter">gen_autoconf.setup package</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -226,10 +212,10 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="gen_autoconf.engine.html" title="gen_autoconf.engine module"
+          <a href="gen_autoconf.setup.html" title="gen_autoconf.setup package"
              >next</a> |</li>
         <li class="right" >
-          <a href="gen_autoconf.infrastructure.icli_command.html" title="gen_autoconf.infrastructure.icli_command module"
+          <a href="gen_autoconf.infrastructure.command.icommand_executor.html" title="gen_autoconf.infrastructure.command.icommand_executor module"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">gen_autoconf https://github.com/vroncevic/gen_autoconf/releases documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gen_autoconf</a> &#187;</li>

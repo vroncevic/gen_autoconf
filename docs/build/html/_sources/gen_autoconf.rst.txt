@@ -7,9 +7,9 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   gen_autoconf.application
-   gen_autoconf.domain
+   gen_autoconf.core
    gen_autoconf.infrastructure
+   gen_autoconf.setup
 
 Submodules
 ----------
@@ -18,7 +18,6 @@ Submodules
    :maxdepth: 4
 
    gen_autoconf.engine
-   gen_autoconf.gen_autoconf_bundle
 
 Module contents
 ---------------

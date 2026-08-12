@@ -1,19 +1,22 @@
 name: gen_autoconf_python3_build
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - 'gen_autoconf/**'
       - 'MANIFEST.in'
       - 'pyproject.toml'
       - 'setup.py'
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - 'gen_autoconf/**'
       - 'MANIFEST.in'
       - 'pyproject.toml'
       - 'setup.py'
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
