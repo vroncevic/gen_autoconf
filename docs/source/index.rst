@@ -34,7 +34,7 @@ other information that should be provided before the tool is installed.
    modules
 
 🚀 Installation
----------------
+----------------
 
 |gen_autoconf python3 build|
 
@@ -70,14 +70,14 @@ You can use Docker to create image/container, or You can use pip to install
     pip3 install gen_autoconf
 
 📦 Dependencies
----------------
+----------------
 
 **gen_autoconf** requires next modules and libraries
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
 📁 Tool structure
------------------
+------------------
 
 **gen_autoconf** is based on OOP.
 
@@ -144,7 +144,7 @@ Tool structure
      10 directories, 45 files
 
 ✨ Features
------------
+------------
 
 * Automatically scaffolds ARM 32-bit assembly projects with build/make files.
 * Provides a modular and extensible architecture based on OOP and SOLID principles.
@@ -154,7 +154,7 @@ Tool structure
 * High code quality with full type checking and 100% unit test coverage.
 
 📊 Code coverage
-----------------
+------------------
 
 .. csv-table:: Code coverage
    :file: coverage_table.csv
@@ -162,7 +162,7 @@ Tool structure
    :header-rows: 1
 
 🛠 Usage
---------
+---------
 
 Install package
 
@@ -183,7 +183,7 @@ Running tool for creating new ARM Pico M project
     python3 main.py create --name mytool --output ./demo/
 
 📚 Docs
--------
+--------
 
 More documentation and info at
 
@@ -191,12 +191,12 @@ More documentation and info at
 * `www.python.org <https://www.python.org/>`_
 
 👥 Contributing
----------------
+-----------------
 
 `Contributing to gen_autoconf <https://github.com/vroncevic/gen_autoconf/blob/dev/CONTRIBUTING.md>`_
 
 📄 Copyright and licence
--------------------------
+--------------------------
 
 Copyright (C) 2025 - 2026 by `vroncevic.github.io/gen_autoconf <https://vroncevic.github.io/gen_autoconf>`_
 

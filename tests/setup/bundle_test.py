@@ -42,4 +42,3 @@ class TestGenAutoconfBundle(unittest.TestCase):
 
         bundle_dict = bundle.to_dict()
         self.assertIsInstance(bundle_dict, dict)
-

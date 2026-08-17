@@ -33,3 +33,11 @@ class TestGenAutoconfBundleOptionsValidator(unittest.TestCase):
             options = {'info_file': 123}
             GenAutoconfBundleOptionsValidator.validate(options)
 
+    def test_is_valid_success(self) -> None:
+        options = {'info_file': 'some_path'}
+        self.assertTrue(GenAutoconfBundleOptionsValidator.is_valid(options))
+
+    def test_is_valid_failure(self) -> None:
+        self.assertFalse(GenAutoconfBundleOptionsValidator.is_valid(None))
+        self.assertFalse(GenAutoconfBundleOptionsValidator.is_valid("not_a_mapping"))
+        self.assertFalse(GenAutoconfBundleOptionsValidator.is_valid({'info_file': 123}))
