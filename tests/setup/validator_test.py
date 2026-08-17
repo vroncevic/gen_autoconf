@@ -110,6 +110,7 @@ class TestGenAutoconfBundleValidator(unittest.TestCase):
                 cli=dummy_cli
             )
             GenAutoconfBundleValidator.validate(bundle)
+
         with self.assertRaises(Exception):
             bundle = GenAutoconfBundle(
                 base=mock_base,
@@ -128,3 +129,20 @@ class TestGenAutoconfBundleValidator(unittest.TestCase):
             )
             GenAutoconfBundleValidator.validate(bundle)
 
+    def test_is_valid_success(self) -> None:
+        mock_base = Mock(spec=BaseBundle)
+        dummy_service = DummyService()
+        dummy_subprocessor = DummySubProcessor()
+        dummy_cli = DummyCLI()
+
+        bundle = GenAutoconfBundle(
+            base=mock_base,
+            service=dummy_service,
+            subprocessor=dummy_subprocessor,
+            cli=dummy_cli
+        )
+        self.assertTrue(GenAutoconfBundleValidator.is_valid(bundle))
+
+    def test_is_valid_failure(self) -> None:
+        self.assertFalse(GenAutoconfBundleValidator.is_valid(None))
+        self.assertFalse(GenAutoconfBundleValidator.is_valid("invalid"))

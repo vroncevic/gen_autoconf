@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.7.9'
+__version__ = '2.8.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -112,7 +112,7 @@ class SubProcessor:
             if success:
                 self._logger.write_log(INFO, '    Generated files:',)
 
-                for root, dirs, files in walk(output_dir):
+                for root, _, files in walk(output_dir):
                     for file in files:
                         rel_dir = relpath(root, output_dir)
 

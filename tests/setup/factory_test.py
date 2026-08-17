@@ -31,3 +31,5 @@ class TestGenAutoconfBundleFactory(unittest.TestCase):
         with self.assertRaises(Exception):
             GenAutoconfBundleFactory.create_bundle(options)
 
+    def test_get_version(self) -> None:
+        self.assertEqual(GenAutoconfBundleFactory.get_version(), '2.8.0')

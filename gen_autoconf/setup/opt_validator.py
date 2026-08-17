@@ -24,6 +24,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 
 from ats_utilities.validation.check_type import istype
+from ats_utilities.exceptions import ATSValueError, ATSTypeError
 from ats_utilities.validation.check_value import not_none
 
 from gen_autoconf.setup.options import GenAutoconfBundleOptions
@@ -33,7 +34,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.7.9'
+__version__ = '2.8.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -47,6 +48,7 @@ class GenAutoconfBundleOptionsValidator:
 
             :methods:
                 | validate - Validates the gen_autoconf bundle options.
+                | is_valid - Checks if the gen_autoconf bundle options is valid.
     '''
 
     @classmethod
@@ -73,3 +75,18 @@ class GenAutoconfBundleOptionsValidator:
             attribute = options.get(attr_name)
 
             istype(attribute, expected_type, ctx, msg_attr_name_istype)
+
+    @classmethod
+    def is_valid(cls, genautoconfbundleoptions: GenAutoconfBundleOptions) -> bool:
+        '''
+            Checks if the genautoconfbundleoptions is valid.
+
+            :param genautoconfbundleoptions: The genautoconfbundleoptions to be checked.
+            :return: True if valid, False otherwise.
+        '''
+        try:
+            cls.validate(genautoconfbundleoptions)
+            return True
+
+        except (ATSValueError, ATSTypeError):
+            return False

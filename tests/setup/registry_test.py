@@ -14,6 +14,9 @@ from unittest.mock import Mock
 
 from ats_utilities.base.setup.bundle import BaseBundle
 
+from gen_autoconf.core.service.iservice import IService
+from gen_autoconf.core.service.isubprocessor import ISubProcessor
+from gen_autoconf.infrastructure.cli.icli import ICLI
 from gen_autoconf.setup.bundle import GenAutoconfBundle
 from gen_autoconf.setup.registry import GenAutoconfBundleRegistry
 
@@ -68,3 +71,5 @@ class TestGenAutoconfBundleRegistry(unittest.TestCase):
         with self.assertRaises(Exception):
             GenAutoconfBundleRegistry.create_bundle(None)
 
+    def test_get_version(self) -> None:
+        self.assertEqual(GenAutoconfBundleRegistry.get_version(), '2.8.0')

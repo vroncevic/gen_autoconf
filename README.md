@@ -197,41 +197,41 @@ Tool structure
 | `gen_autoconf/core/model/project_setup.py` | 14 | 0 | 100%|
 | `gen_autoconf/core/service/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/core/service/engine.py` | 27 | 0 | 100%|
-| `gen_autoconf/core/service/iservice.py` | 16 | 0 | 100%|
-| `gen_autoconf/core/service/isubprocessor.py` | 16 | 0 | 100%|
+| `gen_autoconf/core/service/iservice.py` | 14 | 0 | 100%|
+| `gen_autoconf/core/service/isubprocessor.py` | 14 | 0 | 100%|
 | `gen_autoconf/engine.py` | 57 | 0 | 100%|
 | `gen_autoconf/infrastructure/__init__.py` | 8 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/engine.py` | 39 | 0 | 100%|
-| `gen_autoconf/infrastructure/cli/icli.py` | 16 | 0 | 100%|
+| `gen_autoconf/infrastructure/cli/icli.py` | 14 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/setup/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/setup/bundle.py` | 22 | 0 | 100%|
-| `gen_autoconf/infrastructure/cli/setup/dep_validator.py` | 28 | 0 | 100%|
+| `gen_autoconf/infrastructure/cli/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/setup/dependencies.py` | 18 | 0 | 100%|
-| `gen_autoconf/infrastructure/cli/setup/factory.py` | 32 | 0 | 100%|
+| `gen_autoconf/infrastructure/cli/setup/factory.py` | 35 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/setup/keys.py` | 26 | 0 | 100%|
-| `gen_autoconf/infrastructure/cli/setup/opt_validator.py` | 28 | 0 | 100%|
+| `gen_autoconf/infrastructure/cli/setup/opt_validator.py` | 36 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/setup/options.py` | 15 | 0 | 100%|
-| `gen_autoconf/infrastructure/cli/setup/registry.py` | 21 | 0 | 100%|
-| `gen_autoconf/infrastructure/cli/setup/validator.py` | 35 | 0 | 100%|
+| `gen_autoconf/infrastructure/cli/setup/registry.py` | 24 | 0 | 100%|
+| `gen_autoconf/infrastructure/cli/setup/validator.py` | 43 | 0 | 100%|
 | `gen_autoconf/infrastructure/command/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/infrastructure/command/command.py` | 16 | 0 | 100%|
 | `gen_autoconf/infrastructure/command/gen_autoconf_command_definition.py` | 24 | 0 | 100%|
 | `gen_autoconf/infrastructure/command/gen_autoconf_command_executor.py` | 21 | 0 | 100%|
-| `gen_autoconf/infrastructure/command/icommand_definition.py` | 15 | 0 | 100%|
-| `gen_autoconf/infrastructure/command/icommand_executor.py` | 14 | 0 | 100%|
+| `gen_autoconf/infrastructure/command/icommand_definition.py` | 14 | 0 | 100%|
+| `gen_autoconf/infrastructure/command/icommand_executor.py` | 13 | 0 | 100%|
 | `gen_autoconf/infrastructure/subprocessor.py` | 55 | 0 | 100%|
 | `gen_autoconf/setup/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/setup/bundle.py` | 23 | 0 | 100%|
-| `gen_autoconf/setup/dep_validator.py` | 28 | 0 | 100%|
+| `gen_autoconf/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_autoconf/setup/dependencies.py` | 19 | 0 | 100%|
-| `gen_autoconf/setup/factory.py` | 45 | 0 | 100%|
+| `gen_autoconf/setup/factory.py` | 48 | 0 | 100%|
 | `gen_autoconf/setup/keys.py` | 27 | 0 | 100%|
-| `gen_autoconf/setup/opt_validator.py` | 26 | 0 | 100%|
+| `gen_autoconf/setup/opt_validator.py` | 34 | 0 | 100%|
 | `gen_autoconf/setup/options.py` | 12 | 0 | 100%|
-| `gen_autoconf/setup/registry.py` | 29 | 0 | 100%|
-| `gen_autoconf/setup/validator.py` | 40 | 0 | 100%|
-| **Total** | 883 | 0 | 100% |
+| `gen_autoconf/setup/registry.py` | 32 | 0 | 100%|
+| `gen_autoconf/setup/validator.py` | 48 | 0 | 100%|
+| **Total** | 935 | 0 | 100% |
 
 </details>
 

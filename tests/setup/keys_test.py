@@ -29,4 +29,3 @@ class TestGenAutoconfBundleKeys(unittest.TestCase):
         opts = GenAutoconfBundleKeys.get_option_to_type()
         self.assertIsInstance(opts, MappingProxyType)
         self.assertIn(GenAutoconfBundleKeys.OPTION_INFO_FILE, opts)
-

@@ -62,3 +62,21 @@ class TestCLIBundleOptionsValidator(unittest.TestCase):
         }
         with self.assertRaises(Exception):
             CLIBundleOptionsValidator.validate(options)
+
+    def test_is_valid_success(self) -> None:
+        mock_service = DummyService()
+        mock_parser = Mock(spec=IOptionManager)
+
+        options = {
+            'service': mock_service,
+            'parser': mock_parser
+        }
+        self.assertTrue(CLIBundleOptionsValidator.is_valid(options))
+
+    def test_is_valid_failure(self) -> None:
+        self.assertFalse(CLIBundleOptionsValidator.is_valid(None))
+        self.assertFalse(CLIBundleOptionsValidator.is_valid("invalid"))
+        options = {
+            'service': DummyService()
+        }
+        self.assertFalse(CLIBundleOptionsValidator.is_valid(options))
