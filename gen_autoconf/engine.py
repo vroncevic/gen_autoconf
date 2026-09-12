@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.8.0'
+__version__ = '2.8.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -122,9 +122,11 @@ class GenAutoconf(Base):
                 if result.get("returncode") != 0:
                     self._logger.write_log(ERROR, f'❌ gen_autoconf: {result.get("stderr") or "failed!"}')
                     return False
+
                 self._logger.write_log(INFO, '✅ gen_autoconf: done!')
                 self._logger.write_log(INFO, '✅ gen_autoconf: exiting successfully!')
                 return True
+
             self._logger.write_log(ERROR, '❌ gen_autoconf: engine not initialized!')
             return False
 

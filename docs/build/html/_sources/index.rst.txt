@@ -9,13 +9,22 @@ The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-|gen_autoconf python checker| |gen_autoconf python package| |github issues| |documentation status| |github contributors|
+|gen_autoconf python checker| |gen_autoconf python package| |gen_autoconf interface checker| |gen_autoconf isp checker| |gen_autoconf srp checker| |github issues| |documentation status| |github contributors|
 
 .. |gen_autoconf python checker| image:: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml
 
 .. |gen_autoconf python package| image:: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package.yml
+
+.. |gen_autoconf interface checker| image:: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_interface_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_interface_checker.yml
+
+.. |gen_autoconf isp checker| image:: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_isp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_isp_checker.yml
+
+.. |gen_autoconf srp checker| image:: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_srp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_srp_checker.yml
 
 .. |github issues| image:: https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg
    :target: https://github.com/vroncevic/gen_autoconf/issues

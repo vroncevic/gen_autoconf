@@ -72,4 +72,4 @@ class TestGenAutoconfBundleRegistry(unittest.TestCase):
             GenAutoconfBundleRegistry.create_bundle(None)
 
     def test_get_version(self) -> None:
-        self.assertEqual(GenAutoconfBundleRegistry.get_version(), '2.8.0')
+        self.assertEqual(GenAutoconfBundleRegistry.get_version(), '2.8.1')

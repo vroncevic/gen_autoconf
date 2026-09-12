@@ -22,7 +22,7 @@ class TestGenAutoconfCommand(unittest.TestCase):
     def test_definition(self) -> None:
         definition = GenAutoconfCommandDefinition()
         self.assertEqual(definition.name, 'create')
-        self.assertEqual(definition.help_text, 'Generate picom project files')
+        self.assertEqual(definition.help_text, 'Generate autotools project files')
         self.assertEqual(len(definition.options), 2)
         self.assertTrue(isinstance(str(definition), str))
 
@@ -55,3 +55,8 @@ class TestGenAutoconfCommand(unittest.TestCase):
         definition = GenAutoconfCommandDefinition()
         executor = GenAutoconfCommandExecutor(definition)
         self.assertTrue(isinstance(str(executor), str))
+
+    def test_executor_get_definition(self) -> None:
+        definition = GenAutoconfCommandDefinition()
+        executor = GenAutoconfCommandExecutor(definition)
+        self.assertEqual(executor.get_definition(), definition)
