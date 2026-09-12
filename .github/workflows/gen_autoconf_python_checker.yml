@@ -2,12 +2,12 @@ name: gen_autoconf_python_checker
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
     paths:
       - 'gen_autoconf/**/*.py'
       - 'setup.py'
   pull_request:
-    branches: [ master ]
+    branches: [ master, main ]
     paths:
       - 'gen_autoconf/**/*.py'
       - 'setup.py'

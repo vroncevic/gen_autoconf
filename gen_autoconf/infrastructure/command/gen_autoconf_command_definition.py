@@ -30,7 +30,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.8.0'
+__version__ = '2.8.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -65,7 +65,7 @@ class GenAutoconfCommandDefinition:
 
             :return: The command help text.
         '''
-        return 'Generate picom project files'
+        return 'Generate autotools project files'
 
     @property
     def options(self) -> Sequence[OptionData]:
@@ -77,7 +77,7 @@ class GenAutoconfCommandDefinition:
         return [
             OptionData(
                 name="--name",
-                help_text="autoconf project name",
+                help_text="Name of the autotools project",
                 action=None,
                 default="mytool",
                 required=True,

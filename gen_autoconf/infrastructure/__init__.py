@@ -18,12 +18,13 @@ Copyright
 Info
     Initialization module for the gen_autoconf.infrastructure.
 '''
+from __future__ import annotations
 
 __author__: str = 'Vladimir Roncevic'
 __copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_autoconf'
 __credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__: str = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__: str = '2.8.0'
+__version__: str = '2.8.1'
 __maintainer__: str = 'Vladimir Roncevic'
 __email__: str = 'elektron.ronca@gmail.com'
 __status__: str = 'Development'

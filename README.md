@@ -10,7 +10,7 @@ The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-[![gen_autoconf python checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml) [![gen_autoconf package checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/graphs/contributors)
+[![gen_autoconf python checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_python_checker.yml) [![gen_autoconf package checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_package.yml) [![gen_autoconf interface checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_interface_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_interface_checker.yml) [![gen_autoconf isp checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_isp_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_isp_checker.yml) [![gen_autoconf srp checker](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_srp_checker.yml/badge.svg)](https://github.com/vroncevic/gen_autoconf/actions/workflows/gen_autoconf_srp_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_autoconf.svg)](https://github.com/vroncevic/gen_autoconf/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -191,7 +191,7 @@ Tool structure
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_autoconf/__init__.py` | 8 | 0 | 100%|
+| `gen_autoconf/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/core/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/core/model/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/core/model/project_setup.py` | 14 | 0 | 100%|
@@ -200,7 +200,7 @@ Tool structure
 | `gen_autoconf/core/service/iservice.py` | 14 | 0 | 100%|
 | `gen_autoconf/core/service/isubprocessor.py` | 14 | 0 | 100%|
 | `gen_autoconf/engine.py` | 57 | 0 | 100%|
-| `gen_autoconf/infrastructure/__init__.py` | 8 | 0 | 100%|
+| `gen_autoconf/infrastructure/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/engine.py` | 39 | 0 | 100%|
 | `gen_autoconf/infrastructure/cli/icli.py` | 14 | 0 | 100%|
@@ -217,21 +217,21 @@ Tool structure
 | `gen_autoconf/infrastructure/command/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/infrastructure/command/command.py` | 16 | 0 | 100%|
 | `gen_autoconf/infrastructure/command/gen_autoconf_command_definition.py` | 24 | 0 | 100%|
-| `gen_autoconf/infrastructure/command/gen_autoconf_command_executor.py` | 21 | 0 | 100%|
+| `gen_autoconf/infrastructure/command/gen_autoconf_command_executor.py` | 23 | 0 | 100%|
 | `gen_autoconf/infrastructure/command/icommand_definition.py` | 14 | 0 | 100%|
-| `gen_autoconf/infrastructure/command/icommand_executor.py` | 13 | 0 | 100%|
+| `gen_autoconf/infrastructure/command/icommand_executor.py` | 14 | 0 | 100%|
 | `gen_autoconf/infrastructure/subprocessor.py` | 55 | 0 | 100%|
 | `gen_autoconf/setup/__init__.py` | 9 | 0 | 100%|
 | `gen_autoconf/setup/bundle.py` | 23 | 0 | 100%|
 | `gen_autoconf/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_autoconf/setup/dependencies.py` | 19 | 0 | 100%|
-| `gen_autoconf/setup/factory.py` | 48 | 0 | 100%|
+| `gen_autoconf/setup/factory.py` | 49 | 0 | 100%|
 | `gen_autoconf/setup/keys.py` | 27 | 0 | 100%|
 | `gen_autoconf/setup/opt_validator.py` | 34 | 0 | 100%|
 | `gen_autoconf/setup/options.py` | 12 | 0 | 100%|
 | `gen_autoconf/setup/registry.py` | 32 | 0 | 100%|
 | `gen_autoconf/setup/validator.py` | 48 | 0 | 100%|
-| **Total** | 935 | 0 | 100% |
+| **Total** | 941 | 0 | 100% |
 
 </details>
 

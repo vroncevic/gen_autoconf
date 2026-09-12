@@ -28,7 +28,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_autoconf'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_autoconf/blob/dev/LICENSE'
-__version__ = '2.8.0'
+__version__ = '2.8.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -42,7 +42,7 @@ class ProjectSetup:
         It defines:
 
             :attributes:
-                | chip_config - Mapping with chip configuration.
+                | pro_config - Mapping with project configuration.
     '''
 
-    chip_config: Mapping[str, object]
+    pro_config: Mapping[str, object]

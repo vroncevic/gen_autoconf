@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   gen_autoconf
-# @version 2.8.0
+# @version 2.8.1
 # @date    Sun Jun 30 09:25:12 2026
 # @company None, free software to use 2026
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>

@@ -41,4 +41,4 @@ class TestCLIBundleFactory(unittest.TestCase):
         self.assertIsInstance(bundle, CLIBundle)
 
     def test_get_version(self) -> None:
-        self.assertEqual(CLIBundleFactory.get_version(), '2.8.0')
+        self.assertEqual(CLIBundleFactory.get_version(), '2.8.1')

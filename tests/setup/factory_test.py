@@ -32,4 +32,4 @@ class TestGenAutoconfBundleFactory(unittest.TestCase):
             GenAutoconfBundleFactory.create_bundle(options)
 
     def test_get_version(self) -> None:
-        self.assertEqual(GenAutoconfBundleFactory.get_version(), '2.8.0')
+        self.assertEqual(GenAutoconfBundleFactory.get_version(), '2.8.1')

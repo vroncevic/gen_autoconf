@@ -7,5 +7,5 @@ __pycache__/
 *.xml
 *.json
 .coverage
-.coverage.gen_autoconf
 htmlcov/
+.coverage.gen_autoconf
